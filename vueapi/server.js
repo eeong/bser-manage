@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+require('dotenv').config();
 
 global.Task = require('./api/models/taskModel');
 const routes = require('./api/routes/taskRoutes');
@@ -9,7 +10,7 @@ const routes = require('./api/routes/taskRoutes');
 mongoose.Promise = global.Promise;
 mongoose.set('useFindAndModify', false);
 mongoose.connect(
-  'mongodb://localhost/Vuecrudapp',
+  `${process.env.DB}`,
   { useNewUrlParser: true }
 );
 
