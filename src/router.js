@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
+import Search from './views/Search.vue';
 import Tasks from './views/Tasks.vue';
 import New from './views/New.vue';
 import Show from './views/Show.vue';
@@ -14,7 +15,12 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect: '/tasks'
+      redirect: '/search'
+    },
+    {
+      path: '/search',
+      name: 'search',
+      component: Search
     },
     {
       path: '/tasks',
