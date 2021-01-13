@@ -1,4 +1,5 @@
 const taskBuilder = require('../controllers/taskController');
+const searchApi = require('../controllers/searchController');
 
 module.exports = app => {
   app
@@ -11,4 +12,8 @@ module.exports = app => {
     .get(taskBuilder.read_a_task)
     .put(taskBuilder.update_a_task)
     .delete(taskBuilder.delete_a_task);
+
+    app
+      .route('/search')
+      .get(searchApi.read_user_num)
 };

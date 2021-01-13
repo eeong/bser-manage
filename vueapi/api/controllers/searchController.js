@@ -1,9 +1,11 @@
 
-const {ErBsClient, GameModes} = require('erbs-client');
+
+
+/*const {ErBsClient, GameModes} = require('erbs-client');
 
 const client = new ErBsClient(`${process.env.ER_KEY}`, `1`);
 
-/* const methods = [
+const methods = [
     client.getPlayerNumber('myPlayerName') , // Search for a player number using the given player name
     client.getCharacters(), // Merges multiple metadata calls to return all stats for all characters, no parameters
     client.getTopPlayers(1, GameModes.Duos), // gets all top players for a given season and game mode
@@ -11,8 +13,13 @@ const client = new ErBsClient(`${process.env.ER_KEY}`, `1`);
     client.getRankForPlayer(123456, 1, GameModes.Squads), // gets the rank of the selected player for the given season and mode
     client.getGamesForPlayer(123456), // gets all games for the given player (pagination WIP) 
     client.getPlayerRecord(123456, 0) // gets all records for the given player for a given season 
-]; */
+]; 
 
-//const results = Promise.all(methods);
-const result = client.getPlayerNumber('덫없는사람');
-exports.default(result);
+const results = Promise.all(methods);
+const result = client.getPlayerNumber('덫없는사람');*/
+
+exports.read_user_num = async (req, res, next) => {
+    let r = await axios.get(`https://open-api.bser.io`, {params:{"x-api-key":"LbuEDSHA7s4fvNCGJOcQO7ZcYuQqKdip8kF8jtIb","query":"덫없는사람"}});
+    console.log(r);
+    res.json(r);
+};
