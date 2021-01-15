@@ -18,8 +18,7 @@ const methods = [
 const results = Promise.all(methods);
 const result = client.getPlayerNumber('덫없는사람');*/
 
-exports.read_user_num = async (req, res, next) => {
-    let r = await axios.get(`https://open-api.bser.io`, {params:{"x-api-key":"LbuEDSHA7s4fvNCGJOcQO7ZcYuQqKdip8kF8jtIb","query":"덫없는사람"}});
-    console.log(r);
-    res.json(r);
+exports.read_user_num = (req, res) => {
+    console.log('res');
+    res.json(res);
 };

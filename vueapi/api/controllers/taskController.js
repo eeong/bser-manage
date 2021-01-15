@@ -40,7 +40,7 @@ exports.delete_a_task = (req, res) => {
     if (err) res.send(err);
     res.json({
       message: 'task successfully deleted',
-     _id: req.params.taskId
+      _id: req.params.taskId
     });
   });
 };

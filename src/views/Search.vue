@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Search</h1>
-    <form @onSearch="onSearch"><input type="text" class="form-control col-md-8 mr-4" style="display:inline-block"><button class="btn btn-info col-md-1 py-1" style="display:inline-block">검색</button></form>
+    <form @onSearch="onSearch" action="#"><input type="text" class="form-control col-md-8 mr-4" style="display:inline-block"><button type="submit" class="btn btn-info col-md-1 py-1" style="display:inline-block">검색</button></form>
   </div>
 </template>
 
