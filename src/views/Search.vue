@@ -8,10 +8,10 @@
 <script>
 import { api } from '../helpers/helpers';
 export default {
-  name: 'tasks',
+  name: 'search',
   data() {
     return {
-      tasks: []
+      search_data: []
     };
   },
   methods: {
@@ -20,7 +20,7 @@ export default {
     }
   },
   async mounted() {
-    this.tasks = await api.gettasks();
+    this.search_data = await api.search();
   }
 };
 </script>

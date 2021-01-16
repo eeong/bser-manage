@@ -1,7 +1,7 @@
 const taskBuilder = require('../controllers/taskController');
 const searchApi = require('../controllers/searchController');
 
-$.get("")
+
 module.exports = app => {
   app
     .route('/tasks')

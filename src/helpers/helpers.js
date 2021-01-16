@@ -12,6 +12,7 @@ Vue.use(VueFlashMessage, {
 
 const vm = new Vue();
 const baseURL = 'http://localhost:3000/tasks/';
+const bsURL = 'http://localhost:3000/search/';
 
 const handleError = fn => (...params) =>
   fn(...params).catch(error => {
@@ -37,6 +38,10 @@ export const api = {
   }),
   updatetask: handleError(async payload => {
     const res = await axios.put(baseURL + payload._id, payload);
+    return res.data;
+  }),
+  search: handleError(async () => {
+    const res = await axios.get(bsURL);
     return res.data;
   })
 };

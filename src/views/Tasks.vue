@@ -38,7 +38,7 @@ export default {
   name: 'tasks',
   data() {
     return {
-      tasks: []
+      tasks: [],
     };
   },
   methods: {
@@ -53,6 +53,7 @@ export default {
   },
   async mounted() {
     this.tasks = await api.gettasks();
+    
   }
 };
 </script>
