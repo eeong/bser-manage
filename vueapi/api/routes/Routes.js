@@ -15,6 +15,10 @@ module.exports = app => {
     .delete(taskBuilder.delete_a_task);
 
   app
-    .route('/search')
+    .route('/search');
+  app
+    .route('/search/searchId')
     .get(searchApi.read_user_num);
+    
+  
 };

@@ -43,5 +43,9 @@ export const api = {
   search: handleError(async () => {
     const res = await axios.get(bsURL);
     return res.data;
-  })
+  }),
+  searchuser: handleError(async userid => {
+    const res = await axios.get(bsURL + userid);
+    return res.data;
+  }),
 };
