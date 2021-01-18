@@ -1,11 +1,10 @@
 r<template>
   <div>
     <h1>Search</h1>
-    <form @submit="onSearch" >
-      <input type="text" v-model="user.id" class="form-control col-md-8 mr-4" style="display:inline-block">
-      <button type="submit" class="btn btn-info col-md-1 py-1" style="display:inline-block" >검색 
-      </button>
-    </form>
+        <input type="text" v-on:keyup.enter="onSearch" v-model="userid" class="form-control col-md-8 mr-4" style="display:inline-block" placeholder="전적을 확인할 닉네임을 입력해주세요">
+        <button type="submit" @click="onSearch" class="btn btn-info col-md-1 py-1" style="display:inline-block" >검색 
+        </button>
+      
   </div>
 </template>
 
@@ -19,7 +18,7 @@ export default {
       required: false,
       default: () => {
         return {
-          id: ''
+          id: '',
           
         };
       }
@@ -27,17 +26,19 @@ export default {
   },
   data() {
     return {
-      errorsPresent: false
+      errorsPresent: false,
+      search_data: '',
+      userid:''
     };
   },
   methods: {
-    onSearch: function() {
-      if (this.user.id === '') {
-        this.errorsPresent = true;
-      } else {
-        this.$router.push(`/search/${this.user.id}`);
+    onSearch: async function() {
+      if (this.userid !== undefined){
+        await this.$router.push({name:'searchId', params:{userId:`${this.userid}`}});
       }
-    }
+      else this.errorsPresent= true 
+    },
+    
   },
   async mounted() {
     this.search_data = await api.search();

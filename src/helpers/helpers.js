@@ -44,7 +44,7 @@ export const api = {
     const res = await axios.get(bsURL);
     return res.data;
   }),
-  searchuser: handleError(async userid => {
+  searchId: handleError(async userid => {
     const res = await axios.get(bsURL + userid);
     return res.data;
   }),

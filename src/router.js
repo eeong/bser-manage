@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Search from './views/Search.vue';
+import SearchId from './views/SearchId.vue';
 import Tasks from './views/Tasks.vue';
 import New from './views/New.vue';
 import Show from './views/Show.vue';
@@ -23,6 +24,11 @@ export default new Router({
       component: Search
     },
     {
+      path: '/search/:userid',
+      name: 'searchId',
+      component: SearchId,
+    },
+    {
       path: '/tasks',
       name: 'tasks',
       component: Tasks
@@ -41,7 +47,7 @@ export default new Router({
       path: '/tasks/:id/edit',
       name: 'edit',
       component: Edit
-    }
-   
+    },
+    
   ]
 });
