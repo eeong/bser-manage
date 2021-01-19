@@ -1,5 +1,7 @@
-<template>
- <form action="#" @submit.prevent="onSubmit">
+<template >
+<div>
+
+ <form v-if="user !== null" action="#" @submit.prevent="onSubmit">
     <p v-if="errorsPresent" class="error">Please fill out both fields!</p>
 
 
@@ -7,7 +9,7 @@
       <div class="ui label">
         <i class="calendar plus icon"></i>task
       </div>
-      <input type="text" placeholder="Enter task..." v-model="task.task1" />
+      <input type="text" placeholder="Enter task..." v-model="user.userGames[0].nickname" />
     </div>
 
     <div class="ui labeled input fluid">
@@ -21,9 +23,11 @@
 
     <button class="positive ui button">Submit</button>
   </form>
+</div>
 </template>
 
 <script>
+import { api } from '../helpers/helpers';
 export default {
   name: 'task-form',
   props: {
@@ -40,7 +44,8 @@ export default {
   },
   data() {
     return {
-      errorsPresent: false
+      errorsPresent: false,
+      user:null
     };
   },
   methods: {
@@ -51,6 +56,9 @@ export default {
         this.$emit('createOrUpdate', this.task);
       }
     }
+  },
+  async mounted() {
+    this.user = await api.searchId(this.$route.params.userId)
   }
 };
 </script>

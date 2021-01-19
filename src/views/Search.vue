@@ -34,7 +34,7 @@ export default {
   methods: {
     onSearch: async function() {
       if (this.userid !== undefined){
-        await this.$router.push({name:'searchId', params:{userId:`${this.userid}`}});
+        await this.$router.push({name:'new-task', params:{userId:`${this.userid}`}});
       }
       else this.errorsPresent= true 
     },
