@@ -2,18 +2,18 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
-const taskSchema = new Schema(
+const gameSchema = new Schema(
   {
-    task1: {
+    nickname: {
       type: String,
-      required: 'task1 cannot be blank'
+      required: true
     },
-    task2: {
+    gameId: {
       type: String,
-      required: 'task2  cannot be blank'
+      required: true
     }
   },
-  { collection: 'task' }
+  { collection: 'game' }
 );
 
-module.exports = mongoose.model('task', taskSchema);
+module.exports = mongoose.model('game', gameSchema);

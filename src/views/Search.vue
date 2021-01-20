@@ -9,7 +9,6 @@ r<template>
 </template>
 
 <script>
-import { api } from '../helpers/helpers';
 export default {
   name: 'search-form',
   props: {
@@ -40,9 +39,7 @@ export default {
     },
     
   },
-  async mounted() {
-    this.search_data = await api.search();
-  }
+  
 };
   
 

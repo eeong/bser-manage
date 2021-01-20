@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const task = mongoose.model('task');
+const task = mongoose.model('game');
 
 exports.list_all_tasks = (req, res) => {
   task.find({}, (err, tasks) => {
@@ -9,6 +9,7 @@ exports.list_all_tasks = (req, res) => {
 };
 
 exports.create_a_task = (req, res) => {
+  console.log(req.body);
   const newTask = new task(req.body);
   newTask.save((err, task) => {
     if (err) res.send(err);

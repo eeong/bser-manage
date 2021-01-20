@@ -16,7 +16,7 @@
       <div class="ui label">
    <i class="info circle icon"></i> Details
       </div>
-      <input type="text" placeholder="Enter Details" v-model="task.task2" />
+      <input type="text" placeholder="Enter Details" v-model="user.userGames[0].gameId" />
     </div>
 
     
@@ -40,21 +40,34 @@ export default {
           task2: ''
         };
       }
-    }
+    },
+   /*  game: {
+      type: Object,
+      required: false,
+      default: () => {
+        return {
+          nickname: '',
+          gameId:'',
+        };
+      }
+    }, */
+    
   },
   data() {
     return {
       errorsPresent: false,
-      user:null
+      user:null,
+      
     };
   },
   methods: {
     onSubmit: function() {
-      if (this.task.task1 === '' || this.task.task2 === '') {
-        this.errorsPresent = true;
-      } else {
-        this.$emit('createOrUpdate', this.task);
+      let game = {
+        nickname:this.user.userGames[0].nickname,
+        gameId: this.user.userGames[0].gameId
       }
+        this.$emit('createOrUpdate', game);
+      
     }
   },
   async mounted() {
