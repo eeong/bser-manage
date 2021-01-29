@@ -16,7 +16,7 @@ module.exports = app => {
 
   app
     .route('/search')
-    .get(searchApi.read_user_num);
+    .get(searchApi.read_rank);
 
   app
     .route('/search/:user')

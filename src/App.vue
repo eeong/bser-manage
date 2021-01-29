@@ -57,4 +57,7 @@ button.ui.button {
 	margin-top: 15px;
 	display: block;
 }
+ul,li {
+	list-style: none;
+}
 </style>
