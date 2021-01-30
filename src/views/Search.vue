@@ -1,8 +1,8 @@
 r<template>
   <div>
     <h1>Search</h1>
-      <input type="text" v-on:keyup.enter="onSearch" v-model="userid" class="form-control col-md-8 mr-4" style="display:inline-block" placeholder="전적을 확인할 닉네임을 입력해주세요">
-      <button type="submit" @click="onSearch" class="btn btn-info col-md-1 py-1" style="display:inline-block" >검색 
+      <input type="text" v-on:keyup.enter="onSearch(userid)" v-model="userid" class="form-control col-md-8 mr-4" style="display:inline-block" placeholder="전적을 확인할 닉네임을 입력해주세요">
+      <button type="submit" @click="onSearch(userid)" class="btn btn-info col-md-1 py-1" style="display:inline-block" >검색 
       </button>
     <h2>Rank 10</h2> 
       <ul class="topRanks-list">

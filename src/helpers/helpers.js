@@ -11,8 +11,8 @@ Vue.use(VueFlashMessage, {
 });
 
 const vm = new Vue();
-const baseURL = 'http://localhost:3000/tasks/';
-const bsURL = 'http://localhost:3000/search/';
+const baseURL = 'http://3.22.22.117:3000/bser/tasks/';
+const bsURL = 'http://3.22.22.117:3000/bser/search/';
 
 const handleError = fn => (...params) =>
   fn(...params).catch(error => {
