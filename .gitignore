@@ -8,6 +8,11 @@ node_modules
 !.vscode/extensions.json
 *.code-workspace
 
+#firebase
+.firebase
+.firebaserc
+
+
 # Local History for Visual Studio Code
 .history/
 
