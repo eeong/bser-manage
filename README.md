@@ -3,7 +3,7 @@
 ## 개발 스택
 
 - 백엔드	
-	- Node.js, Express, fetch, ssl
+	- Node.js, Express, Nginx
 
 - 데이터베이스
 	- MongoDB, Mongoose
@@ -36,4 +36,6 @@
 
  10. 빌드된 프로젝트는 firebase로 배포.
 
- 11. EC2의 elastic ip에 도메인 할당, SSL 인증.
+ 11. EC2의 Node 서버에 letsencrypt로 발급받은 인증서를 통해 https프로토콜 활성화.
+
+ 12. Nginx를 프록시로 설정, 도메인과 uri에 api요청을 보내면 Node 서버로 포워딩하도록 한다.
