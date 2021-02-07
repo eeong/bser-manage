@@ -4,13 +4,13 @@
 			<div class="ui center aligned container">
 				<div class="ui large secondary inverted pointing menu compact">
 					<router-link to="/search" exact class="item">
-						<i class="search icon"></i> Search
+						<i class="search icon"></i> 전적검색
 					</router-link>
 					<router-link to="/tasks" class="item">
-						<i class="tasks icon"></i> Tasks
+						<i class="tasks icon"></i> 전적기록
 					</router-link>
 					<router-link to="/tasks/new" class="item">
-						<i class="plus circle icon"></i> New
+						<i class="plus circle icon"></i> 전적확인
 					</router-link>
 			
 				</div>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>New task</h1>
+    <h1>전적확인</h1>
     <task-form @createOrUpdate="createOrUpdate"></task-form>
   </div>
 </template>

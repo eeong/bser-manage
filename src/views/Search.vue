@@ -1,16 +1,18 @@
-r<template>
-  <div>
-    <h1>Search</h1>
+<template>
+  <div >
+    <h1>전적검색</h1>
       <input type="text" v-on:keyup.enter="onSearch(userid)" v-model="userid" class="form-control col-md-8 mr-4" style="display:inline-block" placeholder="전적을 확인할 닉네임을 입력해주세요">
       <button type="submit" @click="onSearch(userid)" class="btn btn-info col-md-1 py-1" style="display:inline-block" >검색 
       </button>
     <h2>Rank 10</h2> 
-      <ul class="topRanks-list">
-        <li class="topRanks" v-for="(info , i) in rank" :key="i" @click="onSearch(info.nickname)">
-          <h3 class="rank-info rank">{{info.rank}}</h3>
-          <h5 class="rank-info rank-nickname">{{info.nickname}}</h5>
-          <p class="rank-info mmr">MMR: {{info.mmr}}</p>
-        </li>
+      <ul class="topRanks-list ui two column doubling grid container ">
+              <li class="topRanks ui column " v-for="(info , i) in rank" :key="i" @click="onSearch(info.nickname)">
+                  <div class="ui segment three column grid ">
+                    <h3 class="rank-info rank column">{{info.rank}}</h3>
+                    <h5 class="rank-info rank-nickname m-0 column">{{info.nickname}}</h5>
+                    <p class="rank-info mmr column">MMR: {{info.mmr}}</p>
+                  </div>
+              </li>
       </ul>
   </div>
 </template>
@@ -58,23 +60,10 @@ export default {
 </script>
 
 <style lang="css" scoped>
-.topRanks-list {
-  padding: 0; 
-  display: flex;
-  flex-wrap: wrap; 
-  justify-content: space-between;
-}
+
 .topRanks {
-  padding: 0.5em;
-  background-color: #3eacbb;
-  border-radius: 3px;
-  flex: 48% 0 0;
-  margin: 0.5em 0 ; 
-  display: flex;
-  cursor: pointer;
+  background-color: #e9e9e9;
+
 }
-.topRanks .rank-info {vertical-align: center; margin: 12px 0; text-align: center; }
-.topRanks .rank { flex: 20% 0 0; font-size: 1.5em;}
-.topRanks .rank-nickname {flex:50% 0 0; font-size: 1em; padding-top: 4px;}
-.topRanks .mmr {flex:30% 0 0; font-size: 0.875em; padding-top: 4px;}
+
 </style>
