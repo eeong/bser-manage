@@ -6,6 +6,7 @@ import Tasks from './views/Tasks.vue';
 import New from './views/New.vue';
 import Show from './views/Show.vue';
 import Edit from './views/Edit.vue';
+import Rank from './views/Rank.vue';
 
 Vue.use(Router);
 
@@ -47,6 +48,11 @@ export default new Router({
       path: '/tasks/:id/edit',
       name: 'edit',
       component: Edit
+    },
+    {
+      path: '/rank/:userid',
+      name: 'rank',
+      component: Rank
     },
     
   ]

@@ -11,8 +11,8 @@ Vue.use(VueFlashMessage, {
 });
 
 const vm = new Vue();
-const baseURL = 'https://eeong.be/bser/tasks/';
-const bsURL = 'https://eeong.be/bser/search/';
+const baseURL = 'http://localhost:3000/tasks/';//'https://eeong.be/bser/tasks/';
+const bsURL = 'http://localhost:3000/search/';//'https://eeong.be/bser/search/';
 
 const handleError = fn => (...params) =>
   fn(...params).catch(error => {
@@ -40,12 +40,16 @@ export const api = {
     const res = await axios.put(baseURL + payload._id, payload);
     return res.data;
   }),
-  search: handleError(async () => {
-    const res = await axios.get(bsURL);
+  search: handleError(async (rankMode) => {
+    const res = await axios.get(bsURL + '?m=' + rankMode);
     return res.data;
   }),
   searchId: handleError(async userid => {
     const res = await axios.get(bsURL + userid);
+    return res.data;
+  }),
+  searchRank: handleError(async (userid,gameMode) => {
+    const res = await axios.get(bsURL + userid + '/' + gameMode);
     return res.data;
   }),
 };

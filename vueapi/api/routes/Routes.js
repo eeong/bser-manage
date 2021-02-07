@@ -21,6 +21,9 @@ module.exports = app => {
   app
     .route('/search/:user')
     .get(searchApi.read_user_num);
-    
+
+  app
+    .route('/search/:user/:mode')
+    .get(searchApi.read_user_rank);
   
 };

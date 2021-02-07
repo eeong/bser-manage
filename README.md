@@ -11,6 +11,8 @@
 - 프론트엔드	
 	- Vue.js, Vuerouter
 
+- 퍼블리싱
+	- Semantic UI
 
 ## 구조
 

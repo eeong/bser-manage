@@ -4,7 +4,7 @@
 			<div class="ui center aligned container">
 				<div class="ui large secondary inverted pointing menu compact">
 					<router-link to="/search" exact class="item">
-						<i class="search icon"></i> 전적검색
+						<i class="search icon"></i> 검색
 					</router-link>
 					<router-link to="/tasks" class="item">
 						<i class="tasks icon"></i> 전적기록

@@ -41,7 +41,7 @@ export default {
         };
       }
     },
-   /*  game: {
+  /*  game: {
       type: Object,
       required: false,
       default: () => {

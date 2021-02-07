@@ -2,7 +2,8 @@ const fetch = require('node-fetch');
 const qs = require('querystring');
 
 exports.read_rank = (req, res) => {
-  fetch(`https://open-api.bser.io/v1/rank/top/1/1`, {
+  let rankMode = req.query.m;
+  fetch(`https://open-api.bser.io/v1/rank/top/1/`+rankMode, {
     headers: {
         'accept': 'application/json',
         'x-api-key': 'LbuEDSHA7s4fvNCGJOcQO7ZcYuQqKdip8kF8jtIb',
@@ -38,4 +39,31 @@ exports.read_user_num = (req, res) => {
 })})
 }).catch(function(error){
   console.log("There has been error with fetch operation",error.message);
+})};
+
+exports.read_user_rank = (req, res) => {
+  console.log(req.params)
+  let userQ = qs.escape(req.params.user);
+  let gameMode = req.params.mode
+  fetch(`https://open-api.bser.io/v1/user/nickname?query=${userQ}`, {
+  headers: {
+      'accept': 'application/json',
+      'x-api-key': 'LbuEDSHA7s4fvNCGJOcQO7ZcYuQqKdip8kF8jtIb',
+  }
+}).then((response) => {
+
+response.json().then((data)=>{
+  fetch(`https://open-api.bser.io/v1/rank/${data.user.userNum}/1/${gameMode}`, {
+  headers: {
+      'accept': 'application/json',
+      'x-api-key': 'LbuEDSHA7s4fvNCGJOcQO7ZcYuQqKdip8kF8jtIb',
+  }
+}).then( ( response ) => {
+response.json().then((data)=>{
+  console.log(data);
+  res.json(data);
+})
+})})
+}).catch(function(error){
+console.log("There has been error with fetch operation",error.message);
 })};

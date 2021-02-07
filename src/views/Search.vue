@@ -1,12 +1,12 @@
 <template>
   <div >
-    <h1>전적검색</h1>
-      <div class="ui action input">
-        <input type="text" v-on:keyup.enter="onSearch(userid)" v-model="userid" class="ui input" style="display:inline-block" placeholder="전적을 확인할 닉네임을 입력해주세요">
-        <button type="submit" @click="onSearch(userid)" class="ui button red" style="display:inline-block" >검색 
-        </button>
-      </div>
+    <search-form ></search-form>
     <h2>Rank 10</h2> 
+    <select class="ui compact selection dropdown-toggle " v-model="rankMode"> 
+      <option class="ui" selected="" value="1">Solo</option>
+      <option class="ui" value="2">Duo</option>
+      <option class="ui" value="3">Squad</option>
+      </select>
       <ul class="topRanks-list ui two column doubling grid container segment">
         <div class="ui loader" :class="loader"></div>
           <li class="topRanks ui column " v-for="(info , i) in rank" :key="i" @click="onSearch(info.nickname)">
@@ -22,8 +22,9 @@
 
 <script>
 import {api} from "../helpers/helpers"
+import SearchForm from "../components/SearchForm"
 export default {
-  name: 'search-form',
+  name: 'search',
   props: {
     user: {
       type: Object,
@@ -36,29 +37,27 @@ export default {
       }
     }
   },
+  components:{
+    'search-form' : SearchForm,
+  },
   data() {
     return {
       errorsPresent: false,
       search_data: '',
-      userid:'',
       rank:'',
       loader:'active',
+      rankMode: 1,
     };
   },
-  methods: {
-    onSearch: async function(nickname) {
-      if (this.userid !== undefined){
-        await this.$router.push({name:'new-task', params:{userId: nickname || `${this.userid}`}});
-      }
-      else this.errorsPresent= true 
-    },
-    
-    
-  },
   async mounted(){
-    this.rank = await api.search()
+    this.rank = await api.search(this.rankMode)
     this.loader = "disabled "
-  }
+  },
+  watch: {
+      rankMode: async function (newVal) {
+        this.rank = await api.search(newVal)
+      }
+    },
   
 };
 
