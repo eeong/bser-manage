@@ -1,12 +1,14 @@
 <template>
   <div >
     <search-form ></search-form>
-    <h2>Rank 10</h2> 
-    <select class="ui compact selection dropdown-toggle " v-model="rankMode"> 
-      <option class="ui" selected="" value="1">Solo</option>
-      <option class="ui" value="2">Duo</option>
-      <option class="ui" value="3">Squad</option>
+    <h2>Rank 10 
+      <select class="ui selection three item stackable tabs menu " v-model="rankMode"> 
+      <option class="item" selected="" value="1">Solo</option>
+      <option class="item" value="2">Duo</option>
+      <option class="item" value="3">Squad</option>
       </select>
+    </h2> 
+    
       <ul class="topRanks-list ui two column doubling grid container segment">
         <div class="ui loader" :class="loader"></div>
           <li class="topRanks ui column " v-for="(info , i) in rank" :key="i" @click="onSearch(info.nickname)">
@@ -49,15 +51,24 @@ export default {
       rankMode: 1,
     };
   },
-  async mounted(){
-    this.rank = await api.search(this.rankMode)
-    this.loader = "disabled "
-  },
   watch: {
       rankMode: async function (newVal) {
         this.rank = await api.search(newVal)
       }
     },
+  methods:{
+    onSearch: async function(nickname) {
+      if (nickname){
+        await this.$router.push({name:'new-task', params:{userId: nickname || `${this.userid}`}});
+      }
+      else this.errorsPresent= true 
+    }
+
+  },
+  async mounted(){
+    this.rank = await api.search(this.rankMode)
+    this.loader = "disabled "
+  },
   
 };
 

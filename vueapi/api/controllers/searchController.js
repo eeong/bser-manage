@@ -60,7 +60,9 @@ response.json().then((data)=>{
   }
 }).then( ( response ) => {
 response.json().then((data)=>{
+  data.userRank.mode = gameMode;
   console.log(data);
+
   res.json(data);
 })
 })})
