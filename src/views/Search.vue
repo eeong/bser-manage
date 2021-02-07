@@ -59,7 +59,7 @@ export default {
   methods:{
     onSearch: async function(nickname) {
       if (nickname){
-        await this.$router.push({name:'new-task', params:{userId: nickname || `${this.userid}`}});
+        await this.$router.push({name:'new', params:{userId: nickname || `${this.userid}`}});
       }
       else this.errorsPresent= true 
     }

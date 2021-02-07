@@ -48,7 +48,7 @@ export const api = {
     const res = await axios.get(bsURL + userid);
     return res.data;
   }),
-  searchRank: handleError(async (userid,gameMode) => {
+  searchRank: handleError(async (userid, gameMode) => {
     const res = await axios.get(bsURL + userid + '/' + gameMode);
     return res.data;
   }),

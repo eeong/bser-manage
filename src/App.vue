@@ -1,22 +1,22 @@
 <template>
 	<div id="app">
 		<div class="ui inverted segment navbar">
-			<div class="ui center aligned container">
+			<div class="ui center aligned container column">
 				<div class="ui large secondary inverted pointing menu compact">
-					<router-link to="/search" exact class="item">
+					<router-link to="/search" class="item">
 						<i class="search icon"></i> 검색
 					</router-link>
-					<router-link to="/tasks" class="item">
+					<router-link to="/tasks" class="item " >
 						<i class="tasks icon"></i> 전적기록
 					</router-link>
-					<router-link to="/tasks/new" class="item">
+					<router-link to="/new" class="item " >
 						<i class="plus circle icon"></i> 전적확인
 					</router-link>
-			
+					
 				</div>
 			</div>
-		</div>
 
+		</div>
 		<div class="ui text container">
 			<div class="ui one column grid">
 				<div class="column">
@@ -29,8 +29,17 @@
 
 <script>
 export default {
-	name: 'app'
+	name: 'app',
+	data(){
+		return {
+			isActive: false,
+		}
+	},
+	methods:{
+	
+	}
 };
+	
 </script>
 
 <style>
@@ -45,7 +54,7 @@ export default {
 	right: 0;
 }
 input {
-	width: 300px;
+	width: 250px;
 }
 div.label {
 	width: 120px;

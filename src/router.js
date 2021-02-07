@@ -35,8 +35,8 @@ export default new Router({
       component: Tasks
     },
     {
-      path: '/tasks/new',
-      name: 'new-task',
+      path: '/new',
+      name: 'new',
       component: New
     },
     {
@@ -49,11 +49,18 @@ export default new Router({
       name: 'edit',
       component: Edit
     },
+    
     {
       path: '/rank/:userid',
       name: 'rank',
       component: Rank
     },
-    
+    {
+      path:'/:pathMatch(.*)*',
+      name:'notFound',
+      component: {
+        template: '<h1>Page Not Found</h1>'
+      }
+    }
   ]
 });

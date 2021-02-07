@@ -9,7 +9,7 @@
 import taskForm from '../components/TaskForm.vue';
 import { api } from '../helpers/helpers';
 export default {
-  name: 'new-task',
+  name: 'new',
   components: {
     'task-form': taskForm
   },
