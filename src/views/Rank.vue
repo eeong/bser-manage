@@ -39,6 +39,7 @@ export default {
     this.loaderActive = ''
     if (this.rank == null) {
       alert("해당 모드에서 랭크게임 기록이 존재하지 않습니다.");
+      this.$router.push('/search')
     }
   }
 };

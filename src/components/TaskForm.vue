@@ -61,6 +61,7 @@ export default {
   },
   async mounted() {
     this.user = await api.searchId(this.$route.params.userId)
+    
   }
 };
 </script>

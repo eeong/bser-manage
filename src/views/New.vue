@@ -25,6 +25,11 @@ export default {
       this.$router.push(`/tasks/${res._id}`);
     }
   },
-  
+  mounted(){
+    if (this.user == undefined) {
+      alert('먼저 전적을 검색할 닉네임을 입력해주세요.');
+      this.$router.push('/search')
+    }
+  }
 };
 </script>
