@@ -22,7 +22,7 @@
 
 <script>
 export default {
-  name: 'task-form',
+  name: 'search-form',
   props: {
   
   },

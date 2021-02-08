@@ -2,7 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import Search from './views/Search.vue';
 import SearchId from './views/SearchId.vue';
-import Tasks from './views/Tasks.vue';
+import Recs from './views/Recs.vue';
 import New from './views/New.vue';
 import Show from './views/Show.vue';
 import Edit from './views/Edit.vue';
@@ -30,9 +30,9 @@ export default new Router({
       component: SearchId,
     },
     {
-      path: '/tasks',
-      name: 'tasks',
-      component: Tasks
+      path: '/recs',
+      name: 'recs',
+      component: Recs
     },
     {
       path: '/new',
@@ -40,12 +40,12 @@ export default new Router({
       component: New
     },
     {
-      path: '/tasks/:id',
+      path: '/recs/:id',
       name: 'show',
       component: Show
     },
     {
-      path: '/tasks/:id/edit',
+      path: '/recs/:id/edit',
       name: 'edit',
       component: Edit
     },

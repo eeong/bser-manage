@@ -1,18 +1,18 @@
 <template>
   <div>
     <h1>Edit task</h1>
-    <task-form @createOrUpdate="createOrUpdate" :task=this.task></task-form>
+    <rec-form @createOrUpdate="createOrUpdate" :task=this.task></rec-form>
   </div>
 </template>
 
 <script>
-import taskForm from '../components/TaskForm.vue';
+import recForm from '../components/RecForm.vue';
 import { api } from '../helpers/helpers';
 
 export default {
   name: 'edit',
   components: {
-    'task-form': taskForm
+    'rec-form': recForm
   },
   data: function() {
     return {

@@ -29,7 +29,7 @@
 <script>
 import { api } from '../helpers/helpers';
 export default {
-  name: 'task-form',
+  name: 'rec-form',
   props: {
     task: {
       type: Object,
@@ -53,7 +53,8 @@ export default {
     onSubmit: function() {
       let game = {
         nickname: this.user.userGames[0].nickname || null,
-        gameId: this.user.userGames[0].gameId || null
+        gameId: this.user.userGames[0].gameId || null,
+        
       }
         this.$emit('createOrUpdate', game);
       
@@ -62,6 +63,11 @@ export default {
   async mounted() {
     this.user = await api.searchId(this.$route.params.userId)
     
+    if (this.user.code == 404) {
+      alert('먼저 전적을 검색할 닉네임을 입력해주세요.');
+      this.$router.push('/search')
+    
+    }
   }
 };
 </script>

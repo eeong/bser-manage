@@ -1,17 +1,17 @@
 <template>
   <div>
     <h1>전적확인</h1>
-    <task-form @createOrUpdate="createOrUpdate"></task-form>
+    <rec-form @createOrUpdate="createOrUpdate"></rec-form>
   </div>
 </template>
 
 <script>
-import taskForm from '../components/TaskForm.vue';
+import recForm from '../components/RecForm.vue';
 import { api } from '../helpers/helpers';
 export default {
   name: 'new',
   components: {
-    'task-form': taskForm
+    'rec-form': recForm
   },
   data(){
     return {
@@ -25,11 +25,6 @@ export default {
       this.$router.push(`/tasks/${res._id}`);
     }
   },
-  mounted(){
-    if (this.user == undefined) {
-      alert('먼저 전적을 검색할 닉네임을 입력해주세요.');
-      this.$router.push('/search')
-    }
-  }
+  
 };
 </script>

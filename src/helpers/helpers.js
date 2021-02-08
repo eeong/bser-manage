@@ -11,7 +11,7 @@ Vue.use(VueFlashMessage, {
 });
 
 const vm = new Vue();
-const baseURL = 'http://localhost:3000/tasks/';//'https://eeong.be/bser/tasks/';
+const baseURL = 'http://localhost:3000/recs/';//'https://eeong.be/bser/tasks/';
 const bsURL = 'http://localhost:3000/search/';//'https://eeong.be/bser/search/';
 
 const handleError = fn => (...params) =>

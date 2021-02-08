@@ -7,7 +7,7 @@
 						<i class="search icon"></i> 검색
 					</router-link>
 					<router-link to="/tasks" class="item " >
-						<i class="tasks icon"></i> 전적기록
+						<i class="tasks icon"></i> 템빌드저장소
 					</router-link>
 					<router-link to="/new" class="item " >
 						<i class="plus circle icon"></i> 전적확인
