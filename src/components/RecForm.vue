@@ -1,10 +1,10 @@
 <template >
 <div>
-  <div class="ui three column doubling grid">
+  <div class="ui three column doubling grid" v-if="this.games != null">
         <div class="ui column three grid">
           <div class="column">{{games[0].gameRank}}위</div>
           <div class="column">{{games[0].characterNum}}</div>
-          <div class="column"></div>
+          <div class="column" >{{getCharacter(games,0)[0].name}}</div>
         </div>
         <div class="ui column three grid">
           <div class="column"></div>
@@ -73,15 +73,11 @@ export default {
     return {
       errorsPresent: false,
       user:null,
-      games: null
+      games: null,
     };
   },
   computed: {
-    character() {
-      return character.data((name) => {
-
-      })
-    }
+    
   },
   methods: {
     onSubmit: function() {
@@ -92,6 +88,11 @@ export default {
       }
         this.$emit('createOrUpdate', game);
       
+    },
+    getCharacter: (v,i) => {
+        return character.data.filter(function(obj) {
+          return obj['code'] == v[i].characterNum
+        })
     }
   },
   async mounted() {
@@ -100,7 +101,6 @@ export default {
     if (this.user.code == 404) {
       alert('먼저 전적을 검색할 닉네임을 입력해주세요.');
       this.$router.push('/search')
-    
     }
   }
 };
