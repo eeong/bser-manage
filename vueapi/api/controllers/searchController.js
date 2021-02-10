@@ -1,6 +1,9 @@
 const fetch = require('node-fetch');
 const qs = require('querystring');
+const fs = require('fs');
+const path = require('path')
 
+var charList = (fs.readFileSync(path.join(__dirname,'../assets/character'), 'utf8')).split(',');
 exports.read_rank = (req, res) => {
   let rankMode = req.query.m;
   fetch(`https://open-api.bser.io/v1/rank/top/1/`+rankMode, {
@@ -32,11 +35,15 @@ exports.read_user_num = async (req, res) => {
     }
 }).then( ( response ) => {
   response.json().then((data)=>{
-    console.log(data);
+    for(var i in data.userGames){
+      data.userGames[i].characterFile = "../assets/static/img/00.캐릭터/"+charList[data.userGames[i].characterNum-1].slice(1,-1)
+    }
+    console.log( data.userGames[0].characterFile)
     res.json(data);
   })
 })})
 }).catch(function(error){
+  res.send('api와 연결이 원활하지 않습니다. 잠시 후 시도해주세요.')
   console.log("There has been error with fetch operation",error.message);
 })};
 
@@ -67,4 +74,5 @@ response.json().then((data)=>{
 })})
 }).catch(function(error){
 console.log("There has been error with fetch operation",error.message);
+res.send('api와 연결이 원활하지 않습니다. 잠시 후 시도해주세요.')
 })};

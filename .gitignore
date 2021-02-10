@@ -12,6 +12,10 @@ node_modules
 .firebase
 .firebaserc
 
+# img
+/src/assets/static/
+/vueapi/assets/
+
 
 # Local History for Visual Studio Code
 .history/
@@ -79,6 +83,8 @@ web_modules/
 
 # Optional REPL history
 .node_repl_history
+
+src/img/
 
 # Output of 'npm pack'
 *.tgz

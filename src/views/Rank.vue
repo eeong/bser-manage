@@ -3,7 +3,7 @@
     <h1 v-if="rank != null">랭크: {{mode[rank.userRank.mode]}}모드</h1>
       <div v-if="rank != null" class="ui card">
       <div class="ui loader" :class="{active: loaderActive}"></div>
-      <div class="image"><img class="ui small image" src="../img/nadine.png" style="opacity: 1;"></div>
+      <div class="image"><img class="ui small image" src="../assets/static/img/nadine.png" style="opacity: 1;"></div>
       <div class="content ">
       <div class="header">{{rank.userRank.nickname}}</div>
       <div class="meta">

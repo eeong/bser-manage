@@ -11,6 +11,7 @@
     "axios": "^0.19.2",
     "core-js": "^3.8.3",
     "dotenv": "^8.2.0",
+    "fs": "0.0.1-security",
     "semantic-ui-css": "^2.4.1",
     "vue": "^2.6.12",
     "vue-flash-message": "^0.7.2",

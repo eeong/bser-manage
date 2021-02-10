@@ -3,8 +3,8 @@
   <div class="ui three column doubling grid" v-if="this.games != null">
         <div class="ui column three grid">
           <div class="column">{{games[0].gameRank}}위</div>
-          <div class="column">{{games[0].characterNum}}</div>
-          <div class="column" >{{getCharacter(0)}}</div>
+          <div class="column"><img :src= "games[0].characterFile" ></div>
+          <div class="column" >{{getCharacter(games[0].characterNum)}}</div>
         </div>
         <div class="ui column three grid">
           <div class="column"></div>
@@ -74,6 +74,7 @@ export default {
       errorsPresent: false,
       user:null,
       games: null,
+      charfile:'',
     };
   },
   computed: {
@@ -91,17 +92,24 @@ export default {
     },
     getCharacter: (i) => {
         return character.data[i].name
-        
-    }
+    },
+    
   },
+
   async mounted() {
     this.user = await api.searchId(this.$route.params.userId)
     this.games = this.user.userGames
+
     if (this.user.code == 404) {
       alert('먼저 전적을 검색할 닉네임을 입력해주세요.');
       this.$router.push('/search')
+    } 
+    else if (typeof this.user == 'string'){
+      alert(this.user);
+      this.$router.push('/search')
     }
-  }
+
+}
 };
 </script>
 

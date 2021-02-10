@@ -14,6 +14,7 @@ const vm = new Vue();
 const baseURL = 'http://localhost:3000/recs/';//'https://eeong.be/bser/tasks/';
 const bsURL = 'http://localhost:3000/search/';//'https://eeong.be/bser/search/';
 
+
 const handleError = fn => (...params) =>
   fn(...params).catch(error => {
     vm.flash(`${error.response.status}: ${error.response.statusText}`, 'error');
