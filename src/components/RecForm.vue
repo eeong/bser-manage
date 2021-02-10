@@ -3,8 +3,8 @@
   <div class="ui three column doubling grid" v-if="this.games != null">
         <div class="ui column three grid">
           <div class="column">{{games[0].gameRank}}위</div>
-          <div class="column"><img :src= "games[0].characterFile" ></div>
-          <div class="column" >{{getCharacter(games[0].characterNum)}}</div>
+          <div class="column image"><img class="ui small image" :src="games[0].characterFile" ></div>
+          <div class="column" >{{getCharacter(games[0].characterNum-1)}}</div>
         </div>
         <div class="ui column three grid">
           <div class="column"></div>
@@ -74,7 +74,7 @@ export default {
       errorsPresent: false,
       user:null,
       games: null,
-      charfile:'',
+      charfile: '',
     };
   },
   computed: {
