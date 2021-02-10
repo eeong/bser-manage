@@ -4,7 +4,7 @@
         <div class="ui column three grid">
           <div class="column">{{games[0].gameRank}}위</div>
           <div class="column">{{games[0].characterNum}}</div>
-          <div class="column" >{{getCharacter(games,0)[0].name}}</div>
+          <div class="column" >{{getCharacter(0)}}</div>
         </div>
         <div class="ui column three grid">
           <div class="column"></div>
@@ -89,10 +89,9 @@ export default {
         this.$emit('createOrUpdate', game);
       
     },
-    getCharacter: (v,i) => {
-        return character.data.filter(function(obj) {
-          return obj['code'] == v[i].characterNum
-        })
+    getCharacter: (i) => {
+        return character.data[i].name
+        
     }
   },
   async mounted() {

@@ -16,23 +16,6 @@ exports.read_rank = (req, res) => {
   console.log("There has been error with fetch operation",error.message)});
 };
 
-
-exports.gara=(req, res) => {
-  fetch(`https://open-api.bser.io/v1/user/games/1103442`, {
-    headers: {
-        'accept': 'application/json',
-        'x-api-key': 'LbuEDSHA7s4fvNCGJOcQO7ZcYuQqKdip8kF8jtIb',
-    }
-}).then( ( response ) => {
-  response.json().then((data)=>{
-    console.log(data);
-    res.json(data);
-  })
-}).catch( function(error) {
-  console.log("There has been error with fetch operation",error.message)});
-};
-
-
 exports.read_user_num = async (req, res) => {
     let userQ = qs.escape(req.params.user);
     await fetch(`https://open-api.bser.io/v1/user/nickname?query=${userQ}`, {
