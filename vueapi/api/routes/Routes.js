@@ -20,7 +20,7 @@ module.exports = app => {
 
   app
     .route('/search/:user')
-    .get(searchApi.read_user_num);
+    .get(searchApi.gara);
 
   app
     .route('/search/:user/:mode')
