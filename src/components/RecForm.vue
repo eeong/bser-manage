@@ -1,29 +1,31 @@
 <template >
-<div>
-  <div class="ui three column doubling grid" v-if="this.games != null">
-        <div class="ui column three grid">
-          <div class="column">{{games[0].gameRank}}위</div>
-          <div class="column image"><img class="ui small image" :src="games[0].characterFile" ></div>
-          <div class="column" >{{getCharacter(games[0].characterNum-1)}}</div>
-        </div>
-        <div class="ui column three grid">
-          <div class="column"></div>
-          <div class="column"></div>
-          <div class="column"></div>
-        </div>
-        <div class="ui column three grid">
-          <div class="top attached ui three item menu">
-            <a class="item">Item</a>
-            <a class="item">Item</a>
-            <a class="item">Item</a>
+<div >
+  <div v-if="games != null">
+    <div class="ui three column doubling grid" >
+          <div class="ui column three grid">
+            <div class="column">{{games[0].gameRank}}위</div>
+            <div class="ui small image "><img class="ui circular image" :src="require(`../assets/static/img/00.캐릭터/${games[0].characterSrc}`)" ></div>
+            <div class="column">{{getCharacter(games[0].characterNum-1)}}</div>
           </div>
-          <div class="attached ui three item menu">
-            <a class="item">Item</a>
-            <a class="item">Item</a>
-            <a class="item">Item</a>
+          <div class="ui column three grid attached">
+            <div class="column">킬{{games[0].playerKill}}</div>
+            <div class="column">어시{{games[0].playerAssistant}}</div>
+            <div class="column">동물킬{{games[0].monsterKill}}</div>
           </div>
-        </div>
-        
+          <div class="ui column three grid">
+            <div class="top attached ui three item menu">
+              <a class="item">Item</a>
+              <a class="item">Item</a>
+              <a class="item">Item</a>
+            </div>
+            <div class="attached ui three item menu">
+              <a class="item">Item</a>
+              <a class="item">Item</a>
+              <a class="item">Item</a>
+            </div>
+          </div>
+          
+    </div>
   </div>
 
   <form v-if="user != null" action="#" @submit.prevent="onSubmit">
@@ -74,7 +76,7 @@ export default {
       errorsPresent: false,
       user:null,
       games: null,
-      charfile: '',
+      charfile: {id:1,src:'001.Jackie-재키.png'},
     };
   },
   computed: {
@@ -93,7 +95,9 @@ export default {
     getCharacter: (i) => {
         return character.data[i].name
     },
-    
+    getCharacterFile: (file) => {
+      return require(file)
+    }
   },
 
   async mounted() {
