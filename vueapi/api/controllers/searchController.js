@@ -36,7 +36,7 @@ exports.read_user_num = async (req, res) => {
 }).then( ( response ) => {
   response.json().then((data)=>{
     for(var i in data.userGames){
-      data.userGames[i].characterFile =`../assets/static/img/00.캐릭터/`+(charList[data.userGames[i].characterNum-1].slice(1,-1))
+      data.userGames[i].characterSrc = charList[data.userGames[i].characterNum-1].slice(1,-1)
     }
     console.log( data.userGames[0].characterFile)
     res.json(data);
