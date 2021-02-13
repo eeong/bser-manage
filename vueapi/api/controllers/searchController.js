@@ -11,12 +11,11 @@ const armor = (JSON.parse((fs.readFileSync(path.join(__dirname,'../assets/ItemAr
 const charList = (fs.readFileSync(path.join(__dirname,'../assets/character'), 'utf8')).split(',');
 
 const getItem = function(ctgr, itemcode) {
-  ctgr.filter((v)=>{
-    console.log(v.code)
-    return v.code == itemcode;
+  return ctgr.filter((v)=>{
+    if(v.code == itemcode) return v;
+    else return '';
   })
 }
-console.log(getItem(weapon,101101))
 
 exports.read_rank = (req, res) => {
   let rankMode = req.query.m;
@@ -53,12 +52,10 @@ exports.read_user_num = async (req, res) => {
       data.userGames[i].item = [];
       data.userGames[i].characterSrc = charList[data.userGames[i].characterNum-1].slice(1,-1)
       for(var j = 0; j < 6; j++){
-        
-        if (j == 0) data.userGames[i].item.push(getItem(weapon, data.userGames[i].equipment[j])) ; 
-        else data.userGames[i].item.push(getItem(armor, data.userGames[i].equipment[j])) ; 
+        if (j == 0) data.userGames[i].item[j]=(getItem(weapon, data.userGames[i].equipment[j])) ; 
+        else data.userGames[i].item[j]=(getItem(armor, data.userGames[i].equipment[j])) ; 
       }
     }
-    //console.log(data.userGames[0].item)
     res.json(data);
   })
 })})

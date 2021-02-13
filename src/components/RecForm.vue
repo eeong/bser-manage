@@ -14,14 +14,14 @@
           </div>
           <div class="ui column three grid">
             <div class="top attached ui three item menu">
-              <a class="item">{{games[0].equipment}}</a>
-              <a class="item">Item</a>
-              <a class="item">Item</a>
+              <a class="item"><img class="ui image" :src="require(`../assets/static/img/01.무기/${games[0].item[0][0].name}.png`)"></a>
+              <a class="item"><img class="ui image" :src="require(`../assets/static/img/02.방어구/02.옷/${games[0].item[1][0].name}.png`)"></a>
+              <a class="item"><img class="ui image" :src="require(`../assets/static/img/02.방어구/01.머리/${games[0].item[2][0].name}.png`)"></a>
             </div>
             <div class="attached ui three item menu">
-              <a class="item">Item</a>
-              <a class="item">Item</a>
-              <a class="item">Item</a>
+              <a class="item"><img class="ui image" :src="require(`../assets/static/img/02.방어구/03.팔/${games[0].item[3][0].name}.png`)"></a>
+              <a class="item"><img class="ui image" :src="require(`../assets/static/img/02.방어구/04.다리/${games[0].item[4][0].name}.png`)"></a>
+              <a class="item"><img class="ui image" :src="require(`../assets/static/img/02.방어구/05.장식/${games[0].item[5][0].name}.png`)"></a>
             </div>
           </div>
           
