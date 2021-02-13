@@ -3,7 +3,21 @@ const qs = require('querystring');
 const fs = require('fs');
 const path = require('path')
 
-var charList = (fs.readFileSync(path.join(__dirname,'../assets/character'), 'utf8')).split(',');
+
+/********** Read item data ************/ 
+
+const weapon = (JSON.parse((fs.readFileSync(path.join(__dirname,'../assets/ItemWeapon.json'), 'utf8')))).data;
+const armor = (JSON.parse((fs.readFileSync(path.join(__dirname,'../assets/ItemArmor.json'), 'utf8')))).data;
+const charList = (fs.readFileSync(path.join(__dirname,'../assets/character'), 'utf8')).split(',');
+
+const getItem = function(ctgr, itemcode) {
+  ctgr.filter((v)=>{
+    console.log(v.code)
+    return v.code == itemcode;
+  })
+}
+console.log(getItem(weapon,101101))
+
 exports.read_rank = (req, res) => {
   let rankMode = req.query.m;
   fetch(`https://open-api.bser.io/v1/rank/top/1/`+rankMode, {
@@ -36,9 +50,15 @@ exports.read_user_num = async (req, res) => {
 }).then( ( response ) => {
   response.json().then((data)=>{
     for(var i in data.userGames){
+      data.userGames[i].item = [];
       data.userGames[i].characterSrc = charList[data.userGames[i].characterNum-1].slice(1,-1)
+      for(var j = 0; j < 6; j++){
+        
+        if (j == 0) data.userGames[i].item.push(getItem(weapon, data.userGames[i].equipment[j])) ; 
+        else data.userGames[i].item.push(getItem(armor, data.userGames[i].equipment[j])) ; 
+      }
     }
-    console.log( data.userGames[0].characterFile)
+    //console.log(data.userGames[0].item)
     res.json(data);
   })
 })})

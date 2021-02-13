@@ -14,7 +14,7 @@
           </div>
           <div class="ui column three grid">
             <div class="top attached ui three item menu">
-              <a class="item">{{games[0].equipment[0]}}</a>
+              <a class="item">{{games[0].equipment}}</a>
               <a class="item">Item</a>
               <a class="item">Item</a>
             </div>
@@ -45,7 +45,7 @@
       </div>
       <input type="text" placeholder="Enter Details"  />
     </div>
-
+    <div></div>
     <div>{{games[0] || '사용자 전적을 찾을 수 없습니다'}}</div>
 
     <button class="positive ui button">Submit</button>
@@ -95,15 +95,13 @@ export default {
     getCharacter: (i) => {
         return character.data[i].name
     },
-    getCharacterFile: (file) => {
-      return require(file)
-    }
+    
+    
   },
 
   async mounted() {
     this.user = await api.searchId(this.$route.params.userId)
     this.games = this.user.userGames
-
     if (this.user.code == 404) {
       alert('먼저 전적을 검색할 닉네임을 입력해주세요.');
       this.$router.push('/search')
@@ -112,7 +110,7 @@ export default {
       alert(this.user);
       this.$router.push('/search')
     }
-
+    
 }
 };
 </script>
