@@ -14,7 +14,7 @@
           </div>
           <div class="ui column three grid">
             <div class="top attached ui three item menu">
-              <a class="item">Item</a>
+              <a class="item">{{games[0].equipment[0]}}</a>
               <a class="item">Item</a>
               <a class="item">Item</a>
             </div>
