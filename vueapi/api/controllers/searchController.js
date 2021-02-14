@@ -1,25 +1,6 @@
 const fetch = require('node-fetch');
 const qs = require('querystring');
-const fs = require('fs');
-const path = require('path')
-
-
-/********** Read item data ************/ 
-
-const weapon = (JSON.parse((fs.readFileSync(path.join(__dirname,'../assets/ItemWeapon.json'), 'utf8')))).data;
-const armor = (JSON.parse((fs.readFileSync(path.join(__dirname,'../assets/ItemArmor.json'), 'utf8')))).data;
-const charList = (fs.readFileSync(path.join(__dirname,'../assets/character'), 'utf8')).split(',');
-
-const getValidItem = function(item) {
-  return Object.fromEntries(Object.entries(item).filter((v)=>{return v[1] !== 0})) 
-}
-
-const getItem = function(ctgr, itemcode) {
-  return getValidItem(ctgr.filter((v)=>{
-    if(v.code == itemcode) return v;
-    else return '';
-  })[0])
-}
+const { weapon, armor, charList, getItem } = require('../modules/getJson');
 
 
 exports.read_rank = (req, res) => {
@@ -61,7 +42,6 @@ exports.read_user_num = async (req, res) => {
         else data.userGames[i].item[j]=(getItem(armor, data.userGames[i].equipment[j])) ; 
       }
     }
-    console.log(data.userGames[1].item)
     res.json(data);
   })
 })})
