@@ -1,43 +1,43 @@
 <template >
 <div >
   <div v-if="games != null">
-    <div class="ui three column doubling grid" >
+    <div class="ui three column doubling grid" v-for="(game, i) in games " :key="i">
           <div class="ui column three grid">
-            <div class="column">{{games[0].gameRank}}위</div>
-            <div class="ui small image "><img class="ui circular image" :src="require(`../assets/static/img/00.캐릭터/${games[0].characterSrc}`)" ></div>
-            <div class="column">{{getCharacter(games[0].characterNum-1)}}</div>
+            <div class="column">{{game.gameRank}}위</div>
+            <div class="ui small image "><img class="ui circular image" :src="require(`../assets/static/img/00.캐릭터/${game.characterSrc}`)" ></div>
+            <div class="column">{{getCharacter(game.characterNum-1)}}</div>
           </div>
           <div class="ui column three grid attached">
-            <div class="column">킬{{games[0].playerKill}}</div>
-            <div class="column">어시{{games[0].playerAssistant}}</div>
-            <div class="column">동물킬{{games[0].monsterKill}}</div>
+            <div class="column">킬{{game.playerKill}}</div>
+            <div class="column">어시{{game.playerAssistant}}</div>
+            <div class="column">동물킬{{game.monsterKill}}</div>
           </div>
           <div class="ui column three grid">
             <div class="top attached ui three item menu">
-              <a class="item equip" @mouseover="active = true" @mouseleave="active = false">
-                <div class="ui column relaxed grid item-desc" v-show="active">
-                  <div class="ui header " >{{games[0].item[0].name}}</div>
-                  <div class="ui" >공격력: {{games[0].item[0].attackPower}}</div>
-                  <div class="ui" >이동속도: {{games[0].item[0].moveSpeed}}</div>
+              <a class="item equip">
+                <div class="ui column relaxed grid item-desc">
+                  <div class="ui header " >{{game.item[0].name}}</div>
+                  <div class="ui" >{{game.item[0]}}</div>
+                  <div class="ui" ></div>
                 </div>
-                <img class="ui image" :src="require(`../assets/static/img/01.무기/${games[0].item[0].name}.png`)">
+                <img class="ui image" v-if="game.item[0] != null" :src="require(`../assets/static/img/01.무기/${game.item[0].name}.png`)">
               </a>
               <a class="item equip">
-                <img class="ui image" :src="require(`../assets/static/img/02.방어구/02.옷/${games[0].item[1].name}.png`)">
+                <img class="ui image" v-if="game.item[1] != null" :src="require(`../assets/static/img/02.방어구/02.옷/${game.item[1].name}.png`)">
               </a>
               <a class="item equip">
-                <img class="ui image" :src="require(`../assets/static/img/02.방어구/01.머리/${games[0].item[2].name}.png`)">
+                <img class="ui image" v-if="game.item[2] != null" :src="require(`../assets/static/img/02.방어구/01.머리/${game.item[2].name}.png`)">
               </a>
             </div>
             <div class="attached ui three item menu">
               <a class="item equip">
-                <img class="ui image" :src="require(`../assets/static/img/02.방어구/03.팔/${games[0].item[3].name}.png`)">
+                <img class="ui image" v-if="game.item[3] != null" :src="require(`../assets/static/img/02.방어구/03.팔/${game.item[3].name}.png`)">
               </a>
               <a class="item equip">
-                <img class="ui image" :src="require(`../assets/static/img/02.방어구/04.다리/${games[0].item[4].name}.png`)">
+                <img class="ui image" v-if="game.item[4] != null" :src="require(`../assets/static/img/02.방어구/04.다리/${game.item[4].name}.png`)">
               </a>
               <a class="item equip">
-                <img class="ui image" :src="require(`../assets/static/img/02.방어구/05.장식/${games[0].item[5].name}.png`)">
+                <img class="ui image" v-if="game.item[5] != null" :src="require(`../assets/static/img/02.방어구/05.장식/${game.item[5].name}.png`)">
               </a>
             </div>
           </div>
@@ -45,10 +45,9 @@
     </div>
   </div>
 
+
   <form v-if="user != null" action="#" @submit.prevent="onSubmit">
     <p v-if="errorsPresent" class="error">Please fill out both fields!</p>
-
-
     <div class="ui labeled input fluid">
       <div class="ui label">
         <i class="calendar plus icon"></i>task
@@ -93,7 +92,6 @@ export default {
       errorsPresent: false,
       user:null,
       games: null,
-      active: false,
     };
   },
   computed: {
@@ -109,7 +107,7 @@ export default {
       },
 
     getCharacter: (i) => {
-        return character.data[i].name
+        return character.data[i].nameKr
     },
     
     
@@ -140,10 +138,12 @@ export default {
 }
 .item.equip .item-desc {
   position: absolute;
+  visibility: hidden;
+  opacity: 0;
   z-index: 2;  
   width: 150px;
   height: auto;
-  transition: all .4s;
+  transition: all .25s;
   border: 1px solid #d5d5d6;
   background-color: #f2f4f5;
   box-shadow: 1px 1px 0 0 #bababc;
@@ -151,6 +151,11 @@ export default {
   top: 5%;
 
 }
+.item.equip:hover .item-desc{
+  visibility: visible;
+  opacity: 1; 
+}
+
 .item-desc::before {
   position: absolute;
   content: '';

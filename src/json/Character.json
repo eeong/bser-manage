@@ -4,7 +4,7 @@
   "data": [
     {
       "code": 1,
-      "name": "Jackie",
+      "nameKr": "재키", "name": "Jackie",
       "maxHp": 560,
       "maxSp": 430,
       "initExtraPoint": 0,
@@ -23,7 +23,7 @@
     },
     {
       "code": 2,
-      "name": "Aya",
+      "nameKr": "아야","name": "Aya",
       "maxHp": 480,
       "maxSp": 440,
       "initExtraPoint": 0,
@@ -42,7 +42,7 @@
     },
     {
       "code": 3,
-      "name": "Fiora",
+      "nameKr": "피오라","name": "Fiora",
       "maxHp": 550,
       "maxSp": 430,
       "initExtraPoint": 0,
@@ -61,7 +61,7 @@
     },
     {
       "code": 4,
-      "name": "Magnus",
+      "nameKr": "매그너스","name": "Magnus",
       "maxHp": 600,
       "maxSp": 410,
       "initExtraPoint": 0,
@@ -80,7 +80,7 @@
     },
     {
       "code": 5,
-      "name": "Zahir",
+      "nameKr": "자히르","name": "Zahir",
       "maxHp": 520,
       "maxSp": 400,
       "initExtraPoint": 0,
@@ -99,7 +99,7 @@
     },
     {
       "code": 6,
-      "name": "Nadine",
+      "nameKr": "나딘","name": "Nadine",
       "maxHp": 520,
       "maxSp": 350,
       "initExtraPoint": 0,
@@ -118,7 +118,7 @@
     },
     {
       "code": 7,
-      "name": "Hyunwoo",
+      "nameKr": "현우","name": "Hyunwoo",
       "maxHp": 500,
       "maxSp": 350,
       "initExtraPoint": 0,
@@ -137,7 +137,7 @@
     },
     {
       "code": 8,
-      "name": "Hart",
+      "nameKr": "하트","name": "Hart",
       "maxHp": 500,
       "maxSp": 420,
       "initExtraPoint": 0,
@@ -156,7 +156,7 @@
     },
     {
       "code": 9,
-      "name": "Isol",
+      "nameKr": "아이솔","name": "Isol",
       "maxHp": 500,
       "maxSp": 400,
       "initExtraPoint": 0,
@@ -175,7 +175,7 @@
     },
     {
       "code": 10,
-      "name": "LiDailin",
+      "nameKr": "리다이린","name": "LiDailin",
       "maxHp": 550,
       "maxSp": 420,
       "initExtraPoint": 0,
@@ -194,7 +194,7 @@
     },
     {
       "code": 11,
-      "name": "Yuki",
+      "nameKr": "유키","name": "Yuki",
       "maxHp": 550,
       "maxSp": 410,
       "initExtraPoint": 4,
@@ -213,7 +213,7 @@
     },
     {
       "code": 12,
-      "name": "Hyejin",
+      "nameKr": "혜진","name": "Hyejin",
       "maxHp": 500,
       "maxSp": 400,
       "initExtraPoint": 0,
@@ -232,7 +232,7 @@
     },
     {
       "code": 13,
-      "name": "Xiukai",
+      "nameKr": "쇼우","name": "Xiukai",
       "maxHp": 530,
       "maxSp": 420,
       "initExtraPoint": 0,
@@ -251,7 +251,7 @@
     },
     {
       "code": 14,
-      "name": "Chiara",
+      "nameKr": "키아라","name": "Chiara",
       "maxHp": 500,
       "maxSp": 410,
       "initExtraPoint": 0,
@@ -270,7 +270,7 @@
     },
     {
       "code": 15,
-      "name": "Sissela",
+      "nameKr": "시셀라","name": "Sissela",
       "maxHp": 480,
       "maxSp": 400,
       "initExtraPoint": 0,
@@ -289,7 +289,7 @@
     },
     {
       "code": 16,
-      "name": "Silvia",
+      "nameKr": "실비아","name": "Silvia",
       "maxHp": 500,
       "maxSp": 440,
       "initExtraPoint": 0,
@@ -308,7 +308,7 @@
     },
     {
       "code": 17,
-      "name": "Adriana",
+      "nameKr": "아드리아나","name": "Adriana",
       "maxHp": 530,
       "maxSp": 480,
       "initExtraPoint": 0,
@@ -327,7 +327,7 @@
     },
     {
       "code": 18,
-      "name": "Shoichi",
+      "nameKr": "쇼이치","name": "Shoichi",
       "maxHp": 550,
       "maxSp": 370,
       "initExtraPoint": 0,
@@ -346,7 +346,7 @@
     },
     {
       "code": 19,
-      "name": "Emma",
+      "nameKr": "엠마","name": "Emma",
       "maxHp": 550,
       "maxSp": 430,
       "initExtraPoint": 0,
@@ -365,7 +365,7 @@
     },
     {
       "code": 20,
-      "name": "Lenox",
+      "nameKr": "레녹스","name": "Lenox",
       "maxHp": 500,
       "maxSp": 350,
       "initExtraPoint": 0,
@@ -384,7 +384,7 @@
     },
     {
       "code": 21,
-      "name": "Rozzi",
+      "nameKr": "로지","name": "Rozzi",
       "maxHp": 480,
       "maxSp": 440,
       "initExtraPoint": 0,
@@ -403,7 +403,7 @@
     },
     {
       "code": 22,
-      "name": "Luke",
+      "nameKr": "루크","name": "Luke",
       "maxHp": 580,
       "maxSp": 420,
       "initExtraPoint": 0,
