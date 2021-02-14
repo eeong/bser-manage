@@ -14,14 +14,31 @@
           </div>
           <div class="ui column three grid">
             <div class="top attached ui three item menu">
-              <a class="item"><img class="ui image" :src="require(`../assets/static/img/01.무기/${games[0].item[0][0].name}.png`)"></a>
-              <a class="item"><img class="ui image" :src="require(`../assets/static/img/02.방어구/02.옷/${games[0].item[1][0].name}.png`)"></a>
-              <a class="item"><img class="ui image" :src="require(`../assets/static/img/02.방어구/01.머리/${games[0].item[2][0].name}.png`)"></a>
+              <a class="item equip" @mouseover="active = true" @mouseleave="active = false">
+                <div class="ui column relaxed grid item-desc" v-show="active">
+                  <div class="ui header " >{{games[0].item[0][0].name}}</div>
+                  <div class="ui" >공격력: {{games[0].item[0][0].attackPower}}</div>
+                  <div class="ui" >이동속도: {{games[0].item[0][0].moveSpeed}}</div>
+                </div>
+                <img class="ui image" :src="require(`../assets/static/img/01.무기/${games[0].item[0][0].name}.png`)">
+              </a>
+              <a class="item equip">
+                <img class="ui image" :src="require(`../assets/static/img/02.방어구/02.옷/${games[0].item[1][0].name}.png`)">
+              </a>
+              <a class="item equip">
+                <img class="ui image" :src="require(`../assets/static/img/02.방어구/01.머리/${games[0].item[2][0].name}.png`)">
+              </a>
             </div>
             <div class="attached ui three item menu">
-              <a class="item"><img class="ui image" :src="require(`../assets/static/img/02.방어구/03.팔/${games[0].item[3][0].name}.png`)"></a>
-              <a class="item"><img class="ui image" :src="require(`../assets/static/img/02.방어구/04.다리/${games[0].item[4][0].name}.png`)"></a>
-              <a class="item"><img class="ui image" :src="require(`../assets/static/img/02.방어구/05.장식/${games[0].item[5][0].name}.png`)"></a>
+              <a class="item equip">
+                <img class="ui image" :src="require(`../assets/static/img/02.방어구/03.팔/${games[0].item[3][0].name}.png`)">
+              </a>
+              <a class="item equip">
+                <img class="ui image" :src="require(`../assets/static/img/02.방어구/04.다리/${games[0].item[4][0].name}.png`)">
+              </a>
+              <a class="item equip">
+                <img class="ui image" :src="require(`../assets/static/img/02.방어구/05.장식/${games[0].item[5][0].name}.png`)">
+              </a>
             </div>
           </div>
           
@@ -76,7 +93,7 @@ export default {
       errorsPresent: false,
       user:null,
       games: null,
-      charfile: {id:1,src:'001.Jackie-재키.png'},
+      active: false,
     };
   },
   computed: {
@@ -87,11 +104,10 @@ export default {
       let game = {
         //nickname: this.user.userGames[0].nickname || null,
        // gameId: this.user.userGames[0].gameId || null,
-        
       }
         this.$emit('createOrUpdate', game);
-      
-    },
+      },
+
     getCharacter: (i) => {
         return character.data[i].name
     },
@@ -119,4 +135,35 @@ export default {
 .error {
   color: red;
 }
+.ui.equip {
+  position: relative;
+}
+.item.equip .item-desc {
+  position: absolute;
+  z-index: 2;  
+  width: 150px;
+  height: auto;
+  transition: all .4s;
+  border: 1px solid #d5d5d6;
+  background-color: #f2f4f5;
+  box-shadow: 1px 1px 0 0 #bababc;
+  left: 100%;
+  top: 5%;
+
+}
+.item-desc::before {
+  position: absolute;
+  content: '';
+  width: 0.6em;
+  height: 0.6em;
+  left: -.31em;
+  top: 0.5em;
+  transform: rotate(45deg);
+  background-color: #f2f4f5;
+  border-bottom: 1px solid #d5d5d6;
+  border-left: 1px solid #d5d5d6;
+  box-shadow: 0px 1px 0 0 #bababc;
+  z-index: 2;
+}
+
 </style>

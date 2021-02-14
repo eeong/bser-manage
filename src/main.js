@@ -3,6 +3,7 @@ import App from './App.vue'
 
 
 import 'semantic-ui-css/semantic.css';
+import 'semantic-ui-css/semantic.js';
 import router from './router'
 
 
