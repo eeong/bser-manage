@@ -51,7 +51,6 @@ exports.read_user_num = async (req, res) => {
 })};
 
 exports.read_user_rank = (req, res) => {
-  console.log(req.params)
   let userQ = qs.escape(req.params.user);
   let gameMode = req.params.mode
   fetch(`https://open-api.bser.io/v1/user/nickname?query=${userQ}`, {
@@ -67,9 +66,9 @@ exports.read_user_rank = (req, res) => {
       'x-api-key': 'LbuEDSHA7s4fvNCGJOcQO7ZcYuQqKdip8kF8jtIb',
   }
 }).then( ( response ) => {
-response.json().then((data)=>{
-  data.userRank.mode = gameMode;
-  res.json(data);
+  response.json().then((data)=>{
+    data.userRank.mode = gameMode;
+    res.json(data);
 })
 })})
 }).catch(function(error){
