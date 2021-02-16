@@ -8,8 +8,8 @@ const gameSchema = new Schema(
       type: String,
       required: true
     },
-    gameId: {
-      type: String,
+    userNum: {
+      type: Number,
       required: true
     }
   },

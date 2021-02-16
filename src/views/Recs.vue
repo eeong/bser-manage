@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>tasks</h1>
+    <h1>템빌드저장소</h1>
     <table id="tasks" class="ui celled compact table">
       <thead>
         <tr>

@@ -1,18 +1,18 @@
-const taskBuilder = require('../controllers/taskController');
+const recBuilder = require('../controllers/recController');
 const searchApi = require('../controllers/searchController');
 
 
 module.exports = app => {
   app
-    .route('/tasks')
-    .get(taskBuilder.list_all_tasks)
-    .post(taskBuilder.create_a_task);
+    .route('/recs')
+    .get(recBuilder.list_all_recs)
+    .post(recBuilder.create_a_rec);
 
   app
-    .route('/tasks/:taskId')
-    .get(taskBuilder.read_a_task)
-    .put(taskBuilder.update_a_task)
-    .delete(taskBuilder.delete_a_task);
+    .route('/recs/:recId')
+    .get(recBuilder.read_a_rec)
+    .put(recBuilder.update_a_rec)
+    .delete(recBuilder.delete_a_rec);
 
   app
     .route('/search')

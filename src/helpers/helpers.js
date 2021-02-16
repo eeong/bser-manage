@@ -41,7 +41,7 @@ export const api = {
     const res = await axios.put(baseURL + payload._id, payload);
     return res.data;
   }),
-  search: handleError(async (rankMode) => {
+  search: handleError(async rankMode => {
     const res = await axios.get(bsURL + '?m=' + rankMode);
     return res.data;
   }),

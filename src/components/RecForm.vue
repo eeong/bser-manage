@@ -1,16 +1,20 @@
 <template >
 <div >
   <div v-if="games != null">
-    <div class="ui three column doubling grid " v-for="(game, i) in games " :key="i">
+    <div class="ui three column stackable grid " v-for="(game, i) in games " :key="i">
           <div class="ui column three grid ">
-            <div class="column">{{game.gameRank}}위</div>
-            <div class="ui small image "><img class="ui circular image" :src="require(`../assets/static/img/00.캐릭터/${game.characterSrc}`)" ></div>
-            <div class="column">{{getCharacter(game.characterNum-1)}}</div>
+            <div class="ui segment ">
+              <div class="ui header item ">#{{game.gameRank}}위</div>
+              <img class="ui item circular image" :src="require(`../assets/static/img/00.캐릭터/${game.characterSrc}`)" >
+              <div class="ui item">{{getCharacter(game.characterNum-1)}}</div>
+            </div>
           </div>
           <div class="ui column three grid attached">
-            <div class="column">킬{{game.playerKill}}</div>
-            <div class="column">어시{{game.playerAssistant}}</div>
-            <div class="column">동물킬{{game.monsterKill}}</div>
+            <div class="ui segment">
+              <div class="ui">킬{{game.playerKill}}</div>
+              <div class="ui">어시{{game.playerAssistant}}</div>
+              <div class="ui">동물킬{{game.monsterKill}}</div>
+            </div>
           </div>
           <div class="ui column three grid">
             <div class="top attached ui three item menu">
@@ -74,8 +78,9 @@
               </a>
             </div>
           </div>
-          
+        <div><button class="ui button compact icon blue " ><i class="plus icon "></i></button></div>  
     </div>
+    
   </div>
 
 
@@ -169,6 +174,9 @@ export default {
 .ui.equip {
   position: relative;
 }
+.item {
+  display: inline-block !important;
+}
 .item.equip .item-desc {
   position: absolute;
   visibility: hidden;
@@ -204,5 +212,7 @@ export default {
   box-shadow: 0px 1px 0 0 #bababc;
   z-index: 2;
 }
-
+.image.circular {
+  width: 40%;
+}
 </style>
