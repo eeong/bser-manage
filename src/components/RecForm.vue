@@ -1,22 +1,24 @@
 <template >
 <div >
   <div v-if="games != null">
-    <div class="ui three column stackable grid " v-for="(game, i) in games " :key="i">
-          <div class="ui column three grid ">
-            <div class="ui segment ">
-              <div class="ui header item ">#{{game.gameRank}}위</div>
-              <img class="ui item circular image" :src="require(`../assets/static/img/00.캐릭터/${game.characterSrc}`)" >
-              <div class="ui item">{{getCharacter(game.characterNum-1)}}</div>
+    <div class="ui three column stackable grid centered celled " v-for="(game, i) in games " :key="i" style="position:relative;">
+          <div class="ui column three ">
+            <div class="ui segment">
+              <div class="ui header item">#{{game.gameRank}}위 </div><div class="ui item">{{game.nickname}}</div>
+              <div class="ui item ">
+                <img class="ui item circular image" :src="require(`../assets/static/img/00.캐릭터/${game.characterSrc}`)" >
+                <div class="ui item">{{getCharacter(game.characterNum-1)}}/{{game.item[0].weaponType}}</div>
+              </div>
             </div>
           </div>
-          <div class="ui column three grid attached">
+          <div class="ui column three ">
             <div class="ui segment">
               <div class="ui">킬{{game.playerKill}}</div>
               <div class="ui">어시{{game.playerAssistant}}</div>
               <div class="ui">동물킬{{game.monsterKill}}</div>
             </div>
           </div>
-          <div class="ui column three grid">
+          <div class="ui column three ">
             <div class="top attached ui three item menu">
               <a class="item equip" >
                 <div v-if="game.item[0] != null">
@@ -78,7 +80,7 @@
               </a>
             </div>
           </div>
-        <div><button class="ui button compact icon blue " ><i class="plus icon "></i></button></div>  
+        <div class="plus-button column"><button class="ui button compact icon blue " ><i class="plus icon "></i></button></div>  
     </div>
     
   </div>
@@ -190,7 +192,7 @@ export default {
   background-color: #f2f4f5;
   box-shadow: 1px 1px 0 0 #bababc;
   left: 100%;
-  top: 30%;
+  top: 35%;
 
 }
 .item.equip:hover .item-desc{
@@ -203,7 +205,7 @@ export default {
   content: '';
   width: 0.6em;
   height: 0.6em;
-  left: -.31em;
+  left: -.35em;
   top: 0.5em;
   transform: rotate(45deg);
   background-color: #f2f4f5;
@@ -214,5 +216,37 @@ export default {
 }
 .image.circular {
   width: 40%;
+}
+.plus-button {
+  position: absolute !important;
+  top: 50%;
+  right: -35%;
+  box-shadow: none !important;
+  transform: translateY(-50%);
+  text-align: right;
+}
+
+@media screen and (max-width:767px) {
+  .item.equip .item-desc {
+    width: 100%;
+    top: 100%;
+    left: 10%;
+  }
+  .item-desc::before {
+    left: .5em;
+    top: -.35em;
+    transform: rotate(135deg);
+  }
+  .ui.button.compact {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    display: block;
+  }
+  .plus-button {
+    position: relative !important;
+    right: 0;
+    text-align: center;
+  }
 }
 </style>
