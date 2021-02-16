@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 require('dotenv').config();
 
-global.Task = require('./api/models/taskModel');
+global.Game = require('./api/models/gameModel');
 const routes = require('./api/routes/Routes');
 
 mongoose.Promise = global.Promise;
