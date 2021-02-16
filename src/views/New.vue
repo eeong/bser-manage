@@ -20,9 +20,9 @@ export default {
   },
   methods: {
     createOrUpdate: async function(task) {
-      const res = await api.createtask(task);
-      this.flash('task created', 'success');
-      this.$router.push(`/tasks/${res._id}`);
+      const res = await api.createrec(task);
+      this.flash(`템빌드가 저장되었습니다${res}`, 'success');
+      this.$router.push(`/recs`);
     }
   },
   

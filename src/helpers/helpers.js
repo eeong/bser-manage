@@ -21,23 +21,23 @@ const handleError = fn => (...params) =>
   });
 
 export const api = {
-  gettask: handleError(async id => {
+  getrec: handleError(async id => {
     const res = await axios.get(baseURL + id);
     return res.data;
   }),
-  gettasks: handleError(async () => {
+  getrecs: handleError(async () => {
     const res = await axios.get(baseURL);
     return res.data;
   }),
-  deletetask: handleError(async id => {
+  deleterec: handleError(async id => {
     const res = await axios.delete(baseURL + id);
     return res.data;
   }),
-  createtask: handleError(async payload => {
+  createrec: handleError(async payload => {
     const res = await axios.post(baseURL, payload);
     return res.data;
   }),
-  updatetask: handleError(async payload => {
+  updaterec: handleError(async payload => {
     const res = await axios.put(baseURL + payload._id, payload);
     return res.data;
   }),

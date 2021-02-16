@@ -80,32 +80,16 @@
               </a>
             </div>
           </div>
-        <div class="plus-button column"><button class="ui button compact icon blue " ><i class="plus icon "></i></button></div>  
+        <div class="plus-button column"><button class="ui button compact icon blue " @click="onSubmit(game)" ><i class="plus icon "></i></button></div>  
     </div>
     
   </div>
 
 
-  <form v-if="user != null" action="#" @submit.prevent="onSubmit">
-    <p v-if="errorsPresent" class="error">Please fill out both fields!</p>
-    <div class="ui labeled input fluid">
-      <div class="ui label">
-        <i class="calendar plus icon"></i>task
-      </div>
-      <input type="text" placeholder="Enter task..."  />
-    </div>
-
-    <div class="ui labeled input fluid">
-      <div class="ui label">
-  <i class="info circle icon"></i> Details
-      </div>
-      <input type="text" placeholder="Enter Details"  />
-    </div>
-    <div></div>
+  <div v-if="user != null"  >
     <div>{{games[0] || '사용자 전적을 찾을 수 없습니다'}}</div>
 
-    <button class="positive ui button">Submit</button>
-  </form>
+  </div>
 </div>
 </template>
 
@@ -138,10 +122,10 @@ export default {
     
   },
   methods: {
-    onSubmit: function() {
+    onSubmit: function(x) {
       let game = {
-        //nickname: this.user.userGames[0].nickname || null,
-       // gameId: this.user.userGames[0].gameId || null,
+        nickname: x.nickname || null,
+        userNum: x.gameId || null,
       }
         this.$emit('createOrUpdate', game);
       },

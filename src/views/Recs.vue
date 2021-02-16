@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>템빌드저장소</h1>
-    <table id="tasks" class="ui celled compact table">
+    <table id="recs" class="ui celled compact table">
       <thead>
         <tr>
           <th> <i class="calendar plus icon"></i>Task</th>
@@ -12,30 +12,31 @@
           <th colspan="3"></th>
         </tr>
       </thead>
-      <tr v-for="(task, i) in tasks" :key="i">
-        <td>{{ task.task1 }}</td>
-        <td>{{ task.task2 }}</td>
+      <tr v-for="(rec, i) in recs" :key="i">
+        <td>{{ rec.nickname }}</td>
+        <td>{{ rec.nickname }}</td>
         <td width="75" class="center aligned">
-          <router-link :to="{ name: 'show', params: { id: task._id }}">Show</router-link>
+          <router-link :to="{ name: 'show', params: { id: rec._id }}">Show</router-link>
         </td>
         <td width="75" class="center aligned">
-          <router-link :to="{ name: 'edit', params: { id: task._id }}">Edit</router-link>
+          <router-link :to="{ name: 'edit', params: { id: rec._id }}">Edit</router-link>
         </td>
-        <td width="75" class="center aligned" @click.prevent="onDestroy(task._id)">
-          <a :href="`/tasks/${task._id}`">Delete</a>
+        <td width="75" class="center aligned" @click.prevent="onDestroy(rec._id)">
+          <a :href="`/recs/${rec._id}`">Delete</a>
         </td>
       </tr>
     </table>
+    <div>{{recs}}</div>
   </div>
 </template>
 
 <script>
 import { api } from '../helpers/helpers';
 export default {
-  name: 'tasks',
+  name: 'recs',
   data() {
     return {
-      tasks: [],
+      recs: [],
     };
   },
   methods: {
@@ -49,7 +50,7 @@ export default {
     }
   },
   async mounted() {
-    this.tasks = await api.gettasks();
+    this.recs = await api.getrecs();
     
   }
 };

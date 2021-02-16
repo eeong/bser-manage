@@ -10,8 +10,8 @@ exports.list_all_recs = (req, res) => {
 
 exports.create_a_rec = (req, res) => {
   console.log(req.body);
-  const newrec = new rec(req.body);
-  newrec.save((err, rec) => {
+  const newRec = new rec(req.body);
+  newRec.save((err, rec) => {
     if (err) res.send(err);
     res.json(rec);
   });
