@@ -11,7 +11,8 @@ const gameSchema = new Schema(
     userNum: {
       type: Number,
       required: true
-    }
+    },
+    
   },
   { collection: 'game' }
 );
