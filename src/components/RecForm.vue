@@ -1,88 +1,91 @@
 <template >
 <div >
   <div v-if="games != null">
-    <div class="ui three column stackable grid centered celled " v-for="(game, i) in games " :key="i" style="position:relative;">
-          <div class="ui column three ">
-            <div class="ui segment">
-              <div class="ui header item">#{{game.gameRank}}위 </div><div class="ui item">{{game.nickname}}</div>
-              <div class="ui item ">
-                <img class="ui item circular image" :src="require(`../assets/static/img/00.캐릭터/${game.characterSrc}`)" >
-                <div class="ui item">{{getCharacter(game.characterNum-1)}}/{{game.item[0].weaponType}}</div>
+    <div class="ui text container">
+      <h1>전적확인 : 최근 10게임</h1>
+      <div class="ui three column stackable grid centered celled " v-for="(game, i) in games " :key="i" style="position:relative;">
+            <div class="ui column three ">
+              <div class="ui segment">
+                <div class="ui header item">#{{game.gameRank}}위 </div><div class="ui item">{{game.nickname}}</div>
+                <div class="ui item ">
+                  <img class="ui item circular image" :src="require(`../assets/static/img/00.캐릭터/${game.characterSrc}`)" >
+                  <div class="ui item">{{getCharacter(game.characterNum-1)}}/{{game.item[0].weaponType}}</div>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="ui column three ">
-            <div class="ui segment">
-              <div class="ui three item ">
-                <div class="ui">K/ D/ H</div>
-                <div class="ui ">{{game.playerKill}}/ {{game.playerAssistant}}/ {{game.monsterKill}}</div>
-                <div class="ui"></div>
+            <div class="ui column three ">
+              <div class="ui segment">
+                <div class="ui three item ">
+                  <div class="ui">K/ D/ H</div>
+                  <div class="ui ">{{game.playerKill}}/ {{game.playerAssistant}}/ {{game.monsterKill}}</div>
+                  <div class="ui"></div>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="ui column three ">
-            <div class="top attached ui three item menu">
-              <a class="item equip" >
-                <div v-if="game.item[0] != null">
-                  <div class="ui column relaxed item-desc">
-                    <div class="ui header" style="">{{game.item[0].name}}</div>
-                    <div class="ui " v-for="(transItem, j) in game.item[0].transKr" :key="j">
-                      {{transItem[0]}}: {{transItem[1]}}
+            <div class="ui column three ">
+              <div class="top attached ui three item menu">
+                <a class="item equip" >
+                  <div v-if="game.item[0] != null">
+                    <div class="ui column relaxed item-desc">
+                      <div class="ui header" style="">{{game.item[0].name}}</div>
+                      <div class="ui " v-for="(transItem, j) in game.item[0].transKr" :key="j">
+                        {{transItem[0]}}: {{transItem[1]}}
+                      </div>
                     </div>
+                    <img class="ui image"  :src="require(`../assets/static/img/01.무기/${game.item[0].name}.png`)">
                   </div>
-                  <img class="ui image"  :src="require(`../assets/static/img/01.무기/${game.item[0].name}.png`)">
-                </div>
-              </a>
-              <a class="item equip" >
-                <div v-if="game.item[1] != null">
-                  <div class="ui column relaxed item-desc">
-                    <div class="ui header" >{{game.item[1].name}}</div>
-                    <div class="ui" v-for="(transItem, j) in game.item[1].transKr" :key="j">{{transItem[0]}}: {{transItem[1]}}</div>
+                </a>
+                <a class="item equip" >
+                  <div v-if="game.item[1] != null">
+                    <div class="ui column relaxed item-desc">
+                      <div class="ui header" >{{game.item[1].name}}</div>
+                      <div class="ui" v-for="(transItem, j) in game.item[1].transKr" :key="j">{{transItem[0]}}: {{transItem[1]}}</div>
+                    </div>
+                    <img class="ui image"  :src="require(`../assets/static/img/02.방어구/02.옷/${game.item[1].name}.png`)">
                   </div>
-                  <img class="ui image"  :src="require(`../assets/static/img/02.방어구/02.옷/${game.item[1].name}.png`)">
-                </div>
-              </a>
-              <a class="item equip" >
-                <div v-if="game.item[2] != null">
-                  <div class="ui column relaxed item-desc">
-                    <div class="ui header" >{{game.item[2].name}}</div>
-                    <div class="ui" v-for="(transItem, j) in game.item[2].transKr" :key="j">{{transItem[0]}}: {{transItem[1]}}</div>
+                </a>
+                <a class="item equip" >
+                  <div v-if="game.item[2] != null">
+                    <div class="ui column relaxed item-desc">
+                      <div class="ui header" >{{game.item[2].name}}</div>
+                      <div class="ui" v-for="(transItem, j) in game.item[2].transKr" :key="j">{{transItem[0]}}: {{transItem[1]}}</div>
+                    </div>
+                    <img class="ui image" :src="require(`../assets/static/img/02.방어구/01.머리/${game.item[2].name}.png`)">
                   </div>
-                  <img class="ui image" :src="require(`../assets/static/img/02.방어구/01.머리/${game.item[2].name}.png`)">
-                </div>
-              </a>
+                </a>
+              </div>
+              <div class="attached ui three item menu">
+                <a class="item equip" >
+                  <div v-if="game.item[3] != null">
+                    <div class="ui column relaxed item-desc">
+                      <div class="ui header" >{{game.item[3].name}}</div>
+                      <div class="ui" v-for="(transItem, j) in game.item[3].transKr" :key="j">{{transItem[0]}}: {{transItem[1]}}</div>
+                    </div>
+                    <img class="ui image"  :src="require(`../assets/static/img/02.방어구/03.팔/${game.item[3].name}.png`)">
+                  </div>
+                </a>
+                <a class="item equip" >
+                  <div v-if="game.item[4] != null">
+                    <div class="ui column relaxed item-desc">
+                      <div class="ui header" >{{game.item[4].name}}</div>
+                      <div class="ui" v-for="(transItem, j) in game.item[4].transKr" :key="j">{{transItem[0]}}: {{transItem[1]}}</div>
+                    </div>
+                    <img class="ui image"  :src="require(`../assets/static/img/02.방어구/04.다리/${game.item[4].name}.png`)">
+                  </div>
+                </a>
+                <a class="item equip" >
+                  <div v-if="game.item[5] != null">
+                    <div class="ui column relaxed item-desc">
+                      <div class="ui header" >{{game.item[5].name}}</div>
+                      <div class="ui" v-for="(transItem, j) in game.item[5].transKr" :key="j">{{transItem[0]}}: {{transItem[1]}}</div>
+                    </div>
+                    <img class="ui image"  :src="require(`../assets/static/img/02.방어구/05.장식/${game.item[5].name}.png`)">
+                  </div>
+                </a>
+              </div>
             </div>
-            <div class="attached ui three item menu">
-              <a class="item equip" >
-                <div v-if="game.item[3] != null">
-                  <div class="ui column relaxed item-desc">
-                    <div class="ui header" >{{game.item[3].name}}</div>
-                    <div class="ui" v-for="(transItem, j) in game.item[3].transKr" :key="j">{{transItem[0]}}: {{transItem[1]}}</div>
-                  </div>
-                  <img class="ui image"  :src="require(`../assets/static/img/02.방어구/03.팔/${game.item[3].name}.png`)">
-                </div>
-              </a>
-              <a class="item equip" >
-                <div v-if="game.item[4] != null">
-                  <div class="ui column relaxed item-desc">
-                    <div class="ui header" >{{game.item[4].name}}</div>
-                    <div class="ui" v-for="(transItem, j) in game.item[4].transKr" :key="j">{{transItem[0]}}: {{transItem[1]}}</div>
-                  </div>
-                  <img class="ui image"  :src="require(`../assets/static/img/02.방어구/04.다리/${game.item[4].name}.png`)">
-                </div>
-              </a>
-              <a class="item equip" >
-                <div v-if="game.item[5] != null">
-                  <div class="ui column relaxed item-desc">
-                    <div class="ui header" >{{game.item[5].name}}</div>
-                    <div class="ui" v-for="(transItem, j) in game.item[5].transKr" :key="j">{{transItem[0]}}: {{transItem[1]}}</div>
-                  </div>
-                  <img class="ui image"  :src="require(`../assets/static/img/02.방어구/05.장식/${game.item[5].name}.png`)">
-                </div>
-              </a>
-            </div>
-          </div>
-        <div class="plus-button column"><button class="ui button compact icon blue " @click="onSubmit(game)" ><i class="plus icon "></i></button></div>  
+          <div class="plus-button column"><button class="ui button compact icon blue " @click="onSubmit(game)" ><i class="plus icon "></i></button></div>  
+      </div>
     </div>
   </div>
 

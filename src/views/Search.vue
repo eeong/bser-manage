@@ -1,24 +1,26 @@
 <template>
   <div >
     <search-form ></search-form>
-    <h2>Rank 10 
-      <select class="ui selection three item stackable tabs menu " v-model="rankMode"> 
-      <option class="item" selected="" value="1">Solo</option>
-      <option class="item" value="2">Duo</option>
-      <option class="item" value="3">Squad</option>
-      </select>
-    </h2> 
-    
-      <ul class="topRanks-list ui two column doubling grid container segment">
-        <div class="ui loader" :class="loader"></div>
-          <li class="topRanks ui column " v-for="(info , i) in rank" :key="i" @click="onSearch(info.nickname)">
-              <div class="ui segment three column grid button ">
-                <h3 class="rank-info rank column">{{info.rank}}</h3>
-                <h5 class="rank-info rank-nickname column">{{info.nickname}}</h5>
-                <p class="rank-info mmr column">MMR: {{info.mmr}}</p>
-              </div>
-          </li>
-      </ul>
+    <div class="ui container text rank-wrap">
+      <h1>Rank 10 
+        <select class="ui selection three item stackable tabs menu " v-model="rankMode"> 
+        <option class="item" selected="" value="1">Solo</option>
+        <option class="item" value="2">Duo</option>
+        <option class="item" value="3">Squad</option>
+        </select>
+      </h1> 
+      
+        <ul class="topRanks-list ui two column doubling grid segment">
+          <div class="ui loader" :class="loader"></div>
+            <li class="topRanks ui column " v-for="(info , i) in rank" :key="i" @click="onSearch(info.nickname)">
+                <div class="ui segment three column grid button ">
+                  <h3 class="rank-info rank column">{{info.rank}}</h3>
+                  <h5 class="rank-info rank-nickname column">{{info.nickname}}</h5>
+                  <p class="rank-info mmr column">MMR: {{info.mmr}}</p>
+                </div>
+            </li>
+        </ul>
+    </div>
   </div>
 </template>
 

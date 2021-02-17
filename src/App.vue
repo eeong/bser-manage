@@ -18,7 +18,7 @@
 			</div>
 
 		</div>
-		<div class="ui text container">
+		<div class="ui text">
 			<div class="ui one column grid">
 				<div class="column">
 					<router-view />

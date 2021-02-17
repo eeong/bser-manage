@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>전적확인 : 최근 10게임</h1>
+    
     <rec-form @createOrUpdate="createOrUpdate"></rec-form>
   </div>
 </template>
