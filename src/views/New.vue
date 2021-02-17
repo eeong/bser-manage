@@ -1,6 +1,5 @@
 <template>
   <div>
-    
     <rec-form @createOrUpdate="createOrUpdate"></rec-form>
   </div>
 </template>

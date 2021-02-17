@@ -74,6 +74,7 @@ h1 {
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: 0 65%;
+	background-attachment: fixed;
 	opacity:0.9;
 	filter: brightness(0.4);
 	z-index: -1;

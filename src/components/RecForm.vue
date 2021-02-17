@@ -2,14 +2,15 @@
 <div >
   <div v-if="games != null">
     <div class="ui text container">
-      <h1>전적확인 : 최근 10게임</h1>
+      <h1 >전적확인 : 최근 10게임 </h1>
+      <h2>{{games[0].nickname}}</h2>
       <div class="ui three column stackable grid centered celled " v-for="(game, i) in games " :key="i" style="position:relative;">
             <div class="ui column three ">
               <div class="ui segment">
-                <div class="ui header item">#{{game.gameRank}}위 </div><div class="ui item">{{game.nickname}}</div>
+                <div class="ui header item">#{{game.gameRank}}위 </div><div class="ui item"></div>
                 <div class="ui item ">
                   <img class="ui item circular image" :src="require(`../assets/static/img/00.캐릭터/${game.characterSrc}`)" >
-                  <div class="ui item">{{getCharacter(game.characterNum-1)}}/{{game.item[0].weaponType}}</div>
+                  <div class="ui item">{{getCharacter(game.characterNum-1)}}/{{game.item[0].transKr[0][1]}}</div>
                 </div>
               </div>
             </div>
@@ -152,7 +153,6 @@ export default {
       alert(this.user);
       this.$router.push('/search')
     }
-    
 }
 };
 </script>
@@ -210,9 +210,16 @@ export default {
   top: 50%;
   right: -35%;
   box-shadow: none !important;
-  transform: translateY(-50%);
+  transform: translateY(-60%);
   text-align: right;
 }
+
+.segment.ui {
+  border: none ;
+  box-shadow: none ;
+}
+
+
 
 @media screen and (max-width:767px) {
   .item.equip .item-desc {

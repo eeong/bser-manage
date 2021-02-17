@@ -3,30 +3,28 @@
     <div class="ui text container">
       <h1>템빌드저장소</h1>
       <table id="recs" class="ui celled compact table">
-        <thead>
-          <tr>
-            <th> <i class="calendar plus icon"></i>Task</th>
-            <th> <i class="info circle icon"></i>Detail</th>
-                      <th> <i class="lock open icon"></i></th>
-                      <th> <i class="edit icon"></i></th>
-                      <th> <i class="trash icon"></i></th>
-            <th colspan="3"></th>
-          </tr>
-        </thead>
         <tr v-for="(rec, i) in recs" :key="i">
-          <td>{{ rec.nickname }}</td>
-          <td>{{ rec.nickname }}</td>
+          <td width="75">{{ rec.nickname }}</td>
+          <td><router-link :to="{ name: 'show', params: { id: rec._id }}">{{ rec.nickname }}</router-link></td>
+          
           <td width="75" class="center aligned">
-            <router-link :to="{ name: 'show', params: { id: rec._id }}">Show</router-link>
-          </td>
-          <td width="75" class="center aligned">
-            <router-link :to="{ name: 'edit', params: { id: rec._id }}">Edit</router-link>
+            <router-link :to="{ name: 'edit', params: { id: rec._id }}">
+              <i class="ui icon edit grey"></i>
+            </router-link>
           </td>
           <td width="75" class="center aligned" @click.prevent="onDestroy(rec._id)">
-            <a :href="`/recs/${rec._id}`">Delete</a>
+            <a :href="`/recs/${rec._id}`"><i class="ui grey icon trash"></i></a>
           </td>
         </tr>
+        
       </table>
+      <div class="ui secondary menu">
+        <div class="ui pagination menu right">
+            <a class="item" :class="active">1</a>
+            <a class="item">2</a>
+            <a class="item">3</a>
+        </div>
+      </div>
       <div>{{recs}}</div>
     </div>
   </div>
@@ -39,16 +37,18 @@ export default {
   data() {
     return {
       recs: [],
+      page:'',
+      active:[true,false,false,false],
     };
   },
   methods: {
     async onDestroy(id) {
-      const sure = window.confirm('Are you sure?');
+      const sure = window.confirm('삭제 하시겠습니까?');
       if (!sure) return;
       await api.deletetask(id);
-      this.flash('task deleted sucessfully!', 'success');
-      const newtasks = this.tasks.filter(task => task._id !== id);
-      this.tasks = newtasks;
+      this.flash('해당 템빌드가 삭제되었습니다!', 'success');
+      const newrecs = this.recs.filter(recs => recs._id !== id);
+      this.recs = newrecs;
     }
   },
   async mounted() {
@@ -57,3 +57,7 @@ export default {
   }
 };
 </script>
+
+<style scoped>
+  a {text-decoration: none; }
+</style>
