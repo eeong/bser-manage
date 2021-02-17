@@ -13,9 +13,11 @@
           </div>
           <div class="ui column three ">
             <div class="ui segment">
-              <div class="ui">킬{{game.playerKill}}</div>
-              <div class="ui">어시{{game.playerAssistant}}</div>
-              <div class="ui">동물킬{{game.monsterKill}}</div>
+              <div class="ui three item ">
+                <div class="ui">K/ D/ H</div>
+                <div class="ui ">{{game.playerKill}}/ {{game.playerAssistant}}/ {{game.monsterKill}}</div>
+                <div class="ui"></div>
+              </div>
             </div>
           </div>
           <div class="ui column three ">
@@ -82,7 +84,6 @@
           </div>
         <div class="plus-button column"><button class="ui button compact icon blue " @click="onSubmit(game)" ><i class="plus icon "></i></button></div>  
     </div>
-    
   </div>
 
 
@@ -168,7 +169,7 @@ export default {
   visibility: hidden;
   opacity: 0;
   z-index: 2;  
-  width: 200%;
+  width: 250%;
   height: auto;
   padding: 1em 0;
   transition: all .25s;

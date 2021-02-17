@@ -2,7 +2,7 @@
 	<div id="app">
 		<div class="ui inverted segment navbar">
 			<div class="ui center aligned container column">
-				<div class="ui large secondary inverted pointing menu compact">
+				<div class="ui large inverted menu compact">
 					<router-link to="/search" class="item">
 						<i class="search icon"></i> 검색
 					</router-link>
@@ -14,6 +14,7 @@
 					</router-link>
 					
 				</div>
+				
 			</div>
 
 		</div>
@@ -69,4 +70,5 @@ button.ui.button {
 ul,li {
 	list-style: none;
 }
+
 </style>
