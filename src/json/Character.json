@@ -419,6 +419,10 @@
       "radius": 0.4,
       "uiHeight": 2.3,
       "resource": "Luke"
+    },
+    {
+      "code":23,
+      "nameKr":"캐시"
     }
   ]
 }

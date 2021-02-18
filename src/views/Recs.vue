@@ -5,7 +5,13 @@
       <table id="recs" class="ui celled compact table">
         <tr v-for="(rec, i) in recs" :key="i">
           <td width="75">{{ rec.nickname }}</td>
-          <td><router-link :to="{ name: 'show', params: { id: rec._id }}">{{ rec.nickname }}</router-link></td>
+          <td class="column ">
+            <router-link :to="{ name: 'show', params: { id: rec._id }}">{{ rec.nickname }}</router-link>
+            <div class="ui column six">
+              <item-comp :game="rec">
+              </item-comp>
+            </div>
+          </td>
           
           <td width="75" class="center aligned">
             <router-link :to="{ name: 'edit', params: { id: rec._id }}">
@@ -13,7 +19,7 @@
             </router-link>
           </td>
           <td width="75" class="center aligned" @click.prevent="onDestroy(rec._id)">
-            <a :href="`/recs/${rec._id}`"><i class="ui grey icon trash"></i></a>
+            <a ><i class="ui grey icon trash"></i></a>
           </td>
         </tr>
         
@@ -33,6 +39,9 @@
 
 <script>
 import { api } from '../helpers/helpers';
+import itemComp from '../components/Itemcomp';
+
+
 export default {
   name: 'recs',
   data() {
@@ -44,11 +53,14 @@ export default {
       active:[true,false,false,false],
     };
   },
+  components:{
+    'item-comp': itemComp
+  },
   methods: {
     async onDestroy(id) {
       const sure = window.confirm('삭제 하시겠습니까?');
       if (!sure) return;
-      await api.deletetask(id);
+      await api.deleterec(id);
       this.flash('해당 템빌드가 삭제되었습니다!', 'success');
       const newrecs = this.recs.filter(recs => recs._id !== id);
       this.recs = newrecs;
@@ -56,12 +68,12 @@ export default {
   },
   async mounted() {
     this.recs = await api.getrecs();
-    this.armors = await api.getarmor();
-    this.weapons = await api.getweapon();
+    /* this.armors = await api.getarmor();
+    this.weapons = await api.getweapon(); */
   }
 };
 </script>
 
 <style scoped>
-  a {text-decoration: none; }
+  a {cursor: pointer; }
 </style>

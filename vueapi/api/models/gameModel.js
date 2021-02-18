@@ -4,6 +4,10 @@ const { Schema } = mongoose;
 
 const gameSchema = new Schema(
   {
+    title:{
+      type: String,
+      required: true
+    },
     nickname: {
       type: String,
       required: true
@@ -12,7 +16,9 @@ const gameSchema = new Schema(
       type: Number,
       required: true
     },
-    
+    item:[
+      
+    ]
   },
   { collection: 'game' }
 );
