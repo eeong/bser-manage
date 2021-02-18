@@ -3,7 +3,7 @@
   <div v-if="games != null">
     <div class="ui text container">
       <h1 >전적확인 : 최근 10게임 </h1>
-      <h2>{{games[0].nickname}}</h2>
+      <h2 >{{games[0].nickname}}</h2>
       <div class="ui three column stackable grid centered celled " v-for="(game, i) in games " :key="i" style="position:relative;">
             <div class="ui column three ">
               <div class="ui segment">
@@ -26,61 +26,73 @@
             <div class="ui column three ">
               <div class="top attached ui three item menu">
                 <a class="item equip" >
-                  <div v-if="game.item[0] != null">
-                    <div class="ui column relaxed item-desc">
-                      <div class="ui header" style="">{{game.item[0].name}}</div>
-                      <div class="ui " v-for="(transItem, j) in game.item[0].transKr" :key="j">
-                        {{transItem[0]}}: {{transItem[1]}}
+                  <div :id="game.item[0].itemGrade" v-if="game.item[0] != null">
+                    <div class="img-wrap">
+                      <div class="ui column relaxed item-desc">
+                        <div class="ui header" style="">{{game.item[0].name}}</div>
+                        <div class="ui " v-for="(transItem, j) in game.item[0].transKr" :key="j">
+                          {{transItem[0]}}: {{transItem[1]}}
+                        </div>
                       </div>
+                    <img class="ui image" :src="require(`../assets/static/img/01.무기/${game.item[0].name}.png`)">
                     </div>
-                    <img class="ui image"  :src="require(`../assets/static/img/01.무기/${game.item[0].name}.png`)">
                   </div>
                 </a>
                 <a class="item equip" >
-                  <div v-if="game.item[1] != null">
-                    <div class="ui column relaxed item-desc">
-                      <div class="ui header" >{{game.item[1].name}}</div>
-                      <div class="ui" v-for="(transItem, j) in game.item[1].transKr" :key="j">{{transItem[0]}}: {{transItem[1]}}</div>
+                  <div :id="game.item[1].itemGrade" v-if="game.item[1] != null">
+                    <div class="img-wrap">
+                      <div class="ui column relaxed item-desc">
+                        <div class="ui header" >{{game.item[1].name}}</div>
+                        <div class="ui" v-for="(transItem, j) in game.item[1].transKr" :key="j">{{transItem[0]}}: {{transItem[1]}}</div>
+                      </div>
+                      <img class="ui image"  :src="require(`../assets/static/img/02.방어구/02.옷/${game.item[1].name}.png`)">
                     </div>
-                    <img class="ui image"  :src="require(`../assets/static/img/02.방어구/02.옷/${game.item[1].name}.png`)">
                   </div>
                 </a>
                 <a class="item equip" >
-                  <div v-if="game.item[2] != null">
-                    <div class="ui column relaxed item-desc">
-                      <div class="ui header" >{{game.item[2].name}}</div>
-                      <div class="ui" v-for="(transItem, j) in game.item[2].transKr" :key="j">{{transItem[0]}}: {{transItem[1]}}</div>
+                  <div :id="game.item[2].itemGrade" v-if="game.item[2] != null">
+                    <div class="img-wrap">
+                      <div class="ui column relaxed item-desc">
+                        <div class="ui header" >{{game.item[2].name}}</div>
+                        <div class="ui" v-for="(transItem, j) in game.item[2].transKr" :key="j">{{transItem[0]}}: {{transItem[1]}}</div>
+                      </div>
+                      <img class="ui image" :src="require(`../assets/static/img/02.방어구/01.머리/${game.item[2].name}.png`)">
                     </div>
-                    <img class="ui image" :src="require(`../assets/static/img/02.방어구/01.머리/${game.item[2].name}.png`)">
                   </div>
                 </a>
               </div>
               <div class="attached ui three item menu">
-                <a class="item equip" >
-                  <div v-if="game.item[3] != null">
-                    <div class="ui column relaxed item-desc">
-                      <div class="ui header" >{{game.item[3].name}}</div>
-                      <div class="ui" v-for="(transItem, j) in game.item[3].transKr" :key="j">{{transItem[0]}}: {{transItem[1]}}</div>
+                <a class="item equip"  >
+                  <div :id="game.item[3].itemGrade" v-if="game.item[3] != null">
+                    <div class="img-wrap">
+                      <div class="ui column relaxed item-desc">
+                        <div class="ui header" >{{game.item[3].name}}</div>
+                        <div class="ui" v-for="(transItem, j) in game.item[3].transKr" :key="j">{{transItem[0]}}: {{transItem[1]}}</div>
+                      </div>
+                      <img class="ui image"  :src="require(`../assets/static/img/02.방어구/03.팔/${game.item[3].name}.png`)">
                     </div>
-                    <img class="ui image"  :src="require(`../assets/static/img/02.방어구/03.팔/${game.item[3].name}.png`)">
                   </div>
                 </a>
                 <a class="item equip" >
-                  <div v-if="game.item[4] != null">
-                    <div class="ui column relaxed item-desc">
-                      <div class="ui header" >{{game.item[4].name}}</div>
-                      <div class="ui" v-for="(transItem, j) in game.item[4].transKr" :key="j">{{transItem[0]}}: {{transItem[1]}}</div>
+                  <div :id="game.item[4].itemGrade" v-if="game.item[4] != null">
+                    <div class="img-wrap">
+                      <div class="ui column relaxed item-desc">
+                        <div class="ui header" >{{game.item[4].name}}</div>
+                        <div class="ui" v-for="(transItem, j) in game.item[4].transKr" :key="j">{{transItem[0]}}: {{transItem[1]}}</div>
+                      </div>
+                      <img class="ui image"  :src="require(`../assets/static/img/02.방어구/04.다리/${game.item[4].name}.png`)">
                     </div>
-                    <img class="ui image"  :src="require(`../assets/static/img/02.방어구/04.다리/${game.item[4].name}.png`)">
                   </div>
                 </a>
                 <a class="item equip" >
-                  <div v-if="game.item[5] != null">
-                    <div class="ui column relaxed item-desc">
-                      <div class="ui header" >{{game.item[5].name}}</div>
-                      <div class="ui" v-for="(transItem, j) in game.item[5].transKr" :key="j">{{transItem[0]}}: {{transItem[1]}}</div>
+                  <div :id="game.item[5].itemGrade" v-if="game.item[5] != null">
+                    <div class="img-wrap">
+                      <div class="ui column relaxed item-desc">
+                        <div class="ui header" >{{game.item[5].name}}</div>
+                        <div class="ui" v-for="(transItem, j) in game.item[5].transKr" :key="j">{{transItem[0]}}: {{transItem[1]}}</div>
+                      </div>
+                      <img class="ui image"  :src="require(`../assets/static/img/02.방어구/05.장식/${game.item[5].name}.png`)">
                     </div>
-                    <img class="ui image"  :src="require(`../assets/static/img/02.방어구/05.장식/${game.item[5].name}.png`)">
                   </div>
                 </a>
               </div>
@@ -213,14 +225,41 @@ export default {
   transform: translateY(-60%);
   text-align: right;
 }
+.img-wrap {
+  padding: 0.92857143em 0 ;
+}
 
 .segment.ui {
   border: none ;
   box-shadow: none ;
 }
 
+#Common {
+  background: rgb(107,107,107);
+  background: linear-gradient(180deg, rgba(107,107,107,1) 0%, rgba(213,213,213,1) 100%);
+}
+#Uncommon {
+  background: rgb(40,117,53);
+  background: linear-gradient(180deg, rgb(28, 82, 37) 0%, rgb(64, 156, 55) 100%);
+
+}
+#Rare {
+  background: rgb(44,61,130);
+  background: linear-gradient(180deg, rgb(31, 42, 87) 0%, rgb(58, 76, 197) 100%);
+}
+#Epic {   
+  background: rgb(99,44,130);
+  background: linear-gradient(180deg, rgb(67, 30, 88) 0%, rgb(136, 62, 182)100%);
+}
+#Legend {
+  background: rgb(142,129,47);
+  background: linear-gradient(180deg, rgb(94, 85, 31) 0%, rgb(212, 174, 68) 100%);
 
 
+}
+.ui.menu .item {
+  padding:0;
+}
 @media screen and (max-width:767px) {
   .item.equip .item-desc {
     width: 100%;
