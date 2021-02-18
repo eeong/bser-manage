@@ -1,5 +1,13 @@
 const mongoose = require('mongoose');
 const rec = mongoose.model('game');
+const itemA = mongoose.model('itemArmor')
+
+exports.read_itemArmor = (req, res) => {
+  itemA.find({}, (err, items) => {
+    if (err) res.send(err);
+    res.json(items);
+  });
+};
 
 exports.list_all_recs = (req, res) => {
   rec.find({}, (err, recs) => {

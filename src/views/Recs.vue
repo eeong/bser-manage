@@ -18,6 +18,7 @@
         </tr>
         
       </table>
+      <div></div>
       <div class="ui secondary menu">
         <div class="ui pagination menu right">
             <a class="item" :class="active">1</a>
@@ -37,6 +38,7 @@ export default {
   data() {
     return {
       recs: [],
+      items:[],
       page:'',
       active:[true,false,false,false],
     };
@@ -53,7 +55,7 @@ export default {
   },
   async mounted() {
     this.recs = await api.getrecs();
-    
+    this.items = await api.getarmor();
   }
 };
 </script>

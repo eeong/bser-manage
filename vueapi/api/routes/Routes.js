@@ -7,6 +7,10 @@ module.exports = app => {
     .route('/recs')
     .get(recBuilder.list_all_recs)
     .post(recBuilder.create_a_rec);
+    
+  app
+    .route('/recs/item')
+    .get(recBuilder.read_itemArmor);
 
   app
     .route('/recs/:recId')

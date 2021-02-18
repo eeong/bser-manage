@@ -21,6 +21,10 @@ const handleError = fn => (...params) =>
   });
 
 export const api = {
+  getarmor: handleError(async () => {
+    const res = await axios.get(baseURL+'item' );
+    return res.data;
+  }),
   getrec: handleError(async id => {
     const res = await axios.get(baseURL + id);
     return res.data;
