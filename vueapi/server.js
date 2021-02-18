@@ -5,7 +5,9 @@ const bodyParser = require('body-parser');
 require('dotenv').config();
 
 global.Game = require('./api/models/gameModel');
-global.ItemArmor = require('./api/models/itemModel');
+global.ItemArmor = require('./api/models/armorModel');
+global.ItemWeapon = require('./api/models/weaponModel');
+
 const routes = require('./api/routes/Routes');
 
 mongoose.Promise = global.Promise;

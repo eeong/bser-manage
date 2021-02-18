@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
-const itemSchema = new Schema(
+const armorSchema = new Schema(
   {
       "code": { type: Number, required: true},
       "name": { type: String},
@@ -44,4 +44,4 @@ const itemSchema = new Schema(
   { collection: 'itemArmor' }
 );
 
-module.exports = mongoose.model('itemArmor', itemSchema);
+module.exports = mongoose.model('itemArmor', armorSchema);

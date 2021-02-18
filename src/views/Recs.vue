@@ -38,7 +38,8 @@ export default {
   data() {
     return {
       recs: [],
-      items:[],
+      armors:[],
+      weapons:[],
       page:'',
       active:[true,false,false,false],
     };
@@ -55,7 +56,8 @@ export default {
   },
   async mounted() {
     this.recs = await api.getrecs();
-    this.items = await api.getarmor();
+    this.armors = await api.getarmor();
+    this.weapons = await api.getweapon();
   }
 };
 </script>

@@ -22,7 +22,11 @@ const handleError = fn => (...params) =>
 
 export const api = {
   getarmor: handleError(async () => {
-    const res = await axios.get(baseURL+'item' );
+    const res = await axios.get(baseURL+'armor' );
+    return res.data;
+  }),
+  getweapon: handleError(async () => {
+    const res = await axios.get(baseURL+'weapon' );
     return res.data;
   }),
   getrec: handleError(async id => {
