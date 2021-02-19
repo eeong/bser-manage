@@ -21,6 +21,13 @@
                   <div class="ui ">{{game.playerKill}}/ {{game.playerAssistant}}/ {{game.monsterKill}}</div>
                   <div class="ui"></div>
                 </div>
+                <div class="ui three item ">
+                  <div class="ui">레벨/ 딜량/ MMR</div>
+                  <div class="ui " v-if="games[i-1]">{{game.characterLevel}}/ {{game.damageToPlayer}}/ {{games[i-1].mmrBefore}}</div>
+                  <div class="ui " v-if="i==0">{{game.characterLevel}}/ {{game.damageToPlayer}}/ {{currnetMmr.userRank.mmr}}</div>
+                  <div class="ui"></div>
+                </div>
+                
               </div>
             </div>
             <div class="ui column three">
@@ -53,6 +60,7 @@ export default {
       errorsPresent: false,
       user:null,
       games: null,
+      currnetMmr:'',
     };
   },
   components: {
@@ -79,6 +87,7 @@ export default {
   async mounted() {
     this.user = await api.searchId(this.$route.params.userId)
     this.games = this.user.userGames
+    this.currnetMmr = await api.searchRank(this.games[0].nickname,this.games[0].matchingTeamMode)
     if (this.user.code == 404) {
       alert('먼저 전적을 검색할 닉네임을 입력해주세요.');
       this.$router.push('/search')

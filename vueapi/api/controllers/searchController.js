@@ -34,6 +34,7 @@ exports.read_user_num = async (req, res) => {
     }
 }).then( ( response ) => {
   response.json().then((data)=>{
+    let currentMmr = '';
     for(var i in data.userGames){
       data.userGames[i].item = [];
       data.userGames[i].characterSrc = charList[data.userGames[i].characterNum-1].slice(1,-1)
@@ -49,6 +50,7 @@ exports.read_user_num = async (req, res) => {
   res.send('api와 연결이 원활하지 않습니다. 잠시 후 시도해주세요.')
   console.log("There has been error with fetch operation",error.message);
 })};
+
 
 exports.read_user_rank = (req, res) => {
   let userQ = qs.escape(req.params.user);
