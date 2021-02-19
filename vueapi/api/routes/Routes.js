@@ -35,6 +35,6 @@ module.exports = app => {
     .get(searchApi.read_user_rank);
   
   app
-    .route('/search/rank/:usernum/:league/:mode')
+    .route('/search/rank/:usernum/:mode')
     .get(searchApi.read_mmr);
 };

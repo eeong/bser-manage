@@ -8,7 +8,7 @@
         <div class="ui three column stackable grid centered celled " v-for="(game, i) in games " :key="i" style="position:relative;">
               <div class="ui column three ">
                 <div class="ui segment">
-                  <div class="ui header item">#{{game.gameRank}}위 </div><div class="ui item">{{gamemode[game.matchingTeamMode]}}</div>
+                  <div class="ui header item">#{{game.gameRank}}위 </div><div class="ui item">{{gamemode.team[game.matchingTeamMode]}} {{gamemode.mode[game.matchingMode]}}</div>
                   <div class="ui item ">
                     <img class="ui item circular image" :src="require(`../assets/static/img/00.캐릭터/${game.characterSrc}`)" >
                     <div class="ui item">{{getCharacter(game.characterNum-1)}}/{{game.item[0].transKr[0][1]}}</div>
@@ -63,7 +63,7 @@ export default {
       user:null,
       games: null,
       currentMmr:null,
-      gamemode:['','솔로','듀오','스쿼드']
+      gamemode:{"team":['','솔로','듀오','스쿼드'],"mode":['일반','일반','일반','랭크']}
     };
   },
   components: {
@@ -98,7 +98,7 @@ export default {
       this.$router.push('/search')
     }
     this.loader = 'disabled';
-    if(this.games[0].userNum) this.currentMmr = await api.searchMmr(this.games[0].userNum,this.games[0].matchingMode, this.games[0].matchingTeamMode);
+    if(this.games[0].userNum) this.currentMmr = await api.searchMmr(this.games[0].userNum,this.games[0].matchingTeamMode);
 },
   
 };

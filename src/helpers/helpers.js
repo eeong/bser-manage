@@ -62,8 +62,8 @@ export const api = {
     const res = await axios.get(bsURL + userid + '/' + gameMode);
     return res.data;
   }),
-  searchMmr: handleError(async (usernum,league, gameMode) => {
-    const res = await axios.get(bsURL+'rank/'+usernum+'/'+league+'/'+gameMode);
+  searchMmr: handleError(async (usernum,gameMode) => {
+    const res = await axios.get(bsURL+'rank/'+usernum+'/'+gameMode);
     return res.data;
   }),
 };

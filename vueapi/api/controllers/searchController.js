@@ -81,13 +81,13 @@ exports.read_user_rank = (req, res) => {
 
 
 exports.read_mmr = (req, res) => {
-  var league = function(){if(req.params.league == 3) return 1; else return 0;}  
-  fetch(`https://open-api.bser.io/v1/rank/${req.params.usernum}/${league()}/${req.params.mode}`, {
+  fetch(`https://open-api.bser.io/v1/rank/${req.params.usernum}/1/${req.params.mode}`, {
   headers: {
       'accept': 'application/json',
       'x-api-key': 'LbuEDSHA7s4fvNCGJOcQO7ZcYuQqKdip8kF8jtIb',
   }
 }).then( async ( response ) => {
+  console.log(response)
   await response.json().then((data)=>{
     res.json(data);
 })
