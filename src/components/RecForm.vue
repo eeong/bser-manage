@@ -7,7 +7,7 @@
       <div class="ui three column stackable grid centered celled " v-for="(game, i) in games " :key="i" style="position:relative;">
             <div class="ui column three ">
               <div class="ui segment">
-                <div class="ui header item">#{{game.gameRank}}위 </div><div class="ui item"></div>
+                <div class="ui header item">#{{game.gameRank}}위 </div><div class="ui item">{{gamemode[game.matchingTeamMode]}}</div>
                 <div class="ui item ">
                   <img class="ui item circular image" :src="require(`../assets/static/img/00.캐릭터/${game.characterSrc}`)" >
                   <div class="ui item">{{getCharacter(game.characterNum-1)}}/{{game.item[0].transKr[0][1]}}</div>
@@ -24,7 +24,7 @@
                 <div class="ui three item ">
                   <div class="ui">레벨/ 딜량/ MMR</div>
                   <div class="ui " v-if="games[i-1]">{{game.characterLevel}}/ {{game.damageToPlayer}}/ {{games[i-1].mmrBefore}}</div>
-                  <div class="ui " v-if="i==0">{{game.characterLevel}}/ {{game.damageToPlayer}}/ {{currnetMmr.userRank.mmr}}</div>
+                  <div class="ui " v-if="i == 0 && currentMmr != null">{{game.characterLevel}}/ {{game.damageToPlayer}}/ {{currentMmr.userRank.mmr}}</div>
                   <div class="ui"></div>
                 </div>
                 
@@ -60,7 +60,8 @@ export default {
       errorsPresent: false,
       user:null,
       games: null,
-      currnetMmr:'',
+      currentMmr:null,
+      gamemode:['','솔로','듀오','스쿼드']
     };
   },
   components: {
@@ -69,9 +70,10 @@ export default {
   methods: {
     onSubmit: function(x) {
       let game = {
-        title: `${new Date() }`+`${this.getCharacter(x.characterNum-1)}`,
         nickname: x.nickname || null,
         userNum: x.gameId || null,
+        mode:this.gamemode[x.matchingTeamMode],
+        character: `${this.getCharacter(x.characterNum-1)}`,
         item: x.item
       }
         this.$emit('createOrUpdate', game);
@@ -80,14 +82,11 @@ export default {
     getCharacter: (i) => {
         return character.data[i].nameKr
     },
-    
-    
   },
 
   async mounted() {
     this.user = await api.searchId(this.$route.params.userId)
     this.games = this.user.userGames
-    this.currnetMmr = await api.searchRank(this.games[0].nickname,this.games[0].matchingTeamMode)
     if (this.user.code == 404) {
       alert('먼저 전적을 검색할 닉네임을 입력해주세요.');
       this.$router.push('/search')
@@ -96,6 +95,8 @@ export default {
       alert(this.user);
       this.$router.push('/search')
     }
+    else this.currnetMmr = await api.searchRank(this.games[0].nickname, this.games[0].matchingTeamMode)
+    
 }
 };
 </script>
