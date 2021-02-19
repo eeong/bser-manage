@@ -56,7 +56,8 @@ export default {
   watch: {
       rankMode: async function (newVal) {
         this.rank = await api.search(newVal)
-      }
+      },
+      
     },
   methods:{
     onSearch: async function(nickname) {
@@ -70,6 +71,7 @@ export default {
   async mounted(){
     this.rank = await api.search(this.rankMode)
     this.loader = "disabled "
+    if(this.rank.code==429) location.reload()
   },
   
 };

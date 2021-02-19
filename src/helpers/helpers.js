@@ -51,6 +51,7 @@ export const api = {
   }),
   search: handleError(async rankMode => {
     const res = await axios.get(bsURL + '?m=' + rankMode);
+    if(res.code==429) location.redirect('/');
     return res.data;
   }),
   searchId: handleError(async userid => {
@@ -59,6 +60,10 @@ export const api = {
   }),
   searchRank: handleError(async (userid, gameMode) => {
     const res = await axios.get(bsURL + userid + '/' + gameMode);
+    return res.data;
+  }),
+  searchMmr: handleError(async (usernum,league, gameMode) => {
+    const res = await axios.get(bsURL+'rank/'+usernum+'/'+league+'/'+gameMode);
     return res.data;
   }),
 };
