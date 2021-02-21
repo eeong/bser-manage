@@ -71,9 +71,9 @@ export default {
       const sure = window.confirm('삭제 하시겠습니까?');
       if (!sure) return;
       await api.deleterec(id);
-      this.flash('해당 템빌드가 삭제되었습니다!', 'success');
-      const newrecs = this.recss.filter(recss => recss._id !== id);
-      this.recss = newrecs;
+      location.reload();
+      //const newrecs = this.recss.filter(recss => recss._id !== id);
+      //this.recss = newrecs;
     },
     getPage(){
       let pages = this.paging.index*this.paging.pageNum;
@@ -92,7 +92,7 @@ export default {
   async mounted() {
     this.recss = await api.getrecs();
     this.paging.total = this.recss.length;
-    this.paging.end = Math.floor(this.paging.total/this.paging.pageNum) + 1;
+    this.paging.end = Math.ceil(this.paging.total/this.paging.pageNum);
     this.getPage();
     /* this.armors = await api.getarmor();
     this.weapons = await api.getweapon(); */

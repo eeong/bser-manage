@@ -21,7 +21,7 @@ exports.list_all_recs = (req, res) => {
   rec.find({}, (err, recs) => {
     if (err) res.send(err);
     res.json(recs);
-  });
+  }).sort({date:'desc'});
 };
 
 exports.create_a_rec = (req, res) => {
@@ -52,10 +52,12 @@ exports.update_a_rec = (req, res) => {
 };
 
 exports.delete_a_rec = (req, res) => {
+  console.log(req.params);
   rec.deleteOne({ _id: req.params.recId }, err => {
     if (err) res.send(err);
     res.json({
-      message: 'rec successfully deleted',
+      code: 200,
+      message: '기록이 삭제되었습니다',
       _id: req.params.recId
     });
   });
