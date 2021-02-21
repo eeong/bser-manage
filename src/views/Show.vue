@@ -1,8 +1,8 @@
 <template>
   <div>
-    <h1>Show task</h1>
+    <h1>템빌드</h1>
 
-   
+  
     <div class="ui labeled input fluid">
       <div class="ui label">
       <i class="tasks icon"></i>  Task
@@ -10,7 +10,7 @@
       <input type="text" readonly  :value="task.task1"/>
     </div>
 
-     <div class="ui labeled input fluid">
+    <div class="ui labeled input fluid">
       <div class="ui label">
         <i class="info circle icon"></i> Details
       </div>

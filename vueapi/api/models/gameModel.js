@@ -8,6 +8,14 @@ const gameSchema = new Schema(
       type: String,
       required: true
     },
+    characterSrc:{
+      type: String,
+      required: true
+    },
+    weapon:{
+      type: String,
+      required:false
+    },
     nickname: {
       type: String,
       required: true
@@ -19,6 +27,10 @@ const gameSchema = new Schema(
     mode: {
       type:String,
       required: true
+    },
+    title: {
+      type:String,
+      required:false
     },
     date: {
       type: Date,

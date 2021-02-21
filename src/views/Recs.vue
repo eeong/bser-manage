@@ -4,14 +4,17 @@
       <h1>템빌드저장소</h1>
       <table id="recs" class="ui celled compact table">
         <tr v-for="(rec, i) in recs" :key="i">
-          <td width="75">{{ rec.nickname }}</td>
-          <td class="column two grid">
-            <router-link :to="{ name: 'show', params: { id: rec._id }}">{{ rec.nickname }}{{ rec.character }}{{ rec.mode }}</router-link>
-            <div class="ui item">
-              <div class="ui column ">
-                  <item-comp :game="rec">
-                  </item-comp>
-              </div>
+          <td width="75">
+            <a class="ui teal ribbon label">{{rec.weapon}} </a>
+            <img class="ui item tiny circular image" :src="require(`../assets/static/img/00.캐릭터/${rec.characterSrc}`)" >
+          </td>
+          <td >
+            <div class="ui two column grid">
+              <router-link class="four column" :to="{ name: 'show', params: { id: rec._id }}">{{ rec.date.slice(0,10) }} {{ rec.nickname }} {{ rec.mode }}</router-link>
+                <div class="four column ">
+                    <item-comp :game="rec">
+                    </item-comp>
+                </div>
             </div>
           </td>
           
