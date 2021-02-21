@@ -32,12 +32,10 @@
       <div></div>
       <div class="ui secondary menu">
         <div class="ui pagination menu right">
-            <a class="item" :class="active">1</a>
-            <a class="item">2</a>
-            <a class="item">3</a>
+            <a class="item" v-for="i in paging.end" :key="i" @click="pageClick(i)">{{i}}</a>
         </div>
       </div>
-      <div>{{recs}}</div>
+      <div></div>
     </div>
   </div>
 </template>
@@ -52,9 +50,16 @@ export default {
   data() {
     return {
       recs: [],
+      recss:[],
       armors:[],
       weapons:[],
-      page:'',
+      paging:{
+        total:'',
+        index:0,
+        end:'',
+        pageNum:5,
+
+      },
       active:[true,false,false,false],
     };
   },
@@ -67,12 +72,28 @@ export default {
       if (!sure) return;
       await api.deleterec(id);
       this.flash('해당 템빌드가 삭제되었습니다!', 'success');
-      const newrecs = this.recs.filter(recs => recs._id !== id);
-      this.recs = newrecs;
+      const newrecs = this.recss.filter(recss => recss._id !== id);
+      this.recss = newrecs;
+    },
+    getPage(){
+      let pages = this.paging.index*this.paging.pageNum;
+      let pagesShow = (pages + this.paging.pageNum)>=(this.recss.length) ? this.recss.length : (pages + this.paging.pageNum);
+      this.recs = this.recss.slice(pages,pagesShow)
+    },
+    pageClick(i){
+      this.paging.index = i-1;
+    }
+  },
+  watch:{
+    'paging.index':function(){
+      this.getPage();
     }
   },
   async mounted() {
-    this.recs = await api.getrecs();
+    this.recss = await api.getrecs();
+    this.paging.total = this.recss.length;
+    this.paging.end = Math.floor(this.paging.total/this.paging.pageNum) + 1;
+    this.getPage();
     /* this.armors = await api.getarmor();
     this.weapons = await api.getweapon(); */
   }

@@ -18,14 +18,15 @@ const gameSchema = new Schema(
     },
     nickname: {
       type: String,
-      required: true
+      required: false
     },
     userNum: {
       type: Number,
-      required: true
+      required: false
     },
     mode: {
       type:String,
+      default:'솔로',
       required: true
     },
     title: {
