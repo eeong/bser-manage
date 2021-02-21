@@ -74,7 +74,7 @@ export default {
       let game = {
         nickname: x.nickname || null,
         userNum: x.gameId || null,
-        mode:this.gamemode[x.matchingTeamMode],
+        mode:this.gamemode.team[x.matchingTeamMode],
         character: `${this.getCharacter(x.characterNum-1)}`,
         item: x.item
       }

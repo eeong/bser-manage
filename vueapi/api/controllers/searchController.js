@@ -87,7 +87,6 @@ exports.read_mmr = (req, res) => {
       'x-api-key': 'LbuEDSHA7s4fvNCGJOcQO7ZcYuQqKdip8kF8jtIb',
   }
 }).then( async ( response ) => {
-  console.log(response)
   await response.json().then((data)=>{
     res.json(data);
 })

@@ -25,7 +25,6 @@ exports.list_all_recs = (req, res) => {
 };
 
 exports.create_a_rec = (req, res) => {
-  console.log(req.body);
   const newRec = new rec(req.body);
   newRec.save((err, rec) => {
     if (err) res.send(err);

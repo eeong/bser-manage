@@ -19,8 +19,8 @@ export default {
     }
   },
   methods: {
-    createOrUpdate: async function(task) {
-      const res = await api.createrec(task);
+    createOrUpdate: async function(game) {
+      const res = await api.createrec(game);
       this.flash(`템빌드가 저장되었습니다${res}`, 'success');
       this.$router.push(`/recs`);
     }

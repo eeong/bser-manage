@@ -5,11 +5,13 @@
       <table id="recs" class="ui celled compact table">
         <tr v-for="(rec, i) in recs" :key="i">
           <td width="75">{{ rec.nickname }}</td>
-          <td class="column ">
-            <router-link :to="{ name: 'show', params: { id: rec._id }}">{{ rec.nickname }}</router-link>
-            <div class="ui column six">
-              <item-comp :game="rec">
-              </item-comp>
+          <td class="column two grid">
+            <router-link :to="{ name: 'show', params: { id: rec._id }}">{{ rec.nickname }}{{ rec.character }}{{ rec.mode }}</router-link>
+            <div class="ui item">
+              <div class="ui column ">
+                  <item-comp :game="rec">
+                  </item-comp>
+              </div>
             </div>
           </td>
           
