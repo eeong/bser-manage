@@ -41,8 +41,15 @@ const gameSchema = new Schema(
   { collection: 'game' }
 );
 
+var month = {Jan:'01',Feb:'02',Mar:'03',Apr:'04',May:'05',Jun:'06',Jul:'07',Aug:'08',Sep:'09',Oct:'10',Nov:'11',Dec:'12'};
+
+function getDate(d){
+  let dArray = d.toString().split(' ').slice(1,4);
+  return dArray[2]+'-'+month[dArray[0]]+'-'+dArray[1];
+}
+
 gameSchema.virtual('title').get(function(){
-  return this.character + ' ' + this.mode;
+  return getDate(this.date) + ' '+ this.character + ' ' + this.mode;
 });
 
 gameSchema.set('toJSON', {getters:true, virtuals:true});

@@ -11,8 +11,7 @@
           <td >
             <div class="ui two column grid">
               <router-link class="four column" :to="{ name: 'show', params: { id: rec._id }}">
-                {{ rec.date.slice(0,10) }} 
-                <div >{{rec.mode}}</div>
+                {{ rec.title }} 
               </router-link>
                 <div class="four column ">
                     <item-comp :game="rec">
@@ -71,7 +70,7 @@ export default {
   },
   methods: {
     async onDestroy(build) {
-      const sure = window.confirm(`${build.title}삭제 하시겠습니까?`);
+      const sure = window.confirm(`${build.title}를 삭제 하시겠습니까?`);
       if (!sure) return;
       await api.deleterec(build._id);
       location.reload();
