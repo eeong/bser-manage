@@ -10,7 +10,10 @@
           </td>
           <td >
             <div class="ui two column grid">
-              <router-link class="four column" :to="{ name: 'show', params: { id: rec._id }}">{{ rec.date.slice(0,10) }} {{ rec.nickname }} {{ rec.mode }}</router-link>
+              <router-link class="four column" :to="{ name: 'show', params: { id: rec._id }}">
+                {{ rec.date.slice(0,10) }} 
+                <div >{{rec.mode}}</div>
+              </router-link>
                 <div class="four column ">
                     <item-comp :game="rec">
                     </item-comp>
@@ -23,7 +26,7 @@
               <i class="ui icon edit grey"></i>
             </router-link>
           </td>
-          <td width="75" class="center aligned" @click.prevent="onDestroy(rec._id)">
+          <td width="75" class="center aligned" @click.prevent="onDestroy(rec)">
             <a ><i class="ui grey icon trash"></i></a>
           </td>
         </tr>
@@ -60,20 +63,19 @@ export default {
         pageNum:5,
 
       },
-      active:[true,false,false,false],
+      
     };
   },
   components:{
     'item-comp': itemComp
   },
   methods: {
-    async onDestroy(id) {
-      const sure = window.confirm('삭제 하시겠습니까?');
+    async onDestroy(build) {
+      const sure = window.confirm(`${build.title}삭제 하시겠습니까?`);
       if (!sure) return;
-      await api.deleterec(id);
+      await api.deleterec(build._id);
       location.reload();
-      //const newrecs = this.recss.filter(recss => recss._id !== id);
-      //this.recss = newrecs;
+      
     },
     getPage(){
       let pages = this.paging.index*this.paging.pageNum;

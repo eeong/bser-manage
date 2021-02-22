@@ -76,6 +76,7 @@ export default {
         userNum: x.gameId || null,
         mode:this.gamemode.team[x.matchingTeamMode],
         weapon: x.item[0].transKr[0][1],
+        //title: `${x.nickname} ${this.gamemode.team[x.matchingTeamMode]}`,
         character: `${this.getCharacter(x.characterNum-1)}`,
         characterSrc: x.characterSrc,
         item: x.item

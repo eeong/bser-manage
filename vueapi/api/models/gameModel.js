@@ -29,19 +29,22 @@ const gameSchema = new Schema(
       default:'솔로',
       required: true
     },
-    title: {
-      type:String,
-      required:false
-    },
     date: {
       type: Date,
-      default:Date.now
+      default:Date.now,
     },
+    
     item:[
       
     ]
   },
   { collection: 'game' }
 );
+
+gameSchema.virtual('title').get(function(){
+  return this.character + ' ' + this.mode;
+});
+
+gameSchema.set('toJSON', {getters:true, virtuals:true});
 
 module.exports = mongoose.model('game', gameSchema);
