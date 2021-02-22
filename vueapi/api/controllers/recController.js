@@ -52,7 +52,6 @@ exports.update_a_rec = (req, res) => {
 };
 
 exports.delete_a_rec = (req, res) => {
-  console.log(req.params);
   rec.deleteOne({ _id: req.params.recId }, err => {
     if (err) res.send(err);
     res.json({
