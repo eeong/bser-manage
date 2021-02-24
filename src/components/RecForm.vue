@@ -102,7 +102,7 @@ export default {
       this.$router.push('/search')
     }
     this.loader = 'disabled';
-    if(this.games[0].userNum) this.currentMmr = await api.searchMmr(this.games[0].userNum,this.games[0].matchingTeamMode);
+    if(this.user.code == 200) this.currentMmr = await api.searchMmr(this.games[0].userNum,this.games[0].matchingTeamMode);
 },
   
 };
