@@ -25,6 +25,8 @@
 				</div>
 			</div>
 		</div>
+		
+		<portal-target name="semantic-ui-vue" />
 	</div>
 </template>
 

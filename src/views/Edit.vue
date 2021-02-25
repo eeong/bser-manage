@@ -2,7 +2,9 @@
   <div>
     <div class="ui text container">
       <h1>빌드 수정하기</h1>
-      
+      <sui-popup content="Add users to your feed">
+      <sui-button icon="add" slot="trigger" />
+    </sui-popup>
       <div class="ui inverted segment">
         <img class="ui image small rounded spaced top aligned" :src="require(`../assets/static/img/00.캐릭터/${rec.characterSrc}`)" alt="캐릭터">
         
