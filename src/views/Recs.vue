@@ -1,8 +1,9 @@
 <template>
   <div>
     <div class="ui text container">
-      <h1>템빌드저장소</h1>
-      <table id="recs" class="ui celled compact table">
+      <h1>템빌드</h1>
+      <table id="recs" class="ui celled compact table" style="position:relative;">
+        <div class="ui loader" :class="loader" ></div>
         <tr v-for="(rec, i) in recs" :key="i">
           <td width="75">
             <a class="ui teal ribbon label">{{rec.weapon}} </a>
@@ -31,7 +32,6 @@
         </tr>
         
       </table>
-      <div></div>
       <div class="ui secondary menu">
         <div class="ui pagination menu right">
             <a class="item" v-for="i in paging.end" :key="i" @click="pageClick(i)">{{i}}</a>
@@ -51,6 +51,7 @@ export default {
   name: 'recs',
   data() {
     return {
+      loader:'active',
       recs: [],
       recss:[],
       armors:[],
@@ -95,6 +96,7 @@ export default {
     this.paging.total = this.recss.length;
     this.paging.end = Math.ceil(this.paging.total/this.paging.pageNum);
     this.getPage();
+    this.loader='disabled';
     /* this.armors = await api.getarmor();
     this.weapons = await api.getweapon(); */
   }

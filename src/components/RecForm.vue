@@ -1,43 +1,45 @@
 <template >
 <div >
-  <div v-if="games != null">
-    <div class="ui text container">
-      <div class="ui loader" :class="loader"></div>
+  <div >
+    <div class="ui text container" >
       <h1 >전적확인 : 최근 10게임 </h1>
-      <h2 >{{games[0].nickname}}</h2>
-        <div class="ui three column stackable grid centered celled " v-for="(game, i) in games " :key="i" style="position:relative;">
-              <div class="ui column ">
-                  <h2 class="item header" style="display:inline-block;">#{{game.gameRank}}위</h2> 
-                  <h4 class="header" style="display:inline-block; margin:0;">{{gamemode.team[game.matchingTeamMode]}} {{gamemode.mode[game.matchingMode]}}</h4>
-                    <img class="ui circular image" :src="require(`../assets/static/img/00.캐릭터/${game.characterSrc}`)" >
-                    <div class="ui orange bottom right attached label" >{{getCharacter(game.characterNum-1)}}/{{game.item[0].transKr[0][1]}}</div>
-              </div>
-              <div class="ui three column">
-                <div class="ui three ">
-                  <div class="ui mini statistic " >
-                    <div class="value">K {{game.playerKill}} / A {{game.playerAssistant}} / H {{game.monsterKill}}</div>
-                  </div>
+      <h2 v-if="games != null">{{games[0].nickname}}</h2>
+        <div class="ui column " style="position:relative;">
+          <div class="ui loader" :class="loader"></div>
+          <div class="ui three column stackable grid centered celled " v-for="(game, i) in games " :key="i" style="position:relative;">
+                <div class="ui column " >
+                    <h2 class="item header" style="display:inline-block;">#{{game.gameRank}}위</h2> 
+                    <h4 class="header" style="display:inline-block; margin:0;">{{gamemode.team[game.matchingTeamMode]}} {{gamemode.mode[game.matchingMode]}}</h4>
+                      <img class="ui circular image" :src="require(`../assets/static/img/00.캐릭터/${game.characterSrc}`)" >
+                      <div class="ui orange bottom right attached label" >{{getCharacter(game.characterNum-1)}}/{{game.item[0].transKr[0][1]}}</div>
                 </div>
-                  
-                  <div class="ui three bottom">
-                    <div class="ui mini statistic">
-                      <div class="value">{{game.characterLevel}}</div>
-                      <div class="label">Lv</div>
-                      <div class="value">{{game.damageToPlayer}}</div>
-                      <div class="label">Dealt</div>
-                      <div class="value" v-if="games[i-1]">{{games[i-1].mmrBefore}}</div>
-                      <div class="value" v-if="i == 0 && currentMmr!=null">{{currentMmr.userRank.mmr}}</div>
-                      <div class="label">MMR</div>
+                <div class="ui three column">
+                  <div class="ui three ">
+                    <div class="ui mini statistic " >
+                      <div class="value">K {{game.playerKill}} / A {{game.playerAssistant}} / H {{game.monsterKill}}</div>
+                    </div>
+                  </div>
+                    
+                    <div class="ui three bottom">
+                      <div class="ui mini statistic">
+                        <div class="value">{{game.characterLevel}}</div>
+                        <div class="label">Lv</div>
+                        <div class="value">{{game.damageToPlayer}}</div>
+                        <div class="label">Dealt</div>
+                        <div class="value" v-if="games[i-1]">{{games[i-1].mmrBefore}}</div>
+                        <div class="value" v-if="i == 0 && currentMmr!=null">{{currentMmr.userRank.mmr}}</div>
+                        <div class="label">MMR</div>
+                      </div>
+                      
                     </div>
                     
-                  </div>
-                  
-              </div>
-              <div class="ui column three item-wrap">
-                <item-comp :game='game' >
-                </item-comp>
-              </div>
-            <div class="plus-button column"><button class="ui button compact icon blue " @click="onSubmit(game)" ><i class="plus icon "></i></button></div>  
+                </div>
+                <div class="ui column three item-wrap">
+                  <item-comp :game='game' >
+                  </item-comp>
+                </div>
+              <div class="plus-button column"><button class="ui button compact icon blue " @click="onSubmit(game)" ><i class="plus icon "></i></button></div>  
+          </div>
         </div>
       </div>
   </div>
@@ -93,6 +95,7 @@ export default {
   async mounted() {
     this.user = await api.searchId(this.$route.params.userId)
     this.games = this.user.userGames
+    this.loader = 'disabled';
     if (this.user.code == 404) {
       alert('먼저 전적을 검색할 닉네임을 입력해주세요.');
       this.$router.push('/search')
@@ -101,7 +104,6 @@ export default {
       alert(this.user);
       this.$router.push('/search')
     }
-    this.loader = 'disabled';
     if(this.user.code == 200) this.currentMmr = await api.searchMmr(this.games[0].userNum,this.games[0].matchingTeamMode);
 },
   
