@@ -2,73 +2,71 @@
 <div >
 		<div class="top attached ui three item menu tabular">
 			<a class="item equip" >
-				<div :id="game.item[0].itemGrade" v-if="game.item[0] != null">
-					<div class="img-wrap">
-						<div class="ui column relaxed item-desc" >
-							<div class="ui header" style="">{{game.item[0].name}}</div>
-							<div class="ui " v-for="(transItem, j) in game.item[0].transKr" :key="j">
-								{{transItem[0]}}: {{transItem[1]}}
-							</div>
-						</div>
-					<img class="ui image" :src="require(`../assets/static/img/01.무기/${game.item[0].name}.png`)">
-					</div>
+				<div :id="game.item[0].itemGrade" class="item-wrap" v-if="game.item[0] != null">
+					<sui-popup class="img-wrap" >
+						<sui-grid-column text-align="center">
+							<h4 is="sui-header">{{game.item[0].name}}</h4>
+							<p class="item-desc" v-for="(transItem, j) in game.item[0].transKr" :key="j">{{transItem[0]}}: {{transItem[1]}}</p>
+						</sui-grid-column>
+						<sui-image slot="trigger" :src="require(`../assets/static/img/01.무기/${game.item[0].name}.png`)" />
+					</sui-popup>
 				</div>
 			</a>
 			<a class="item equip" >
-				<div :id="game.item[1].itemGrade" v-if="game.item[1] != null">
-					<div class="img-wrap">
-						<div class="ui column relaxed item-desc">
-							<div class="ui header" >{{game.item[1].name}}</div>
-							<div class="ui" v-for="(transItem, j) in game.item[1].transKr" :key="j">{{transItem[0]}}: {{transItem[1]}}</div>
-						</div>
-						<img class="ui image"  :src="require(`../assets/static/img/02.방어구/02.옷/${game.item[1].name}.png`)">
-					</div>
+				<div :id="game.item[1].itemGrade" class="item-wrap" v-if="game.item[1] != null">
+					<sui-popup class="img-wrap" >
+						<sui-grid-column text-align="center">
+							<h4 is="sui-header">{{game.item[1].name}}</h4>
+							<p class="item-desc" v-for="(transItem, j) in game.item[1].transKr" :key="j">{{transItem[0]}}: {{transItem[1]}}</p>
+						</sui-grid-column>
+						<sui-image slot="trigger" :src="require(`../assets/static/img/02.방어구/02.옷/${game.item[1].name}.png`)" />
+					</sui-popup>
 				</div>
 			</a>
 			<a class="item equip" >
-				<div :id="game.item[2].itemGrade" v-if="game.item[2] != null">
-					<div class="img-wrap">
-						<div class="ui column relaxed item-desc">
-							<div class="ui header" >{{game.item[2].name}}</div>
-							<div class="ui" v-for="(transItem, j) in game.item[2].transKr" :key="j">{{transItem[0]}}: {{transItem[1]}}</div>
-						</div>
-						<img class="ui image" :src="require(`../assets/static/img/02.방어구/01.머리/${game.item[2].name}.png`)">
-					</div>
+				<div :id="game.item[2].itemGrade" class="item-wrap" v-if="game.item[2] != null">
+					<sui-popup class="img-wrap" >
+						<sui-grid-column text-align="center">
+							<h4 is="sui-header">{{game.item[2].name}}</h4>
+							<p class="item-desc" v-for="(transItem, j) in game.item[2].transKr" :key="j">{{transItem[0]}}: {{transItem[1]}}</p>
+						</sui-grid-column>
+						<sui-image slot="trigger" :src="require(`../assets/static/img/02.방어구/01.머리/${game.item[2].name}.png`)" />
+					</sui-popup>
 				</div>
 			</a>
 		</div>
 		<div class="attached ui three item menu tabular">
 			<a class="item equip"  >
-				<div :id="game.item[3].itemGrade" v-if="game.item[3] != null">
-					<div class="img-wrap">
-						<div class="ui column relaxed item-desc">
-							<div class="ui header" >{{game.item[3].name}}</div>
-							<div class="ui" v-for="(transItem, j) in game.item[3].transKr" :key="j">{{transItem[0]}}: {{transItem[1]}}</div>
-						</div>
-						<img class="ui image"  :src="require(`../assets/static/img/02.방어구/03.팔/${game.item[3].name}.png`)">
-					</div>
+				<div :id="game.item[3].itemGrade" class="item-wrap" v-if="game.item[3] != null">
+					<sui-popup class="img-wrap" >
+						<sui-grid-column text-align="center">
+							<h4 is="sui-header">{{game.item[3].name}}</h4>
+							<p class="item-desc" v-for="(transItem, j) in game.item[3].transKr" :key="j">{{transItem[0]}}: {{transItem[1]}}</p>
+						</sui-grid-column>
+						<sui-image slot="trigger" :src="require(`../assets/static/img/02.방어구/03.팔/${game.item[3].name}.png`)" />
+					</sui-popup>
 				</div>
 			</a>
 			<a class="item equip" >
-				<div :id="game.item[4].itemGrade" v-if="game.item[4] != null">
-					<div class="img-wrap">
-						<div class="ui column relaxed item-desc">
-							<div class="ui header" >{{game.item[4].name}}</div>
-							<div class="ui" v-for="(transItem, j) in game.item[4].transKr" :key="j">{{transItem[0]}}: {{transItem[1]}}</div>
-						</div>
-						<img class="ui image"  :src="require(`../assets/static/img/02.방어구/04.다리/${game.item[4].name}.png`)">
-					</div>
+				<div :id="game.item[4].itemGrade" class="item-wrap" v-if="game.item[4] != null">
+					<sui-popup class="img-wrap" >
+						<sui-grid-column text-align="center">
+							<h4 is="sui-header">{{game.item[4].name}}</h4>
+							<p class="item-desc" v-for="(transItem, j) in game.item[4].transKr" :key="j">{{transItem[0]}}: {{transItem[1]}}</p>
+						</sui-grid-column>
+						<sui-image slot="trigger" :src="require(`../assets/static/img/02.방어구/04.다리/${game.item[4].name}.png`)" />
+					</sui-popup>
 				</div>
 			</a>
 			<a class="item equip" >
-				<div :id="game.item[5].itemGrade" v-if="game.item[5] != null">
-					<div class="img-wrap">
-						<div class="ui column relaxed item-desc">
-							<div class="ui header" >{{game.item[5].name}}</div>
-							<div class="ui" v-for="(transItem, j) in game.item[5].transKr" :key="j">{{transItem[0]}}: {{transItem[1]}}</div>
-						</div>
-						<img class="ui image"  :src="require(`../assets/static/img/02.방어구/05.장식/${game.item[5].name}.png`)">
-					</div>
+				<div :id="game.item[5].itemGrade" class="item-wrap" v-if="game.item[5] != null">
+					<sui-popup class="img-wrap" >
+						<sui-grid-column text-align="center">
+							<h4 is="sui-header">{{game.item[5].name}}</h4>
+							<p class="item-desc" v-for="(transItem, j) in game.item[5].transKr" :key="j">{{transItem[0]}}: {{transItem[1]}}</p>
+						</sui-grid-column>
+						<sui-image slot="trigger" :src="require(`../assets/static/img/02.방어구/05.장식/${game.item[5].name}.png`)" />
+					</sui-popup>
 				</div>
 			</a>
 		</div>
@@ -115,41 +113,7 @@ export default {
 .item {
 	display: inline-block !important;
 }
-.item.equip .item-desc {
-	position: absolute;
-	visibility: hidden;
-	opacity: 0;
-	z-index: 2;  
-	width: 250%;
-	height: auto;
-	padding: 1em 0;
-	transition: all .25s;
-	border: 1px solid #d5d5d6;
-	background-color: #f2f4f5;
-	box-shadow: 1px 1px 0 0 #bababc;
-	left: 100%;
-	top: 35%;
 
-}
-.item.equip:hover .item-desc{
-	visibility: visible;
-	opacity: 1; 
-}
-
-.item-desc::before {
-	position: absolute;
-	content: '';
-	width: 0.6em;
-	height: 0.6em;
-	left: -.35em;
-	top: 0.5em;
-	transform: rotate(45deg);
-	background-color: #f2f4f5;
-	border-bottom: 1px solid #d5d5d6;
-	border-left: 1px solid #d5d5d6;
-	box-shadow: 0px 1px 0 0 #bababc;
-	z-index: 2;
-}
 .image.circular {
 	width: 40%;
 }
@@ -161,15 +125,12 @@ export default {
 	transform: translateY(-60%);
 	text-align: right;
 }
-.img-wrap {
-	padding: 0.92857143em 0 ;
+
+.item-wrap {
+	padding: 20% 0;
 }
-.ui.tabular.menu {
-	border-bottom: none;
-}
-.segment.ui {
-	border: none ;
-	box-shadow: none ;
+.item-desc {
+	margin: 0.25em 0 ;
 }
 
 #Common {
@@ -185,7 +146,7 @@ export default {
 	background: rgb(44,61,130);
 	background: linear-gradient(180deg, rgb(31, 42, 87) 0%, rgb(58, 76, 197) 100%);
 }
-#Epic {   
+#Epic {
 	background: rgb(99,44,130);
 	background: linear-gradient(180deg, rgb(67, 30, 88) 0%, rgb(136, 62, 182)100%);
 }

@@ -38,7 +38,12 @@
                   <item-comp :game='game' >
                   </item-comp>
                 </div>
-              <div class="plus-button column"><button class="ui button compact icon blue " @click="onSubmit(game)" ><i class="plus icon "></i></button></div>  
+              <div class="plus-button">
+                <sui-popup  content="이 템트리를 빌드에 추가합니다" size="mini">
+                  <button slot="trigger" class="ui button compact icon blue " @click="onSubmit(game)" ><i class="plus icon "></i>
+                  </button>
+                </sui-popup>
+              </div>
           </div>
         </div>
       </div>
@@ -121,9 +126,9 @@ export default {
 .plus-button {
   position: absolute !important;
   top: 50%;
-  right: -35%;
+  right: -10%;
   box-shadow: none !important;
-  transform: translateY(-60%);
+  transform: translateY(-65%);
   text-align: right;
 }
 .img-wrap {

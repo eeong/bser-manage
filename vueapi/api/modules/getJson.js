@@ -18,7 +18,7 @@ const transStatus = function(stat) {
 	for(i in stat){
 		trans.filter((v) => {
 			if(v[0] == i) result.push([v[1], stat[i]])
-			else if(v[0] == stat[i]) result.push(['무기',v[1]])
+			else if(v[0] == stat[i]) result.push(['무기타입',v[1]])
 		})
 	}
 	return result;
