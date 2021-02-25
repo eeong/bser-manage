@@ -39,7 +39,7 @@
                   </item-comp>
                 </div>
               <div class="plus-button">
-                <sui-popup  content="이 템트리를 빌드에 추가합니다" size="mini">
+                <sui-popup content="이 템트리를 빌드에 추가합니다" size="mini">
                   <button slot="trigger" class="ui button compact icon blue " @click="onSubmit(game)" ><i class="plus icon "></i>
                   </button>
                 </sui-popup>
@@ -109,6 +109,7 @@ export default {
       alert(this.user);
       this.$router.push('/search')
     }
+    else if (this.user == null) location.reload();
     if(this.user.code == 200) this.currentMmr = await api.searchMmr(this.games[0].userNum,this.games[0].matchingTeamMode);
 },
   

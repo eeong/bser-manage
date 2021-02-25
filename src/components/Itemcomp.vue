@@ -113,7 +113,9 @@ export default {
 .item {
 	display: inline-block !important;
 }
-
+.item.equip {
+	cursor: default !important;
+}
 .image.circular {
 	width: 40%;
 }

@@ -20,11 +20,10 @@
                 </div>
             </div>
           </td>
-          
           <td width="75" class="center aligned">
-            <router-link :to="{ name: 'edit', params: { id: rec._id }}" >
-              <i class="ui icon edit grey"></i>
-            </router-link>
+              <router-link :to="{ name: 'edit', params: { id: rec._id }}">
+                <i class="ui icon edit grey"></i>
+              </router-link>
           </td>
           <td width="75" class="center aligned" @click.prevent="onDestroy(rec)">
             <a ><i class="ui grey icon trash"></i></a>

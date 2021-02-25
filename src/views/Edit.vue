@@ -1,33 +1,34 @@
 <template>
-  <div>
-    <div class="ui text container">
+  <div class="ui text container">
       <h1>빌드 수정하기</h1>
-      <sui-popup content="Add users to your feed">
-      <sui-button icon="add" slot="trigger" />
-    </sui-popup>
-      <div class="ui inverted segment">
-        <img class="ui image small rounded spaced top aligned" :src="require(`../assets/static/img/00.캐릭터/${rec.characterSrc}`)" alt="캐릭터">
+      
+      <div class="ui inverted segment" v-if="rec != null">
+        <img class="ui image small rounded spaced " :src="require(`../assets/static/img/00.캐릭터/${rec.characterSrc}`)" alt="캐릭터">
         
         <div class="ui transparent inverted input header">
           <input type="text" :placeholder="rec.title" v-model="rec.title">
         </div>
       </div>
-    </div>
+    <char-selection v-if="rec != null" :rec="rec" @recMody="rec">
+    </char-selection>
   </div>
 </template>
 
 <script>
 import { api } from '../helpers/helpers';
+import CharSelection from '../components/CharSelection';
 
 export default {
   name: 'edit',
   components: {
+    "char-selection": CharSelection,
   },
   data: function() {
     return {
       title:"",
       loader:"active",
       rec:null,
+      
     };
   },
   methods: {
@@ -40,6 +41,7 @@ export default {
   async mounted() {
     this.rec = await api.getrec(this.$route.params.id);
     this.loader = 'disabled';
+    
   }
 };
 </script>
