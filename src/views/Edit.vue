@@ -1,33 +1,56 @@
 <template>
   <div>
-    <h1>Edit task</h1>
-    <rec-form @createOrUpdate="createOrUpdate" :task=this.task></rec-form>
+    <div class="ui text container">
+      <h1>빌드 수정하기</h1>
+      <div class="ui inverted segment">
+        <img class="ui image small rounded spaced top aligned" :src="require(`../assets/static/img/00.캐릭터/${rec.characterSrc}`)" alt="캐릭터">
+        
+        <div class="ui transparent inverted input header">
+          <input type="text" :placeholder="rec.title" v-model="rec.title">
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import recForm from '../components/RecForm.vue';
 import { api } from '../helpers/helpers';
 
 export default {
   name: 'edit',
   components: {
-    'rec-form': recForm
   },
   data: function() {
     return {
-      task: {}
+      title:"",
+      loader:"active",
+      rec:null,
     };
   },
   methods: {
-    createOrUpdate: async function(task) {
+    /* createOrUpdate: async function(task) {
       await api.updatetask(task);
       this.flash('task updated sucessfully!', 'success');
       this.$router.push(`/tasks/${task._id}`);
-    }
+    } */
   },
   async mounted() {
-    this.task = await api.gettask(this.$route.params.id);
+    this.rec = await api.getrec(this.$route.params.id);
+    this.loader = 'disabled';
   }
 };
 </script>
+
+<style scoped>
+.ui.inverted.segment {
+  background: #413e3e;
+  overflow: hidden;
+  height: 8rem;
+}
+
+.ui.image.small.rounded.spaced {
+  transform:translate(-30%, -10%);
+  background: rgb(129, 120, 120);
+}
+
+</style>

@@ -47,7 +47,7 @@ export default new Router({
     {
       path: '/recs/:id/edit',
       name: 'edit',
-      component: Edit
+      component: Edit,
     },
     
     {

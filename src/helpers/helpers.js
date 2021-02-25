@@ -37,8 +37,8 @@ export const api = {
     const res = await axios.get(baseURL);
     return res.data;
   }),
-  deleterec: handleError(async id => {
-    const res = await axios.delete(baseURL + id);
+  deleterec: handleError(async payload => {
+    const res = await axios.delete(baseURL + payload._id);
     return res.data;
   }),
   createrec: handleError(async payload => {
