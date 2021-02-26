@@ -10,15 +10,13 @@
             <img class="ui item tiny circular image" :src="require(`../assets/static/img/00.캐릭터/${rec.characterSrc}`)" >
           </td>
           <td >
-            <div class="ui two column grid">
               <router-link class="four column" :to="{ name: 'show', params: { id: rec._id }}">
                 {{ rec.title }} 
               </router-link>
-                <div class="four column ">
-                    <item-comp :game="rec">
-                    </item-comp>
-                </div>
-            </div>
+          </td>
+          <td width="200">
+            <item-comp :game="rec">
+            </item-comp>
           </td>
           <td width="75" class="center aligned">
               <router-link :to="{ name: 'edit', params: { id: rec._id }}">

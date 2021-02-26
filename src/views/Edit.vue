@@ -9,7 +9,7 @@
           <input type="text" :placeholder="rec.title" v-model="rec.title">
         </div>
       </div>
-    <char-selection v-if="rec != null" :rec="rec" @recMody="rec">
+    <char-selection v-if="rec != null" :rec="rec">
     </char-selection>
   </div>
 </template>

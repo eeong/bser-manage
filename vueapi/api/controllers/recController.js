@@ -33,7 +33,6 @@ exports.create_a_rec = (req, res) => {
 };
 
 exports.read_a_rec = (req, res) => {
-  console.log(req.params)
   rec.findById(req.params.recId, (err, rec) => {
     if (err) res.send(err);
     res.json(rec);
