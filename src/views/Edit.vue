@@ -6,7 +6,7 @@
         <div class="ui image">
           <img class="ui image small spaced " :src="require(`../assets/static/img/00.캐릭터/${rec.characterSrc}`)" alt="캐릭터">
           <sui-popup :content="rec.weapon">
-            <img slot="trigger" class="ui image label ribbon circular w-type" :src="require(`../assets/static/img/type/${rec.item[0].weaponType}.png`)" alt="weapontype">
+            <img slot="trigger" class="ui image label ribbon circular w-type" :src="require(`../assets/static/img/type/${rec.weapon}.png`)" alt="weapontype">
           </sui-popup>
         </div>
         <div class="ui transparent inverted input header">
