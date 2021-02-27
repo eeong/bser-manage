@@ -3,10 +3,10 @@
     
     <sui-dropdown
     
-    placeholder= rec.character
+    placeholder= '캐릭터 선택'
     selection
     :options="options"
-    v-model="current"
+    :="current"
     
 
     />
@@ -173,10 +173,18 @@ export default {
       this.rec.characterSrc=this.current[1];
     },
     
+    
+  },
+  computed: {
+    selections: function(){
+      return this.current
+    }
   },
   watch: {
     'current':function(){
-      this.modyRec()
+      let charcon=confirm("캐릭터를 변경하면 현재 아이템트리가 삭제됩니다.");
+      if(charcon) this.modyRec();
+      
     }
   },
   async mounted() {
