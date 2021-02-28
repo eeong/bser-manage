@@ -11,12 +11,36 @@
       />
       
     </sui-menu>
-    <sui-segment attached="top">
-      dd
-    </sui-segment>
-    <sui-segment attached>
-      dd
-    </sui-segment>
+    <div class="menu-wrap weapon-menu" v-show="isActive('무기')" >
+      <sui-segment attached>
+        aa
+      </sui-segment>
+    </div>
+    <div class="menu-wrap weapon-menu" v-show="isActive('옷')" >
+      <sui-segment attached>
+        bb
+      </sui-segment>
+    </div>
+    <div class="menu-wrap weapon-menu" v-show="isActive('머리')" >
+      <sui-segment attached>
+        bb
+      </sui-segment>
+    </div>
+    <div class="menu-wrap weapon-menu" v-show="isActive('팔')" >
+      <sui-segment attached>
+        bb
+      </sui-segment>
+    </div>
+    <div class="menu-wrap weapon-menu" v-show="isActive('다리')" >
+      <sui-segment attached>
+        bb
+      </sui-segment>
+    </div>
+    <div class="menu-wrap weapon-menu" v-show="isActive('장신구')" >
+      <sui-segment attached>
+        bb
+      </sui-segment>
+    </div>
   
   </div>
 </template>
@@ -31,7 +55,7 @@ export default {
   
   data: function() {
     return {
-      active: 'Home',
+      active: '무기',
       items: ['무기', '옷', '머리','팔','다리','장신구'],
     }
   },
@@ -48,7 +72,7 @@ export default {
     
   },
   async mounted() {
-  
+    
   }
 };
 </script>
