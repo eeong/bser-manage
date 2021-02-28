@@ -133,7 +133,7 @@ export default {
 	width: 100%;
 	padding: 1.375em 0;
 	background: rgba(186, 186, 187, 0.3);
-	z-index: -1;	
+	z-index: -1;
 }
 
 .image.circular {
@@ -153,7 +153,9 @@ export default {
 }
 
 .item-wrap {
-	padding: 20% 0;
+	position: absolute;
+	top: -0.125em;
+	padding: 19% 0;
 }
 .item-desc {
 	margin: 0.25em 0 ;

@@ -20,7 +20,9 @@
         </tr>
       </div>
     <char-selection v-if="rec != null" :rec="rec" />
-    
+    <div class="ui segment" >
+      <item-selection style="width:50%;" class="column" v-if="rec !=null"  />
+    </div>
   </div>
 </template>
 
@@ -28,12 +30,14 @@
 import { api } from '../helpers/helpers';
 import ItemComp from '../components/Itemcomp';
 import CharSelection from '../components/CharSelection';
+import ItemSelection from '../components/ItemSelection';
 
 export default {
   name: 'edit',
   components: {
     "item-comp": ItemComp,
     "char-selection": CharSelection,
+    "item-selection": ItemSelection,
   },
   data: function() {
     return {
