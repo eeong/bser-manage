@@ -127,6 +127,9 @@ export default {
 	transform: translateY(-60%);
 	text-align: right;
 }
+.ui.tabular.menu {
+	border: none;
+}
 
 .item-wrap {
 	padding: 20% 0;
