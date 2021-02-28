@@ -84,4 +84,11 @@ export default {
   top: 20%;
   left: 10% !important;
 }
+
+@media screen and (max-width:767px) {
+	.weapon-td {
+    position: relative;
+  }
+	
+}
 </style>

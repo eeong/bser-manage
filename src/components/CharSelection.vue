@@ -190,7 +190,11 @@ export default {
   watch: {
     'current':function(){
       let charcon=confirm("캐릭터를 변경하면 현재 아이템트리가 삭제됩니다.");
-      if(charcon) {this.modyRec(); this.optionsW = this.weaponMatch(this.current[0]); this.currentW = this.optionsW[0]}
+      if(charcon) { this.modyRec(); 
+      this.optionsW = this.weaponMatch(this.current[0]); 
+      this.currentW = this.optionsW[0]
+      this.rec.item = {};
+      }
       
     },
     'currentW': function(){

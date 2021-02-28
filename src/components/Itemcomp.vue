@@ -2,6 +2,7 @@
 <div >
 		<div class="top attached ui three item menu tabular">
 			<a class="item equip" >
+				<div class="item-blank"> 무기</div>
 				<div :id="game.item[0].itemGrade" class="item-wrap" v-if="game.item[0] != null">
 					<sui-popup class="img-wrap" >
 						<sui-grid-column text-align="center">
@@ -13,6 +14,7 @@
 				</div>
 			</a>
 			<a class="item equip" >
+				<div class="item-blank" >옷</div>
 				<div :id="game.item[1].itemGrade" class="item-wrap" v-if="game.item[1] != null">
 					<sui-popup class="img-wrap" >
 						<sui-grid-column text-align="center">
@@ -24,6 +26,7 @@
 				</div>
 			</a>
 			<a class="item equip" >
+				<div class="item-blank" >머리</div>
 				<div :id="game.item[2].itemGrade" class="item-wrap" v-if="game.item[2] != null">
 					<sui-popup class="img-wrap" >
 						<sui-grid-column text-align="center">
@@ -37,6 +40,7 @@
 		</div>
 		<div class="attached ui three item menu tabular">
 			<a class="item equip"  >
+				<div class="item-blank" >팔</div>
 				<div :id="game.item[3].itemGrade" class="item-wrap" v-if="game.item[3] != null">
 					<sui-popup class="img-wrap" >
 						<sui-grid-column text-align="center">
@@ -48,6 +52,7 @@
 				</div>
 			</a>
 			<a class="item equip" >
+				<div class="item-blank" >다리</div>
 				<div :id="game.item[4].itemGrade" class="item-wrap" v-if="game.item[4] != null">
 					<sui-popup class="img-wrap" >
 						<sui-grid-column text-align="center">
@@ -59,6 +64,7 @@
 				</div>
 			</a>
 			<a class="item equip" >
+				<div class="item-blank" >장식</div>
 				<div :id="game.item[5].itemGrade" class="item-wrap" v-if="game.item[5] != null">
 					<sui-popup class="img-wrap" >
 						<sui-grid-column text-align="center">
@@ -93,7 +99,11 @@ export default {
 	methods: {
 			
 	},
+	watch :{
+		'game.item':function(){
 
+		}
+	},
 	async mounted() {
 	
 }
@@ -116,9 +126,20 @@ export default {
 .item.equip {
 	cursor: default !important;
 }
+
+.item-blank {
+	font-size: 0.925em;
+	font-weight: bold;
+	width: 100%;
+	padding: 1.375em 0;
+	background: rgba(186, 186, 187, 0.3);
+	z-index: -1;	
+}
+
 .image.circular {
 	width: 40%;
 }
+
 .plus-button {
 	position: absolute !important;
 	top: 50%;
