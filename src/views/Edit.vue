@@ -14,7 +14,7 @@
             <input type="text" :placeholder="rec.title" v-model="rec.title">
           </td>
         <td class="ui weapon-td" width="190">
-          <item-comp class="" v-if="rec != null" :game="rec" :key="itemCompKey" />
+          <item-comp :taken="rec" :key="itemCompKey" />
         </td>
 
         </tr>
@@ -24,7 +24,7 @@
       <item-selection 
         style="width:50%;" 
         class="column" 
-        v-if="rec !=null" 
+        :key="itemSelectionKey"
         :rec="rec" 
         :weapons="weaponDB" 
         @changeItem="changeItem"
@@ -53,6 +53,7 @@ export default {
       rec:null,
       weaponDB:[],
       itemCompKey:0,
+      itemSelectionKey:0,
     };
   },
   watch:{
@@ -66,15 +67,17 @@ export default {
     } */
     getWeaponDB: async function(currentW){
       this.weaponDB = await api.getweapon(currentW);
+      this.forceRender('s');
     },
-    forceRender: function(){
-      this.itemCompKey += 1;
+    forceRender: function(what){
+      if(what == 's') this.itemSelectionKey += 1;
+      else if (what == 'c') this.itemCompKey += 1;
     },
     changeItem: function({selected,val}){
       let itemArray = {"Weapon":0};
       let index = itemArray[selected[0]];
       this.rec.item[index] = val;
-      this.forceRender();
+      this.forceRender('c');
     },
   },
   async mounted() {

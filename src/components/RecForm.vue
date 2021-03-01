@@ -35,7 +35,7 @@
                     
                 </div>
                 <div class="ui column three item-wrap">
-                  <item-comp :game='game' >
+                  <item-comp :taken='game' >
                   </item-comp>
                 </div>
               <div class="plus-button">

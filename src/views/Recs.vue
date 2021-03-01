@@ -18,7 +18,7 @@
               </router-link>
           </td>
           <td width="200">
-            <item-comp :game="rec" />
+            <item-comp :taken="rec" />
           </td>
           <td width="75" class="center aligned">
               <router-link :to="{ name: 'edit', params: { id: rec._id }}">

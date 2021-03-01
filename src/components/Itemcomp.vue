@@ -1,6 +1,6 @@
 <template >
-<div >
-		<div class="top attached ui three item menu tabular">
+<div v-if="game!=null">
+		<div class="top attached ui three item menu tabular" >
 			<a class="item equip" >
 				<div class="item-blank"> 무기</div>
 				<div :id="game.item[0].itemGrade" class="item-wrap" v-if="game.item[0] != null">
@@ -84,10 +84,11 @@
 export default {
 	name: 'item-comp',
 	props: {
-		game:{type:Object} 
+		taken:{type:Object} 
 	},
 	data() {
 		return {
+			game:null,
 		};
 	},
 	computed: {
@@ -100,6 +101,7 @@ export default {
 		
 	},
 	async mounted() {
+		this.game = this.taken
 }
 };
 </script>

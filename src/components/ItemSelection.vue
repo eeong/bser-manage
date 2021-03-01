@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div >
 		<sui-menu pointing secondary>
 			<a
 				is="sui-menu-item"
@@ -19,7 +19,7 @@
 							<h4 is="sui-header">{{weapon.name}}</h4>
 							<p class="item-desc" v-for="(transItem, j) in weapon.transKr" :key="j">{{transItem[0]}}: {{transItem[1]}}</p>
 						</sui-grid-column>
-						<sui-image slot="trigger" class="ui tiny" rounded :id="weapon.itemGrade" :src="require(`../assets/static/img/01.무기/${rec.weapon}/${weapon.name}.png`)" />
+						<sui-image slot="trigger" class="ui tiny" rounded :id="weapon.itemGrade" :src="require(`../assets/static/img/01.무기/${weapon.transKr[0][1]}/${weapon.name}.png`)" />
 				</sui-popup>
 				<sui-list-content>
 					<p is="sui-list-header" style="transform: translateY(55%);">{{weapon.name}}</p>
@@ -94,10 +94,16 @@ export default {
 	watch: {
 		'selected':function(){
 			this.$emit('changeItem',{'selected':this.selected, 'val':this.selectedWeapon});
+		},
+		
+	},
+	computed:{
+		selection:function(){
+			return this.onClickItem(this.rec.item[0], this.rec.item[0].code) 
 		}
 	},
 	async mounted() {
-		this.onClickItem(this.rec.item[0],this.rec.item[0].code) 
+		if(this.rec !=null && this.rec.item[0] != null) this.onClickItem(this.rec.item[0], this.rec.item[0].code)
 	}
 };
 </script>
