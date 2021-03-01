@@ -14,14 +14,21 @@
             <input type="text" :placeholder="rec.title" v-model="rec.title">
           </td>
         <td class="ui weapon-td" width="190">
-          <item-comp class="" v-if="rec != null" :game="rec" />
+          <item-comp class="" v-if="rec != null" :game="rec" :key="itemCompKey" />
         </td>
 
         </tr>
       </div>
     <char-selection v-if="rec != null" :rec="rec" @getWeaponDB="getWeaponDB" />
     <div class="ui segment" >
-      <item-selection style="width:50%;" class="column" v-if="rec !=null" :rec="rec" :weapons="weaponDB" />
+      <item-selection 
+        style="width:50%;" 
+        class="column" 
+        v-if="rec !=null" 
+        :rec="rec" 
+        :weapons="weaponDB" 
+        @changeItem="changeItem"
+        />
     </div>
   </div>
 </template>
@@ -45,6 +52,7 @@ export default {
       loader:"active",
       rec:null,
       weaponDB:[],
+      itemCompKey:0,
     };
   },
   watch:{
@@ -58,7 +66,16 @@ export default {
     } */
     getWeaponDB: async function(currentW){
       this.weaponDB = await api.getweapon(currentW);
-    }
+    },
+    forceRender: function(){
+      this.itemCompKey += 1;
+    },
+    changeItem: function({selected,val}){
+      let itemArray = {"Weapon":0};
+      let index = itemArray[selected[0]];
+      this.rec.item[index] = val;
+      this.forceRender();
+    },
   },
   async mounted() {
     this.rec = await api.getrec(this.$route.params.id);

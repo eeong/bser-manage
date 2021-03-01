@@ -72,6 +72,11 @@ button.ui.button {
 ul,li {
 	list-style: none;
 }
+
+.item-desc {
+	margin: 0.25em 0 ;
+}
+
 #Common {
 	background: rgb(107,107,107);
 	background: linear-gradient(180deg, rgba(107,107,107,1) 0%, rgba(213,213,213,1) 100%);

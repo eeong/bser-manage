@@ -12,12 +12,12 @@
 			
 		</sui-menu>
 
-		<sui-list style="height:350px; overflow:auto;" divided relaxed v-show="isActive('무기')" >
-			<sui-list-item class="item-button" :class="selected" v-for="(weapon,i) in weapons" :key="i" @click="onClickItem">
-				<sui-popup  >
+		<sui-list style="height:350px; overflow:auto;" class="item-list" divided relaxed v-show="isActive('무기')" >
+			<sui-list-item class="item-button" v-for="(weapon,i) in weapons" :key="i" @click="onClickItem(weapon)" :class="{selected:isSelected('Weapon',weapon)}">
+				<sui-popup>
 						<sui-grid-column text-align="center">
 							<h4 is="sui-header">{{weapon.name}}</h4>
-							<!--p class="item-desc" v-for="(transItem, j) in game.item[0].transKr" :key="j">{{transItem[0]}}: {{transItem[1]}}</!--p-->
+							<p class="item-desc" v-for="(transItem, j) in weapon.transKr" :key="j">{{transItem[0]}}: {{transItem[1]}}</p>
 						</sui-grid-column>
 						<sui-image slot="trigger" class="ui tiny" rounded :id="weapon.itemGrade" :src="require(`../assets/static/img/01.무기/${rec.weapon}/${weapon.name}.png`)" />
 				</sui-popup>
@@ -27,11 +27,6 @@
 			</sui-list-item>
 		</sui-list>
 
-		<!-- <div class="menu-wrap weapon-menu" v-show="isActive('무기')" >
-			<sui-segment attached>
-				aa
-			</sui-segment>
-		</div> -->
 		<div class="menu-wrap weapon-menu" v-show="isActive('옷')" >
 			<sui-segment attached>
 				bb
@@ -74,8 +69,8 @@ export default {
 		return {
 			active: '무기',
 			items: ['무기', '옷', '머리','팔','다리','장신구'],
-			weaponDB:null,
-			selected:false,
+			selected:[],
+			selectedWeapon:'',
 		}
 	},
 	methods: {
@@ -85,30 +80,39 @@ export default {
 		select(name) {
 			this.active = name;
 		},
-		onClickItem() {
-
+		isSelected(ctgr, item){
+			return this.selected[0] == ctgr && this.selected[1] == item.code;
+		},
+		onClickItem(val) {
+			this.selectedWeapon = val;
+			this.selected = [val.itemType,val.code];
+			
 		},
 		
 	},
 	
 	watch: {
-		
+		'selected':function(){
+			this.$emit('changeItem',{'selected':this.selected, 'val':this.selectedWeapon});
+		}
 	},
 	async mounted() {
-		
+		this.onClickItem(this.rec.item[0],this.rec.item[0].code) 
 	}
 };
 </script>
 
 <style scoped>
-
+.item-list {
+	padding-top: 0.5em;
+}
 .item-button {
 	cursor: pointer;
-	transition:all .2s
+	box-sizing:border-box
 }
 .item-button.selected {
-	border: 2px solid rgb(52, 97, 43);
-	background: rgba(52, 97, 43,0.8);
+	border: 1.5px solid #ced124 !important;
+	border-style: groove;
 }
 
 </style>

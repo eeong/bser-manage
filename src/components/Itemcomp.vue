@@ -88,24 +88,18 @@ export default {
 	},
 	data() {
 		return {
-			errorsPresent: false,
-			user:null,
-			games: null,
 		};
 	},
 	computed: {
 		
 	},
 	methods: {
-			
+		
 	},
 	watch :{
-		'game.item':function(){
-
-		}
+		
 	},
 	async mounted() {
-	
 }
 };
 </script>
@@ -156,9 +150,6 @@ export default {
 	position: absolute;
 	top: -0.125em;
 	padding: 19% 0;
-}
-.item-desc {
-	margin: 0.25em 0 ;
 }
 
 .ui.menu .item {

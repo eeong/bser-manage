@@ -17,6 +17,10 @@ module.exports = app => {
     .get(recBuilder.read_itemWeapon);
 
   app
+    .route('/recs/getitem/:type/:code')
+    .get(recBuilder.get_item)
+    
+  app
     .route('/recs/:recId')
     .get(recBuilder.read_a_rec)
     .put(recBuilder.update_a_rec)
