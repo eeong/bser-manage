@@ -17,7 +17,7 @@ exports.read_itemWeapon = (req, res) => {
   itemW.find({weaponType: transType[0][0]}, (err, weapons) => {
     if (err) res.send(err);
     res.json(weapons);
-  });
+  }).sort({code:'desc'});
 };
 
 exports.list_all_recs = (req, res) => {

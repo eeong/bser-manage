@@ -12,11 +12,11 @@
       
     </sui-menu>
 
-    <sui-list divided relaxed v-show="isActive('무기')" >
-      <sui-list-item v-for="(weapon,i) in weapons" :key="i">
-        <sui-image avatar :src="require(`../assets/static/img/${rec.weapon}/${weapon.name}.png`)" />
+    <sui-list style="height:350px; overflow:auto;" divided relaxed v-show="isActive('무기')" >
+      <sui-list-item class="item-button" :class="selected" v-for="(weapon,i) in weapons" :key="i" @click="onClickItem">
+        <sui-image class="ui tiny" rounded :id="weapon.itemGrade" :src="require(`../assets/static/img/01.무기/${rec.weapon}/${weapon.name}.png`)" />
         <sui-list-content>
-          <a is="sui-list-header">{{weapon.name}}</a>
+          <p is="sui-list-header" style="transform: translateY(55%);">{{weapon.name}}</p>
         </sui-list-content>
       </sui-list-item>
     </sui-list>
@@ -61,7 +61,7 @@ export default {
   name: 'item-selection',
   props: {
     rec:{type:Object},
-    weapons:[],
+    weapons:{type:Array},
   },
   
   data: function() {
@@ -69,6 +69,7 @@ export default {
       active: '무기',
       items: ['무기', '옷', '머리','팔','다리','장신구'],
       weaponDB:null,
+      selected:false,
     }
   },
   methods: {
@@ -77,6 +78,9 @@ export default {
     },
     select(name) {
       this.active = name;
+    },
+    onClickItem() {
+
     },
     
   },
@@ -92,5 +96,13 @@ export default {
 
 <style scoped>
 
+.item-button {
+  cursor: pointer;
+  transition:all .2s
+}
+.item-button.selected {
+  border: 2px solid rgb(52, 97, 43);
+  background: rgba(52, 97, 43,0.8);
+}
 
 </style>

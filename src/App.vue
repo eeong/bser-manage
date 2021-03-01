@@ -72,5 +72,25 @@ button.ui.button {
 ul,li {
 	list-style: none;
 }
+#Common {
+	background: rgb(107,107,107);
+	background: linear-gradient(180deg, rgba(107,107,107,1) 0%, rgba(213,213,213,1) 100%);
+}
+#Uncommon {
+	background: rgb(40,117,53);
+	background: linear-gradient(180deg, rgb(28, 82, 37) 0%, rgb(64, 156, 55) 100%);
 
+}
+#Rare {
+	background: rgb(44,61,130);
+	background: linear-gradient(180deg, rgb(31, 42, 87) 0%, rgb(58, 76, 197) 100%);
+}
+#Epic {
+	background: rgb(99,44,130);
+	background: linear-gradient(180deg, rgb(67, 30, 88) 0%, rgb(136, 62, 182)100%);
+}
+#Legend {
+	background: rgb(142,129,47);
+	background: linear-gradient(180deg, rgb(139, 126, 47) 0%, rgb(226, 183, 63) 100%);
+}
 </style>

@@ -44,7 +44,7 @@ export default {
       title:"",
       loader:"active",
       rec:null,
-      weaponDB:{},
+      weaponDB:[],
     };
   },
   watch:{
