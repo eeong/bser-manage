@@ -31,7 +31,6 @@ const getValidItem = function(item) {
 }
 
 
-
 const getItem = function(ctgr, itemcode) {
 	return  getValidItem(ctgr.filter((v)=>{
 			if(v.code == itemcode) return v;
@@ -40,4 +39,13 @@ const getItem = function(ctgr, itemcode) {
   
 }
 
-module.exports = { weapon,armor,charList,getItem }
+const reverseTrans = function(itemKr){
+	return trans.filter((v)=>{
+		let result;
+		if(v[1] === itemKr) result =v[0];
+		return result;
+	})
+}
+
+
+module.exports = { weapon,armor,charList,getItem,reverseTrans }

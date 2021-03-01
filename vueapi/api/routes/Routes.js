@@ -13,7 +13,7 @@ module.exports = app => {
     .get(recBuilder.read_itemArmor);
 
   app
-    .route('/recs/weapon')
+    .route('/recs/weapon/:type')
     .get(recBuilder.read_itemWeapon);
 
   app

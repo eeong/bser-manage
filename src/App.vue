@@ -7,10 +7,10 @@
 						<i class="search icon"></i> 검색
 					</router-link>
 					<router-link to="/recs" class="item " >
-						<i class="recs icon list"></i> 템빌드저장소
+						<i class="recs icon folder open"></i> 템빌드저장소
 					</router-link>
 					<router-link to="/new" class="item " >
-						<i class="plus circle icon"></i> 전적확인
+						<i class="trophy icon"></i> 전적확인
 					</router-link>
 					
 				</div>

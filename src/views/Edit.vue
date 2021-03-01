@@ -19,9 +19,9 @@
 
         </tr>
       </div>
-    <char-selection v-if="rec != null" :rec="rec" />
+    <char-selection v-if="rec != null" :rec="rec" @getWeaponDB="getWeaponDB" />
     <div class="ui segment" >
-      <item-selection style="width:50%;" class="column" v-if="rec !=null"  />
+      <item-selection style="width:50%;" class="column" v-if="rec !=null" :rec="rec" :weapons="weaponDB" />
     </div>
   </div>
 </template>
@@ -44,7 +44,7 @@ export default {
       title:"",
       loader:"active",
       rec:null,
-      
+      weaponDB:{},
     };
   },
   watch:{
@@ -56,6 +56,9 @@ export default {
       this.flash('task updated sucessfully!', 'success');
       this.$router.push(`/tasks/${task._id}`);
     } */
+    getWeaponDB: async function(currentW){
+      this.weaponDB = await api.getweapon(currentW);
+    }
   },
   async mounted() {
     this.rec = await api.getrec(this.$route.params.id);

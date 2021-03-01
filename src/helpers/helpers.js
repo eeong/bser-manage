@@ -25,12 +25,12 @@ export const api = {
     const res = await axios.get(baseURL+'armor' );
     return res.data;
   }),
-  getweapon: handleError(async () => {
-    const res = await axios.get(baseURL+'weapon' );
+  getweapon: handleError(async type => {
+    const res = await axios.get(baseURL+'weapon/'+ type);
     return res.data;
   }),
-  getrec: handleError(async id => {
-    const res = await axios.get(baseURL + id);
+  getrec: handleError(async payload => {
+    const res = await axios.get(baseURL + payload);
     return res.data;
   }),
   getrecs: handleError(async () => {
