@@ -67,17 +67,14 @@ export default {
     } */
     getWeaponDB: async function(currentW){
       this.weaponDB = await api.getweapon(currentW);
-      this.forceRender('s');
+      this.forceRender('item-selection');
     },
     forceRender: function(what){
-      if(what == 's') this.itemSelectionKey += 1;
-      else if (what == 'c') this.itemCompKey += 1;
+      if(what == 'item-selection') this.itemSelectionKey += 1;
+      else if (what == 'item-comp') this.itemCompKey += 1;
     },
-    changeItem: function({selected,val}){
-      let itemArray = {"Weapon":0};
-      let index = itemArray[selected[0]];
-      this.rec.item[index] = val;
-      this.forceRender('c');
+    changeItem: function(){
+      this.forceRender('item-comp');
     },
   },
   async mounted() {

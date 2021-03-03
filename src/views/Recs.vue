@@ -53,8 +53,6 @@ export default {
       loader:'active',
       recs: [],
       recss:[],
-      armors:[],
-      weapons:[],
       paging:{
         total:'',
         index:0,
@@ -96,8 +94,7 @@ export default {
     this.paging.end = Math.ceil(this.paging.total/this.paging.pageNum);
     this.getPage();
     this.loader='disabled';
-    /* this.armors = await api.getarmor();
-    this.weapons = await api.getweapon(); */
+    
   }
 };
 </script>
