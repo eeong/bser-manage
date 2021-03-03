@@ -13,6 +13,7 @@
 		</sui-menu>
 
 		<sui-list style="height:350px; overflow:auto;" class="item-list" divided relaxed v-show="isActive('무기')" >
+			<div class="ui loader" :class="loader" ></div>
 			<sui-list-item class="item-button" v-for="(weapon,i) in weapons" :key="i" @click="onClickItem(weapon)" :class="{selected:isSelected('Weapon',weapon)}">
 				<sui-popup>
 						<sui-grid-column text-align="center">
@@ -71,6 +72,7 @@ export default {
 			items: ['무기', '옷', '머리','팔','다리','장신구'],
 			selected:[],
 			selectedWeapon:'',
+			loader:'active',
 		}
 	},
 	methods: {
@@ -93,7 +95,9 @@ export default {
 	
 	watch: {
 		'selected':function(){
+			this.loader = 'active';
 			this.$emit('changeItem',{'selected':this.selected, 'val':this.selectedWeapon});
+			this.loader = 'disabled';
 		},
 		
 	},
@@ -104,6 +108,7 @@ export default {
 	},
 	async mounted() {
 		if(this.rec !=null && this.rec.item[0] != null) this.onClickItem(this.rec.item[0], this.rec.item[0].code)
+		this.loader = 'disabled';
 	}
 };
 </script>
@@ -117,7 +122,7 @@ export default {
 	box-sizing:border-box
 }
 .item-button.selected {
-	border: 1.5px solid #ced124 !important;
+	border: 1.75px solid #c9cc1a !important;
 	border-style: groove;
 }
 

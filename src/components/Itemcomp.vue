@@ -147,7 +147,9 @@ export default {
 .ui.tabular.menu {
 	border: none;
 }
-
+.attached.ui.menu.tabular {
+	margin-bottom: 0.275em !important;
+}
 .item-wrap {
 	position: absolute;
 	top: -0.125em;
