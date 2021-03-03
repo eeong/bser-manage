@@ -44,13 +44,17 @@ const reverseTrans = function(itemKr){
 	})
 }
 
-/* function sortArmor(armors){
-	let result = {"Chest":[],"Head":[],"Arm":[],"Leg":[],"Trinket":[]};
-	for(v in armorDB) {
-		result //[String(v.armorType)].push(v);
+function sortArmor(armors){
+	let result = [];
+	for(v in armors) {
+		if(v.itemGrade=='Legend') result.push(v);
+		else if(v.itemGrade=='Epic') result.push(v);
+		else if(v.itemGrade=='Rare') result.push(v);
+		else if(v.itemGrade=='Uncommon') result.push(v);
+		else if(v.itemGrade=='Common') result.push(v);
 	}
 	return result;
-} */
+} 
 
 
 // add transKr to Json File
@@ -62,4 +66,4 @@ function addTransKr(){
 	fs.writeFileSync('remakeArmor.json', json  )
 }
 
-module.exports = { weapon,armor,charList,getItem,reverseTrans }
+module.exports = { weapon,armor,charList,getItem,reverseTrans,sortArmor }

@@ -27,9 +27,9 @@
         :key="itemSelectionKey"
         :rec="rec" 
         :weapons="weaponDB"
-        :armors="armorDB" 
+        :armors="armors" 
         @changeItem="changeItem"
-        @changeCtgr="getArmorDB"
+        
         />
     </div>
   </div>
@@ -55,15 +55,21 @@ export default {
       rec:null,
       weaponDB:[],
       armorDB:[],
+      itemTypeList:['Weapon','Chest','Head','Arm','Leg' ,'Trinket'],
       itemCompKey:0,
       itemSelectionKey:0,
       charSelectionKey:0,
+      armors:{}
     };
   },
   watch:{
     'rec.weapon':function(){
-      this.getWeaponDB(this.rec.weapon)
-    }
+      this.getWeaponDB(this.rec.weapon);
+      this.forceRender('item-selection');
+    },
+  },
+  computed:{
+    
   },
   methods: {
     /* createOrUpdate: async function(task) {
@@ -73,12 +79,12 @@ export default {
     } */
     getWeaponDB: async function(currentW){
       this.weaponDB = await api.getweapon(currentW);
-      this.forceRender('item-selection');
     },
-    getArmorDB: async function(active){
-      this.armorDB = await api.getarmor(active[0]);
-      this.forceRender('item-selection');
-    },
+    getArmorDB: function(active){
+			if(active!='Weapon') {
+				this.armors[String(active)] = this.armorDB.filter((v)=>{if(v.armorType == active) return v; })
+		}
+		},
     forceRender: function(what){
       if(what == 'item-selection') this.itemSelectionKey += 1;
       else if (what == 'item-comp') this.itemCompKey += 1;
@@ -90,7 +96,8 @@ export default {
   async mounted() {
     this.rec = await api.getrec(this.$route.params.id);
     this.loader = 'disabled';
-    
+    this.armorDB = await api.getarmor()
+    for(var i in this.itemTypeList){this.getArmorDB(this.itemTypeList[i])}
   }
 };
 </script>

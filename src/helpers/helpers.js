@@ -21,8 +21,8 @@ const handleError = fn => (...params) =>
   });
 
 export const api = {
-  getarmor: handleError(async type => {
-    const res = await axios.get(baseURL+'armor/' + type );
+  getarmor: handleError(async () => {
+    const res = await axios.get(baseURL+'armor' );
     return res.data;
   }),
   getweapon: handleError(async type => {
