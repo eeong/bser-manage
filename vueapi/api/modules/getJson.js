@@ -44,6 +44,15 @@ const reverseTrans = function(itemKr){
 	})
 }
 
+/* function sortArmor(armors){
+	let result = {"Chest":[],"Head":[],"Arm":[],"Leg":[],"Trinket":[]};
+	for(v in armorDB) {
+		result //[String(v.armorType)].push(v);
+	}
+	return result;
+} */
+
+
 // add transKr to Json File
 function addTransKr(){
 	for(var i in armor){

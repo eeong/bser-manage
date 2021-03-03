@@ -4,9 +4,9 @@
 			<a
 				is="sui-menu-item"
 				v-for="item in items"
-				:active="isActive(item)"
-				:key="item"
-				:content="item"
+				:active="isActive(item[1])"
+				:key="item[1]"
+				:content="item[1]"
 				@click="selectCtgr(item)"
 			/>
 			
@@ -27,11 +27,22 @@
 			</sui-list-item>
 		</sui-list>
 
-		<div class="menu-wrap weapon-menu" v-show="isActive('옷')" >
-			<sui-segment attached>
-				bb
-			</sui-segment>
-		</div>
+		<!-- <sui-list style="height:350px; overflow:auto;" class="item-list" divided relaxed v-show="isActive('옷')" >
+			<sui-list-item class="item-button" v-for="(armor,i) in armors" :key="i" @click="onClickItem(weapon)" :class="{selected:isSelected('Weapon',weapon)}">
+				<sui-popup>
+						<sui-grid-column text-align="center">
+							<h4 is="sui-header">{{weapon.name}}</h4>
+							<p class="item-desc" v-for="(transItem, j) in weapon.transKr" :key="j">{{transItem[0]}}: {{transItem[1]}}</p>
+						</sui-grid-column>
+						<sui-image slot="trigger" class="ui tiny" rounded :id="weapon.itemGrade" :src="require(`../assets/static/img/01.무기/${weapon.transKr[0][1]}/${weapon.name}.png`)" />
+				</sui-popup>
+				<sui-list-content>
+					<p is="sui-list-header" style="transform: translateY(55%);">{{weapon.name}}</p>
+				</sui-list-content>
+			</sui-list-item>
+		</sui-list> -->
+
+		
 		<div class="menu-wrap weapon-menu" v-show="isActive('머리')" >
 			<sui-segment attached>
 				bb
@@ -63,19 +74,20 @@ export default {
 	props: {
 		rec:{type:Object},
 		weapons:{type:Array},
+		armors:{type:Array},
 	},
 	
 	data: function() {
 		return {
 			active: '무기',
-			items: ['무기', '옷', '머리','팔','다리','장신구'],
+			items: [['Weapon','무기'], ['Chest','옷'], ['Head','머리'],['Arm','팔'],['Leg' ,'다리'],['Trinket' ,'장신구']],
 			selected:[],
 			selectedWeapon:'',
 		}
 	},
 	methods: {
 		isActive(name) {
-			return this.active === name;
+			return this.active[1] === name;
 		},
 		selectCtgr(name) {
 			this.active = name;
@@ -102,6 +114,9 @@ export default {
 		'selected':function(){
 			this.$emit('changeItem',this.rec);
 		},
+		/* 'active':function(){
+			this.$emit('changeCtgr',this.active);
+		} */
 		
 	},
 	computed:{
@@ -111,7 +126,7 @@ export default {
 	}, 
 	async mounted() {
 		if(this.rec !=null && this.rec.item[0] != null) this.onClickItem(this.rec.item[0], this.rec.item[0].code)
-		
+		this.selectCtgr(['Weapon','무기'])
 	}
 };
 </script>

@@ -3,17 +3,18 @@ const rec = mongoose.model('game');
 const itemA = mongoose.model('itemArmor')
 const itemW = mongoose.model('itemWeapon')
 
-const { weapon,armor, reverseTrans } = require('../modules/getJson');
+const { weapon,armor, reverseTrans,  } = require('../modules/getJson');
 
 exports.read_itemArmor = (req, res) => {
-  itemA.find({}, (err, armors) => {
+  let armorType = req.params.type
+  itemA.find({"armorType":armorType}, (err, armors) => {
     if (err) res.send(err);
     res.json(armors);
   });
 };
 
 exports.read_itemWeapon = (req, res) => {
-  var transType = reverseTrans(req.params.type)
+  let transType = reverseTrans(req.params.type)
   itemW.find({weaponType: transType[0][0]}, (err, weapons) => {
     if (err) res.send(err);
     res.json(weapons);

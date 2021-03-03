@@ -9,7 +9,7 @@ module.exports = app => {
     .post(recBuilder.create_a_rec);
     
   app
-    .route('/recs/armor')
+    .route('/recs/armor/:type')
     .get(recBuilder.read_itemArmor);
 
   app

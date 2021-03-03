@@ -19,15 +19,17 @@
 
         </tr>
       </div>
-    <char-selection v-if="rec != null" :rec="rec" :key="charSelectionKey" @getWeaponDB="getWeaponDB" />
+    <char-selection v-if="rec != null" :rec="rec" :key="charSelectionKey" />
     <div class="ui segment" >
       <item-selection 
         style="width:50%;" 
         class="column" 
         :key="itemSelectionKey"
         :rec="rec" 
-        :weapons="weaponDB" 
+        :weapons="weaponDB"
+        :armors="armorDB" 
         @changeItem="changeItem"
+        @changeCtgr="getArmorDB"
         />
     </div>
   </div>
@@ -52,13 +54,16 @@ export default {
       loader:"active",
       rec:null,
       weaponDB:[],
+      armorDB:[],
       itemCompKey:0,
       itemSelectionKey:0,
       charSelectionKey:0,
     };
   },
   watch:{
-    
+    'rec.weapon':function(){
+      this.getWeaponDB(this.rec.weapon)
+    }
   },
   methods: {
     /* createOrUpdate: async function(task) {
@@ -68,6 +73,10 @@ export default {
     } */
     getWeaponDB: async function(currentW){
       this.weaponDB = await api.getweapon(currentW);
+      this.forceRender('item-selection');
+    },
+    getArmorDB: async function(active){
+      this.armorDB = await api.getarmor(active[0]);
       this.forceRender('item-selection');
     },
     forceRender: function(what){
