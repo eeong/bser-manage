@@ -19,7 +19,7 @@
 
         </tr>
       </div>
-    <char-selection v-if="rec != null" :rec="rec" @getWeaponDB="getWeaponDB" />
+    <char-selection v-if="rec != null" :rec="rec" :key="charSelectionKey" @getWeaponDB="getWeaponDB" />
     <div class="ui segment" >
       <item-selection 
         style="width:50%;" 
@@ -54,6 +54,7 @@ export default {
       weaponDB:[],
       itemCompKey:0,
       itemSelectionKey:0,
+      charSelectionKey:0,
     };
   },
   watch:{

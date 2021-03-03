@@ -83,8 +83,16 @@ export default {
 		isSelected(ctgr, item){
 			return this.selected[0] == ctgr && this.selected[1] == item.code;
 		},
+		checkItemType(itemCode){
+			let weaponOrArmor = String(itemCode)[0];
+			let whatArmor = String(itemCode)[2];
+			let resultArr = [{'1':0},{'2':2},{'3':1},{'4':3},{'5':4},{'6':5}];
+			let result = weaponOrArmor == 1 ? 0 : resultArr[(whatArmor+1)]; 
+			return result;
+		},
 		onClickItem(val) {
-			this.rec.item[0] = val;
+			let itemType = this.checkItemType(val.code)
+			this.rec.item[itemType] = val;
 			this.selected = [val.itemType,val.code];
 		},
 		

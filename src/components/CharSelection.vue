@@ -7,7 +7,7 @@
     selection
     search
     :options="options"
-    v-model="current"
+    v-model="currentChar"
 
     />
 
@@ -30,7 +30,7 @@ export default {
   
   data: function() {
     return {
-      current: null,
+      currentChar: null,
       currentW: null,
       options: [
         {
@@ -177,8 +177,8 @@ export default {
   },
   methods: {
     modyRec(){
-      this.rec.character=this.current[0];
-      this.rec.characterSrc=this.current[1];
+      this.rec.character=this.currentChar[0];
+      this.rec.characterSrc=this.currentChar[1];
     },
     weaponMatch(match){
       let list ={"나딘":['활','석궁'],"레녹스":["채찍"],"로지":["권총"],"루크":["방망이"],"리다이린":["글러브","쌍절곤"],"매그너스":["망치","방망이"],"쇼우":["단검","창"],"쇼이치":["단검"],"시셀라":["투척","암기"],"실비아":["권총"],"아드리아나":["투척"],"아야":["권총","돌격소총","저격총"],"아이솔":["권총","돌격소총"],"엠마":["암기"],"유키":["양손검"],"자히르":["투척","암기"],"재키":["단검","양손검","도끼"],"캐시":["단검"],"키아라":["레이피어"],"피오라":["레이피어","양손검","창"],"하트":["기타"],"현우":["글러브","톤파"],"혜진":["암기","활"]}
@@ -191,10 +191,10 @@ export default {
   },
   
   watch: {
-    'current':function(){
+    'currentChar':function(){
       let charcon=confirm("캐릭터를 변경하면 현재 아이템트리가 삭제됩니다.");
       if(charcon) { this.modyRec(); 
-      this.optionsW = this.weaponMatch(this.current[0]); 
+      this.optionsW = this.weaponMatch(this.currentChar[0]); 
       this.currentW = this.optionsW[0]
       this.rec.item = {};
       }
