@@ -36,10 +36,11 @@ exports.read_user_num = async (req, res) => {
       data.userGames[i].item = [];
       data.userGames[i].characterSrc = charList[data.userGames[i].characterNum-1].slice(1,-1)
       for(var j in data.userGames[i].equipment){
-        if (data.userGames[i].equipment[j].toString()[0] == 1 ) data.userGames[i].item[j]=(getItem(weapon, data.userGames[i].equipment[j])) ; 
-        else data.userGames[i].item[j]=(getItem(armor, data.userGames[i].equipment[j])) ; 
+        if (data.userGames[i].equipment[j].toString()[0] == 1 ) data.userGames[i].item[j]=(getItem(weapon, data.userGames[i].equipment[j]))[0] ; 
+        else data.userGames[i].item[j]=(getItem(armor, data.userGames[i].equipment[j]))[0] ; 
       }
     }
+    console.log(data.userGames[0])
     res.json(data);
   })
 })})

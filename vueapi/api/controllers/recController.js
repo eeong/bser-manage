@@ -7,7 +7,6 @@ const { weapon,armor, reverseTrans,sortArmor  } = require('../modules/getJson');
 
 
 exports.read_itemArmor = (req, res) => {
-  //let armorType = req.params.type
   itemA.find({}, (err, armors) => {
     if (err) res.send(err);
     res.json(armors);

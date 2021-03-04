@@ -35,8 +35,7 @@
                     
                 </div>
                 <div class="ui column three item-wrap">
-                  <item-comp :taken='game' >
-                  </item-comp>
+                  <item-comp :taken='game' />
                 </div>
               <div class="plus-button">
                 <sui-popup content="이 템트리를 빌드에 추가합니다" size="mini">
@@ -134,7 +133,12 @@ export default {
 }
 .img-wrap {
   padding: 0.92857143em 0 ;
+  
 }
+.item-wrap {
+  margin-top: 0.5em;
+}
+
 .ui.tabular.menu {
   border-bottom: none;
 }

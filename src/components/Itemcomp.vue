@@ -9,7 +9,7 @@
 							<h4 is="sui-header">{{game.item[0].name}}</h4>
 							<p class="item-desc" v-for="(transItem, j) in game.item[0].transKr" :key="j">{{transItem[0]}}: {{transItem[1]}}</p>
 						</sui-grid-column>
-						<sui-image slot="trigger" :src="require(`../assets/static/img/01.무기/${game.weapon}/${game.item[0].name}.png`)" />
+						<sui-image slot="trigger" :src="require(`../assets/static/img/01.무기/${game.weapon || game.item[0].transKr[0][1]}/${game.item[0].name}.png`)" />
 					</sui-popup>
 				</div>
 			</a>

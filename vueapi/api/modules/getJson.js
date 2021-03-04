@@ -4,8 +4,8 @@ const path = require('path')
 
 /********** Read item data ************/ 
 
-const weapon = (JSON.parse((fs.readFileSync(path.join(__dirname,'../assets/ItemWeapon.json'), 'utf8')))).data;
-const armor = (JSON.parse((fs.readFileSync(path.join(__dirname,'../assets/ItemArmor.json'), 'utf8')))).data;
+const weapon = (JSON.parse((fs.readFileSync(path.join(__dirname,'../assets/remakeWeapon.json'), 'utf8'))));
+const armor = (JSON.parse((fs.readFileSync(path.join(__dirname,'../assets/remakeArmor.json'), 'utf8'))));
 const charList = (fs.readFileSync(path.join(__dirname,'../assets/character'), 'utf8')).split(',');
 const trans = JSON.parse((fs.readFileSync(path.join(__dirname,'../assets/trans.json'), 'utf8'))).data;
 
@@ -29,11 +29,18 @@ const getValidItem = function(item) {
   return transStatus(items);
 }
 
-const getItem = function(ctgr, itemcode) {
+/* const getItem = function(ctgr, itemcode) {
 	return getValidItem(ctgr.filter((v)=>{
 			if(v.code == itemcode) return v;
 			else return '';
 		})[0])
+} */
+
+const getItem = function(ctgr, itemcode) {
+	return ctgr.filter((v)=>{
+			if(v.code == itemcode) return v;
+			else return '';
+		})
 }
 
 const reverseTrans = function(itemKr){
