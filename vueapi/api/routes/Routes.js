@@ -17,7 +17,7 @@ module.exports = app => {
     .get(recBuilder.read_itemWeapon);
     
   app
-    .route('/recs/craftitem/:code')
+    .route('/recs/craftitem/:code1/:code2')
     .get(recBuilder.craft_item);
     
   app

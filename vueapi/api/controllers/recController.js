@@ -3,7 +3,7 @@ const rec = mongoose.model('game');
 const itemA = mongoose.model('itemArmor')
 const itemW = mongoose.model('itemWeapon')
 
-const { weapon,armor, reverseTrans,sortArmor  } = require('../modules/getJson');
+const { weapon,armor, reverseTrans,getCraftMap  } = require('../modules/getJson');
 
 
 exports.read_itemArmor = (req, res) => {
@@ -22,7 +22,9 @@ exports.read_itemWeapon = (req, res) => {
 };
 
 exports.craft_item = (req, res) => {
-  console.log(req.params)
+  let itemMap = [];
+  itemMap = getCraftMap(req.params.code1,req.params.code2)
+  res.json(itemMap);
 };
 
 exports.list_all_recs = (req, res) => {
