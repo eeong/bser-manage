@@ -105,14 +105,7 @@
 						</sui-list-item>
 					</sui-list>
 			</div>
-			<div v-if="itemTree" class="column wide four" :key="temtreeKey">
-				<div v-for="(item,i) in itemTree" :key="i">
-					{{item.name}}
-					<div v-if="item.sub">
-						<div v-for="(subItem,i) in item.sub" :key="i">{{subItem.name}}</div>
-					</div> 
-				</div>
-			</div>
+			<item-craft  :itemTree="itemTree" :key="temtreeKey" />
 			
 		</div>
 		</div>
@@ -123,6 +116,7 @@
 
 <script>
 import {api} from '../helpers/helpers';
+import ItemCraftMap from '../components/ItemCraftMap';
 
 export default {
 	
@@ -131,6 +125,9 @@ export default {
 		rec:{type:Object},
 		weapons:{type:Array},
 		armors:{type:Object}
+	},
+	components:{
+		'item-craft' : ItemCraftMap
 	},
 
 	data: function() {
@@ -177,8 +174,11 @@ export default {
 		async getTemtree(val){
 			let idx = this.checkItemType(val)
 			let target = this.rec.item[idx]
-			this.itemTree = await api.craftitem(target.makeMaterial1,target.makeMaterial2)
-			this.temtreeKey += 1;
+			if(target.makeMaterial1){
+				this.itemTree = await api.craftitem(target.makeMaterial1,target.makeMaterial2)
+				this.temtreeKey += 1;
+			}
+			else this.itemTree = [];
 		}
 	},
 	
@@ -191,9 +191,7 @@ export default {
 		selection:function(){
 			return this.onClickItem(this.rec.item[0], this.rec.item[0].code) 
 		},
-		/* getCraft: function(){
-			return this.getTemtree(this.selected[1]);
-		} */
+		
 	}, 
 	async mounted() {
 		if(this.rec !=null && this.rec.item[0] != null) {

@@ -351,6 +351,18 @@
       "makeMaterial2": 501401,
       "consumeCount": 1,
       "summonCode": 25
+    },
+    {
+      "code": 501401,
+      "name": "휴대폰",
+      "itemType": "Misc",
+      "miscItemType": "Material",
+      "itemGrade": "Rare",
+      "craftAnimTrigger": "craftMetal",
+      "stackable": 3,
+      "initialCount": 1,
+      "makeMaterial1": 401212,
+      "makeMaterial2": 401211
     }
   ]
 }
