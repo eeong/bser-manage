@@ -40,7 +40,6 @@ exports.read_user_num = async (req, res) => {
         else data.userGames[i].item[j]=(getItem(armor, data.userGames[i].equipment[j]))[0] ; 
       }
     }
-    console.log(data.userGames[0])
     res.json(data);
   })
 })})

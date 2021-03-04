@@ -94,8 +94,13 @@ export default {
     getCharacter: (i) => {
         return character.data[i].nameKr
     },
-    
+    reloadPage(){
+      if (this.user == null)
+      this.$router.go(0);
+    }  
   },
+  
+
   async mounted() {
     this.user = await api.searchId(this.$route.params.userId)
     this.games = this.user.userGames
@@ -108,7 +113,7 @@ export default {
       alert(this.user);
       this.$router.push('/search')
     }
-    else if (this.user == null) location.reload();
+    this.reloadPage()
     if(this.user.code == 200) this.currentMmr = await api.searchMmr(this.games[0].userNum,this.games[0].matchingTeamMode);
 },
   
