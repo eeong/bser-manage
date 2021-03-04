@@ -21,19 +21,8 @@ exports.read_itemWeapon = (req, res) => {
   }).sort({code:'desc'});
 };
 
-exports.get_item = (req, res) => {
-  if(req.params.type == 'Weapon'){
-    itemW.find({code:req.params.code }, (err, weapons) => {
-      if (err) res.send(err);
-      res.json(weapons[0]);
-    });
-  }
-  else if (req.params.type == 'Armor'){
-    itemA.find({code:req.params.code }, (err, armors) => {
-      if (err) res.send(err);
-      res.json(armors[0]);
-    });
-  }
+exports.craft_item = (req, res) => {
+  console.log(req.params)
 };
 
 exports.list_all_recs = (req, res) => {

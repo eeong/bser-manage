@@ -29,8 +29,8 @@ export const api = {
     const res = await axios.get(baseURL+'weapon/'+ type);
     return res.data;
   }),
-  getitem:handleError(async (type, code) => {
-    const res = await axios.get(baseURL+'getitem/'+type+'/'+code);
+  craftitem:handleError(async code => {
+    const res = await axios.get(baseURL+'craftitem/'+code);
     return res.data;
   }),
   getrec: handleError(async payload => {

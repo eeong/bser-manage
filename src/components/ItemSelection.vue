@@ -1,110 +1,123 @@
 <template>
 	<div >
-		<sui-menu pointing secondary>
-			<a
-				is="sui-menu-item"
-				v-for="(item,i) in items"
-				:active="isActive(item[1])"
-				:key="item[1]"
-				:content="item[1]"
-				@click="selectCtgr(item,i)"
-			/>
+		<div class="ui segment">
+		<div class="ui two column stackable left aligned grid">
+			<div class="column wide four" >
+					<sui-menu pointing secondary>
+						<a
+							is="sui-menu-item"
+							v-for="(item,i) in items"
+							:active="isActive(item[1])"
+							:key="item[1]"
+							:content="item[1]"
+							@click="selectCtgr(item,i)"
+						/>
+						
+					</sui-menu>
 			
-		</sui-menu>
+					<sui-list style="height:350px; overflow:auto;" class="item-list" divided relaxed v-show="isActive('무기')" >
+						<sui-list-item class="item-button" v-for="(weapon,i) in weapons" :key="i" @click="onClickItem(weapon)" :class="{selected:isSelected('Weapon',weapon)}">
+							<sui-popup>
+									<sui-grid-column text-align="center">
+										<h4 is="sui-header">{{weapon.name}}</h4>
+										<p class="item-desc" v-for="(transItem, j) in weapon.transKr" :key="j">{{transItem[0]}}: {{transItem[1]}}</p>
+									</sui-grid-column>
+									<sui-image slot="trigger" class="ui tiny" rounded :id="weapon.itemGrade" :src="require(`../assets/static/img/01.무기/${weapon.transKr[0][1]}/${weapon.name}.png`)" />
+							</sui-popup>
+							<sui-list-content>
+								<p is="sui-list-header" style="transform: translateY(55%);">{{weapon.name}}</p>
+							</sui-list-content>
+						</sui-list-item>
+					</sui-list>
+			
+					<sui-list style="height:350px; overflow:auto;" class="item-list" divided relaxed v-show="isActive('옷')" >
+						<sui-list-item class="item-button" v-for="(armor,i) in armors.Chest" :key="i" @click="onClickItem(armor)" :class="{selected:isSelected('Armor',armor)}">
+							<sui-popup>
+									<sui-grid-column text-align="center">
+										<h4 is="sui-header">{{armor.name}}</h4>
+										<p class="item-desc" v-for="(transItem, j) in armor.transKr" :key="j">{{transItem[0]}}: {{transItem[1]}}</p>
+									</sui-grid-column>
+									<sui-image slot="trigger" class="ui tiny" rounded :id="armor.itemGrade" :src="require(`../assets/static/img/02.방어구/02.옷/${armor.name}.png`)" />
+							</sui-popup>
+							<sui-list-content>
+								<p is="sui-list-header" style="transform: translateY(55%);">{{armor.name}}</p>
+							</sui-list-content>
+						</sui-list-item>
+					</sui-list>
+			
+					<sui-list style="height:350px; overflow:auto;" class="item-list" divided relaxed v-show="isActive('머리')" >
+						<sui-list-item class="item-button" v-for="(armor,i) in armors.Head" :key="i" @click="onClickItem(armor)" :class="{selected:isSelected('Armor',armor)}">
+							<sui-popup>
+									<sui-grid-column text-align="center">
+										<h4 is="sui-header">{{armor.name}}</h4>
+										<p class="item-desc" v-for="(transItem, j) in armor.transKr" :key="j">{{transItem[0]}}: {{transItem[1]}}</p>
+									</sui-grid-column>
+									<sui-image slot="trigger" class="ui tiny" rounded :id="armor.itemGrade" :src="require(`../assets/static/img/02.방어구/01.머리/${armor.name}.png`)" />
+							</sui-popup>
+							<sui-list-content>
+								<p is="sui-list-header" style="transform: translateY(55%);">{{armor.name}}</p>
+							</sui-list-content>
+						</sui-list-item>
+					</sui-list>
+			
+					<sui-list style="height:350px; overflow:auto;" class="item-list" divided relaxed v-show="isActive('팔')" >
+						<sui-list-item class="item-button" v-for="(armor,i) in armors.Arm" :key="i" @click="onClickItem(armor)" :class="{selected:isSelected('Armor',armor)}">
+							<sui-popup>
+									<sui-grid-column text-align="center">
+										<h4 is="sui-header">{{armor.name}}</h4>
+										<p class="item-desc" v-for="(transItem, j) in armor.transKr" :key="j">{{transItem[0]}}: {{transItem[1]}}</p>
+									</sui-grid-column>
+									<sui-image slot="trigger" class="ui tiny" rounded :id="armor.itemGrade" :src="require(`../assets/static/img/02.방어구/03.팔/${armor.name}.png`)" />
+							</sui-popup>
+							<sui-list-content>
+								<p is="sui-list-header" style="transform: translateY(55%);">{{armor.name}}</p>
+							</sui-list-content>
+						</sui-list-item>
+					</sui-list>
+			
+					<sui-list style="height:350px; overflow:auto;" class="item-list" divided relaxed v-show="isActive('다리')" >
+						<sui-list-item class="item-button" v-for="(armor,i) in armors.Leg" :key="i" @click="onClickItem(armor)" :class="{selected:isSelected('Armor',armor)}">
+							<sui-popup>
+									<sui-grid-column text-align="center">
+										<h4 is="sui-header">{{armor.name}}</h4>
+										<p class="item-desc" v-for="(transItem, j) in armor.transKr" :key="j">{{transItem[0]}}: {{transItem[1]}}</p>
+									</sui-grid-column>
+									<sui-image slot="trigger" class="ui tiny" rounded :id="armor.itemGrade" :src="require(`../assets/static/img/02.방어구/04.다리/${armor.name}.png`)" />
+							</sui-popup>
+							<sui-list-content>
+								<p is="sui-list-header" style="transform: translateY(55%);">{{armor.name}}</p>
+							</sui-list-content>
+						</sui-list-item>
+					</sui-list>
+					
+					<sui-list style="height:350px; overflow:auto;" class="item-list" divided relaxed v-show="isActive('장식')" >
+						<sui-list-item class="item-button" v-for="(armor,i) in armors.Trinket" :key="i" @click="onClickItem(armor)" :class="{selected:isSelected('Armor',armor)}">
+							<sui-popup>
+									<sui-grid-column text-align="center">
+										<h4 is="sui-header">{{armor.name}}</h4>
+										<p class="item-desc" v-for="(transItem, j) in armor.transKr" :key="j">{{transItem[0]}}: {{transItem[1]}}</p>
+									</sui-grid-column>
+									<sui-image slot="trigger" class="ui tiny" rounded :id="armor.itemGrade" :src="require(`../assets/static/img/02.방어구/05.장식/${armor.name}.png`)" />
+							</sui-popup>
+							<sui-list-content>
+								<p is="sui-list-header" style="transform: translateY(55%);">{{armor.name}}</p>
+							</sui-list-content>
+						</sui-list-item>
+					</sui-list>
+			</div>
+			<div class="column wide four" >
+				
+			</div>
+			
+		</div>
+		</div>
+	
 
-		<sui-list style="height:350px; overflow:auto;" class="item-list" divided relaxed v-show="isActive('무기')" >
-			<sui-list-item class="item-button" v-for="(weapon,i) in weapons" :key="i" @click="onClickItem(weapon)" :class="{selected:isSelected('Weapon',weapon)}">
-				<sui-popup>
-						<sui-grid-column text-align="center">
-							<h4 is="sui-header">{{weapon.name}}</h4>
-							<p class="item-desc" v-for="(transItem, j) in weapon.transKr" :key="j">{{transItem[0]}}: {{transItem[1]}}</p>
-						</sui-grid-column>
-						<sui-image slot="trigger" class="ui tiny" rounded :id="weapon.itemGrade" :src="require(`../assets/static/img/01.무기/${weapon.transKr[0][1]}/${weapon.name}.png`)" />
-				</sui-popup>
-				<sui-list-content>
-					<p is="sui-list-header" style="transform: translateY(55%);">{{weapon.name}}</p>
-				</sui-list-content>
-			</sui-list-item>
-		</sui-list>
-
-		<sui-list style="height:350px; overflow:auto;" class="item-list" divided relaxed v-show="isActive('옷')" >
-			<sui-list-item class="item-button" v-for="(armor,i) in armors.Chest" :key="i" @click="onClickItem(armor)" :class="{selected:isSelected('Armor',armor)}">
-				<sui-popup>
-						<sui-grid-column text-align="center">
-							<h4 is="sui-header">{{armor.name}}</h4>
-							<p class="item-desc" v-for="(transItem, j) in armor.transKr" :key="j">{{transItem[0]}}: {{transItem[1]}}</p>
-						</sui-grid-column>
-						<sui-image slot="trigger" class="ui tiny" rounded :id="armor.itemGrade" :src="require(`../assets/static/img/02.방어구/02.옷/${armor.name}.png`)" />
-				</sui-popup>
-				<sui-list-content>
-					<p is="sui-list-header" style="transform: translateY(55%);">{{armor.name}}</p>
-				</sui-list-content>
-			</sui-list-item>
-		</sui-list>
-
-		<sui-list style="height:350px; overflow:auto;" class="item-list" divided relaxed v-show="isActive('머리')" >
-			<sui-list-item class="item-button" v-for="(armor,i) in armors.Head" :key="i" @click="onClickItem(armor)" :class="{selected:isSelected('Armor',armor)}">
-				<sui-popup>
-						<sui-grid-column text-align="center">
-							<h4 is="sui-header">{{armor.name}}</h4>
-							<p class="item-desc" v-for="(transItem, j) in armor.transKr" :key="j">{{transItem[0]}}: {{transItem[1]}}</p>
-						</sui-grid-column>
-						<sui-image slot="trigger" class="ui tiny" rounded :id="armor.itemGrade" :src="require(`../assets/static/img/02.방어구/01.머리/${armor.name}.png`)" />
-				</sui-popup>
-				<sui-list-content>
-					<p is="sui-list-header" style="transform: translateY(55%);">{{armor.name}}</p>
-				</sui-list-content>
-			</sui-list-item>
-		</sui-list>
-
-		<sui-list style="height:350px; overflow:auto;" class="item-list" divided relaxed v-show="isActive('팔')" >
-			<sui-list-item class="item-button" v-for="(armor,i) in armors.Arm" :key="i" @click="onClickItem(armor)" :class="{selected:isSelected('Armor',armor)}">
-				<sui-popup>
-						<sui-grid-column text-align="center">
-							<h4 is="sui-header">{{armor.name}}</h4>
-							<p class="item-desc" v-for="(transItem, j) in armor.transKr" :key="j">{{transItem[0]}}: {{transItem[1]}}</p>
-						</sui-grid-column>
-						<sui-image slot="trigger" class="ui tiny" rounded :id="armor.itemGrade" :src="require(`../assets/static/img/02.방어구/03.팔/${armor.name}.png`)" />
-				</sui-popup>
-				<sui-list-content>
-					<p is="sui-list-header" style="transform: translateY(55%);">{{armor.name}}</p>
-				</sui-list-content>
-			</sui-list-item>
-		</sui-list>
-
-		<sui-list style="height:350px; overflow:auto;" class="item-list" divided relaxed v-show="isActive('다리')" >
-			<sui-list-item class="item-button" v-for="(armor,i) in armors.Leg" :key="i" @click="onClickItem(armor)" :class="{selected:isSelected('Armor',armor)}">
-				<sui-popup>
-						<sui-grid-column text-align="center">
-							<h4 is="sui-header">{{armor.name}}</h4>
-							<p class="item-desc" v-for="(transItem, j) in armor.transKr" :key="j">{{transItem[0]}}: {{transItem[1]}}</p>
-						</sui-grid-column>
-						<sui-image slot="trigger" class="ui tiny" rounded :id="armor.itemGrade" :src="require(`../assets/static/img/02.방어구/04.다리/${armor.name}.png`)" />
-				</sui-popup>
-				<sui-list-content>
-					<p is="sui-list-header" style="transform: translateY(55%);">{{armor.name}}</p>
-				</sui-list-content>
-			</sui-list-item>
-		</sui-list>
-		
-		<sui-list style="height:350px; overflow:auto;" class="item-list" divided relaxed v-show="isActive('장식')" >
-			<sui-list-item class="item-button" v-for="(armor,i) in armors.Trinket" :key="i" @click="onClickItem(armor)" :class="{selected:isSelected('Armor',armor)}">
-				<sui-popup>
-						<sui-grid-column text-align="center">
-							<h4 is="sui-header">{{armor.name}}</h4>
-							<p class="item-desc" v-for="(transItem, j) in armor.transKr" :key="j">{{transItem[0]}}: {{transItem[1]}}</p>
-						</sui-grid-column>
-						<sui-image slot="trigger" class="ui tiny" rounded :id="armor.itemGrade" :src="require(`../assets/static/img/02.방어구/05.장식/${armor.name}.png`)" />
-				</sui-popup>
-				<sui-list-content>
-					<p is="sui-list-header" style="transform: translateY(55%);">{{armor.name}}</p>
-				</sui-list-content>
-			</sui-list-item>
-		</sui-list>
 	</div>
 </template>
 
 <script>
+import {api} from '../helpers/helpers';
 
 export default {
 	
@@ -122,7 +135,8 @@ export default {
 			itemTypeList:['Weapon','Chest','Head','Arm','Leg' ,'Trinket'],
 			selected:[],
 			selectedWeapon:'',
-			armor:[]
+			armor:[],
+			itemTree:[]
 	}
 	},
 	methods: {
@@ -145,14 +159,17 @@ export default {
 			return result;
 		},
 		onClickItem(val) {
-			let itemType = this.checkItemType(val.code)
+			if(val){let itemType = this.checkItemType(val.code)
 			this.rec.item[itemType] = val;
-			this.selected = [val.itemType, val.code];
+			this.selected = [val.itemType, val.code];}
+			
 		},
 		changeItem() {
 			this.$emit('changeItem',this.rec);
 		},
-		
+		async callTem(val){
+			this.itemTree = await api.craftitem(val)
+		}
 	},
 	
 	watch: {
@@ -163,6 +180,9 @@ export default {
 	computed:{
 		selection:function(){
 			return this.onClickItem(this.rec.item[0], this.rec.item[0].code) 
+		},
+		getCraft: function(){
+			return this.callTem(this.selected[1]);
 		}
 	}, 
 	async mounted() {
@@ -181,10 +201,11 @@ export default {
 }
 .item-button {
 	cursor: pointer;
-	box-sizing:border-box
+	box-sizing:border-box;
+	user-select: none;
 }
 .item-button.selected {
-	border: 1.75px solid #c9cc1a !important;
+	border: 1.75px solid #cc431a !important;
 	border-style: groove;
 }
 

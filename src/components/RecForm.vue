@@ -47,10 +47,6 @@
         </div>
       </div>
   </div>
-  <div v-if="user != null"  >
-    <div>{{games[0] || '사용자 전적을 찾을 수 없습니다'}}</div>
-
-  </div>
 </div>
 </template>
 
@@ -141,7 +137,8 @@ export default {
   
 }
 .item-wrap {
-  margin-top: 0.5em;
+  margin-top: 0.75em;
+  width: 29% !important;
 }
 
 .ui.tabular.menu {

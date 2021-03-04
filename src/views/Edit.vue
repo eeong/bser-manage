@@ -20,9 +20,8 @@
         </tr>
       </div>
     <char-selection v-if="rec != null" :rec="rec" :key="charSelectionKey" />
-    <div class="ui segment" >
       <item-selection 
-        style="width:50%;" 
+        
         class="column" 
         :key="itemSelectionKey"
         :rec="rec" 
@@ -31,7 +30,6 @@
         @changeItem="changeItem"
         
         />
-    </div>
   </div>
 </template>
 
