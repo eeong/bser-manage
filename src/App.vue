@@ -46,6 +46,9 @@ export default {
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Sunflower:wght@300;500&display=swap');
+
+html, body, h1, h2, h3, h4, h5, .item {font-family: 'Noto Sans Kr', sans-serif !important;}
 #app > div.navbar {
 	margin-bottom: 1.5em;
 }
