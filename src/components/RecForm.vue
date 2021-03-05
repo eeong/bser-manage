@@ -11,7 +11,7 @@
                     <h2 class="item header" style="display:inline-block;">#{{game.gameRank}}위</h2> 
                     <h4 class="header" style="display:inline-block; margin:0;">{{gamemode.team[game.matchingTeamMode]}} {{gamemode.mode[game.matchingMode]}}</h4>
                       <img class="ui circular image" :src="require(`../assets/static/img/00.캐릭터/${game.characterSrc}`)" >
-                      <div class="ui orange bottom right attached label" >{{getCharacter(game.characterNum-1)}}/{{game.item[0].transKr[0][1]}}</div>
+                      <div class="ui orange bottom right attached label" >{{game.nameKr}} / {{game.item[0].transKr[0][1]}}</div>
                 </div>
                 <div class="ui three column">
                   <div class="ui three ">
@@ -91,7 +91,7 @@ export default {
         return character.data[i].nameKr
     },
     reloadPage(){
-      if (this.user == null)
+      
       this.$router.go(0);
     }  
   },
@@ -109,8 +109,8 @@ export default {
       alert(this.user);
       this.$router.push('/search')
     }
-    this.reloadPage()
-    if(this.user.code == 200) this.currentMmr = await api.searchMmr(this.games[0].userNum,this.games[0].matchingTeamMode);
+    else if(this.user == null) this.reloadPage()
+    else if(this.user.code == 200) this.currentMmr = await api.searchMmr(this.games[0].userNum,this.games[0].matchingTeamMode);
 },
   
 };

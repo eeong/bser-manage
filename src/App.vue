@@ -49,6 +49,9 @@ export default {
 @import url('https://fonts.googleapis.com/css2?family=Sunflower:wght@300;500&display=swap');
 
 html, body, h1, h2, h3, h4, h5, .item {font-family: 'Noto Sans Kr', sans-serif !important;}
+h1 {font-weight: 500 !important;}
+h2 {font-weight: 400 !important;}
+h3, h4 {font-weight: 300 !important;}
 #app > div.navbar {
 	margin-bottom: 1.5em;
 }
