@@ -52,7 +52,6 @@
 
 <script>
 import { api } from '../helpers/helpers';
-import character from '../json/Character.json';
 import itemComp from '../components/Itemcomp';
 
 export default {
@@ -80,16 +79,12 @@ export default {
         userNum: x.gameId || null,
         mode:this.gamemode.team[x.matchingTeamMode],
         weapon: x.item[0].transKr[0][1],
-        character: `${this.getCharacter(x.characterNum-1)}`,
+        character: `${x.nameKr}`,
         characterSrc: x.characterSrc,
         item: x.item
       }
         this.$emit('createOrUpdate', game);
       },
-
-    getCharacter: (i) => {
-        return character.data[i].nameKr
-    },
     reloadPage(){
       
       this.$router.go(0);

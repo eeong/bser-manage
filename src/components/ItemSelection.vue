@@ -67,7 +67,7 @@
 										<h4 is="sui-header">{{armor.name}}</h4>
 										<p class="item-desc" v-for="(transItem, j) in armor.transKr" :key="j">{{transItem[0]}}: {{transItem[1]}}</p>
 									</sui-grid-column>
-									<sui-image slot="trigger" class="ui tiny" rounded :id="armor.itemGrade" :src="require(`../assets/static/img/02.방어구/03.팔/${armor.name}.png`)" />
+									<sui-image slot="trigger" class="ui tiny" rounded :id="armor.itemGrade" :src="require(`../assets/static/img/02.방어구/팔/${armor.name}.png`)" />
 							</sui-popup>
 							<sui-list-content>
 								<p is="sui-list-header" style="transform: translateY(55%);">{{armor.name}}</p>
