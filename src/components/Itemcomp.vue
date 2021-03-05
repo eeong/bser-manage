@@ -21,7 +21,7 @@
 							<h4 is="sui-header">{{game.item[1].name}}</h4>
 							<p class="item-desc" v-for="(transItem, j) in game.item[1].transKr" :key="j">{{transItem[0]}}: {{transItem[1]}}</p>
 						</sui-grid-column>
-						<sui-image slot="trigger" :src="require(`../assets/static/img/02.방어구/02.옷/${game.item[1].name}.png`)" />
+						<sui-image slot="trigger" :src="require(`../assets/static/img/02.방어구/옷/${game.item[1].name}.png`)" />
 					</sui-popup>
 				</div>
 			</a>
@@ -33,7 +33,7 @@
 							<h4 is="sui-header">{{game.item[2].name}}</h4>
 							<p class="item-desc" v-for="(transItem, j) in game.item[2].transKr" :key="j">{{transItem[0]}}: {{transItem[1]}}</p>
 						</sui-grid-column>
-						<sui-image slot="trigger" :src="require(`../assets/static/img/02.방어구/01.머리/${game.item[2].name}.png`)" />
+						<sui-image slot="trigger" :src="require(`../assets/static/img/02.방어구/머리/${game.item[2].name}.png`)" />
 					</sui-popup>
 				</div>
 			</a>
@@ -47,7 +47,7 @@
 							<h4 is="sui-header">{{game.item[3].name}}</h4>
 							<p class="item-desc" v-for="(transItem, j) in game.item[3].transKr" :key="j">{{transItem[0]}}: {{transItem[1]}}</p>
 						</sui-grid-column>
-						<sui-image slot="trigger" :src="require(`../assets/static/img/02.방어구/03.팔/${game.item[3].name}.png`)" />
+						<sui-image slot="trigger" :src="require(`../assets/static/img/02.방어구/팔/${game.item[3].name}.png`)" />
 					</sui-popup>
 				</div>
 			</a>
@@ -59,7 +59,7 @@
 							<h4 is="sui-header">{{game.item[4].name}}</h4>
 							<p class="item-desc" v-for="(transItem, j) in game.item[4].transKr" :key="j">{{transItem[0]}}: {{transItem[1]}}</p>
 						</sui-grid-column>
-						<sui-image slot="trigger" :src="require(`../assets/static/img/02.방어구/04.다리/${game.item[4].name}.png`)" />
+						<sui-image slot="trigger" :src="require(`../assets/static/img/02.방어구/다리/${game.item[4].name}.png`)" />
 					</sui-popup>
 				</div>
 			</a>
@@ -71,7 +71,7 @@
 							<h4 is="sui-header">{{game.item[5].name}}</h4>
 							<p class="item-desc" v-for="(transItem, j) in game.item[5].transKr" :key="j">{{transItem[0]}}: {{transItem[1]}}</p>
 						</sui-grid-column>
-						<sui-image slot="trigger" :src="require(`../assets/static/img/02.방어구/05.장식/${game.item[5].name}.png`)" />
+						<sui-image slot="trigger" :src="require(`../assets/static/img/02.방어구/장식/${game.item[5].name}.png`)" />
 					</sui-popup>
 				</div>
 			</a>

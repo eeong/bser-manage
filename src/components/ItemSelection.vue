@@ -37,7 +37,7 @@
 										<h4 is="sui-header">{{armor.name}}</h4>
 										<p class="item-desc" v-for="(transItem, j) in armor.transKr" :key="j">{{transItem[0]}}: {{transItem[1]}}</p>
 									</sui-grid-column>
-									<sui-image slot="trigger" class="ui tiny" rounded :id="armor.itemGrade" :src="require(`../assets/static/img/02.방어구/02.옷/${armor.name}.png`)" />
+									<sui-image slot="trigger" class="ui tiny" rounded :id="armor.itemGrade" :src="require(`../assets/static/img/02.방어구/옷/${armor.name}.png`)" />
 							</sui-popup>
 							<sui-list-content>
 								<p is="sui-list-header" style="transform: translateY(55%);">{{armor.name}}</p>
@@ -52,7 +52,7 @@
 										<h4 is="sui-header">{{armor.name}}</h4>
 										<p class="item-desc" v-for="(transItem, j) in armor.transKr" :key="j">{{transItem[0]}}: {{transItem[1]}}</p>
 									</sui-grid-column>
-									<sui-image slot="trigger" class="ui tiny" rounded :id="armor.itemGrade" :src="require(`../assets/static/img/02.방어구/01.머리/${armor.name}.png`)" />
+									<sui-image slot="trigger" class="ui tiny" rounded :id="armor.itemGrade" :src="require(`../assets/static/img/02.방어구/머리/${armor.name}.png`)" />
 							</sui-popup>
 							<sui-list-content>
 								<p is="sui-list-header" style="transform: translateY(55%);">{{armor.name}}</p>
@@ -82,7 +82,7 @@
 										<h4 is="sui-header">{{armor.name}}</h4>
 										<p class="item-desc" v-for="(transItem, j) in armor.transKr" :key="j">{{transItem[0]}}: {{transItem[1]}}</p>
 									</sui-grid-column>
-									<sui-image slot="trigger" class="ui tiny" rounded :id="armor.itemGrade" :src="require(`../assets/static/img/02.방어구/04.다리/${armor.name}.png`)" />
+									<sui-image slot="trigger" class="ui tiny" rounded :id="armor.itemGrade" :src="require(`../assets/static/img/02.방어구/다리/${armor.name}.png`)" />
 							</sui-popup>
 							<sui-list-content>
 								<p is="sui-list-header" style="transform: translateY(55%);">{{armor.name}}</p>
@@ -97,7 +97,7 @@
 										<h4 is="sui-header">{{armor.name}}</h4>
 										<p class="item-desc" v-for="(transItem, j) in armor.transKr" :key="j">{{transItem[0]}}: {{transItem[1]}}</p>
 									</sui-grid-column>
-									<sui-image slot="trigger" class="ui tiny" rounded :id="armor.itemGrade" :src="require(`../assets/static/img/02.방어구/05.장식/${armor.name}.png`)" />
+									<sui-image slot="trigger" class="ui tiny" rounded :id="armor.itemGrade" :src="require(`../assets/static/img/02.방어구/장식/${armor.name}.png`)" />
 							</sui-popup>
 							<sui-list-content>
 								<p is="sui-list-header" style="transform: translateY(55%);">{{armor.name}}</p>
@@ -105,8 +105,9 @@
 						</sui-list-item>
 					</sui-list>
 			</div>
-			<item-craft  :itemTree="itemTree" :key="temtreeKey" />
-			
+			<div class="column">
+			<item-craft  :itemTree="itemTree" :active="active" :rec="rec" :key="temtreeKey" />
+			</div>
 		</div>
 		</div>
 	
@@ -136,7 +137,6 @@ export default {
 			items: [['Weapon','무기'], ['Chest','옷'], ['Head','머리'],['Arm','팔'],['Leg' ,'다리'],['Trinket' ,'장식']],
 			itemTypeList:['Weapon','Chest','Head','Arm','Leg' ,'Trinket'],
 			selected:[],
-			selectedWeapon:'',
 			armor:[],
 			itemTree:[],
 			temtreeKey:0
