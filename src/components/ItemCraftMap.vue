@@ -1,45 +1,57 @@
 <template >
 <div >
-	<div v-if="itemTree" class="ui column four grid centered"  >
+	<div v-if="itemTree" class="ui column four grid centered container"  >
 		<div v-if="itemNow" class="row column ">
-			<sui-popup class="img-wrap" >
-				<sui-grid-column text-align="center">
-					<h4 is="sui-header">{{itemNow.name}}</h4>
-					<p class="item-desc" v-for="(transItem, i) in itemNow.transKr" :key="i">{{transItem[0]}}: {{transItem[1]}}</p>
-				</sui-grid-column>
-				<sui-image slot="trigger" :src="require(`../assets/static/img/${getImgDir(itemNow)}.png`)" />
-			</sui-popup>
-		</div>
-		<div class="row column ui equal width grid ">
-			<div class="column grid " v-for="(item,i) in itemTree" :key="i">
+			<div :id="itemNow.itemGrade" class="item-wrap ui image rounded">
 				<sui-popup class="img-wrap" >
-					<h4 is="sui-header">{{item.name}}</h4>
-					<sui-image slot="trigger" :src="require(`../assets/static/img/${getImgDir(item)}.png`)" />
+					<sui-grid-column text-align="center">
+						<h4 is="sui-header">{{itemNow.name}}</h4>
+						<p class="item-desc" v-for="(transItem, i) in itemNow.transKr" :key="i">{{transItem[0]}}: {{transItem[1]}}</p>
+					</sui-grid-column>
+					<sui-image slot="trigger" size="tiny" :src="require(`../assets/static/img/${getImgDir(itemNow)}.png`)" />
 				</sui-popup>
-				<div class="ui two column grid " v-if="item.sub">
-					<div class="column" v-for="(sub1,j) in item.sub" :key="j">
-						<sui-popup class="img-wrap" >
-							<h4 is="sui-header">{{sub1.name}}</h4>
-							<sui-image slot="trigger" :src="require(`../assets/static/img/${getImgDir(sub1)}.png`)" />
-						</sui-popup>
-						<div class="ui two column grid " v-if="sub1.sub">
-							<div class="column" v-for="(sub2,k) in sub1.sub" :key="k">
-								<sui-popup class="img-wrap" >
-									<h4 is="sui-header">{{sub2.name}}</h4>
-									<sui-image slot="trigger" :src="require(`../assets/static/img/${getImgDir(sub2)}.png`)" />
-								</sui-popup>
-								<div class="ui two column grid " v-if="sub2.sub">
-									<div class="column row" v-for="(sub3,l) in sub2.sub" :key="l">
-										<sui-popup class="img-wrap" >
-											<h4 is="sui-header">{{sub3.name}}</h4>
-											<sui-image slot="trigger" :src="require(`../assets/static/img/${getImgDir(sub3)}.png`)" />
-										</sui-popup>
-										<div class="ui two column grid  " v-if="sub3.sub">
-											<div class="column row" v-for="(sub4,p) in sub3.sub" :key="p">
-												<sui-popup class="img-wrap" >
-													<h4 is="sui-header">{{sub4.name}}</h4>
-													<sui-image slot="trigger" :src="require(`../assets/static/img/${getImgDir(sub4)}.png`)" />
-												</sui-popup>
+			</div>
+		</div>
+		<div class="ui grid nowrap">
+			<div class="column stackable ten wide " v-for="(item,i) in itemTree" :key="i">
+				<div :id="item.itemGrade" class="item-wrap ui image rounded ">
+					<sui-popup class="img-wrap" >
+						<h4 is="sui-header">{{item.name}}</h4>
+						<sui-image slot="trigger" centered size="tiny" :src="require(`../assets/static/img/${getImgDir(item)}.png`)" />
+					</sui-popup>
+				</div>
+				<div class="ui column grid nowrap " v-if="item.sub">
+					<div class="column eight wide second-step " v-for="(sub1,j) in item.sub" :key="j" >
+						<div :id="sub1.itemGrade" class="item-wrap ui image rounded">
+							<sui-popup class="img-wrap" >
+								<h4 is="sui-header">{{sub1.name}}</h4>
+								<sui-image slot="trigger" :src="require(`../assets/static/img/${getImgDir(sub1)}.png`)" />
+							</sui-popup>
+						</div>
+						<div class="ui column grid nowrap" v-if="sub1.sub">
+							<div class="column eight wide sub-items" v-for="(sub2,k) in sub1.sub" :key="k">
+								<div :id="sub2.itemGrade" class="item-wrap ui image rounded">
+									<sui-popup class="img-wrap " >
+										<h4 is="sui-header">{{sub2.name}}</h4>
+										<sui-image slot="trigger" :src="require(`../assets/static/img/${getImgDir(sub2)}.png`)" />
+									</sui-popup>
+								</div>
+								<div class="ui column grid nowrap" v-if="sub2.sub">
+									<div class="column eight wide sub-items" v-for="(sub3,l) in sub2.sub" :key="l">
+										<div :id="sub3.itemGrade" class="item-wrap ui image rounded">
+											<sui-popup class="img-wrap" >
+												<h4 is="sui-header">{{sub3.name}}</h4>
+												<sui-image slot="trigger" :src="require(`../assets/static/img/${getImgDir(sub3)}.png`)" />
+											</sui-popup>
+										</div>
+										<div class="ui nowrap " v-if="sub3.sub">
+											<div class="column  wide sub-items" v-for="(sub4,p) in sub3.sub" :key="p">
+												<div :id="sub4.itemGrade" class="item-wrap ui image rounded">
+													<sui-popup class="img-wrap" >
+														<h4 is="sui-header">{{sub4.name}}</h4>
+														<sui-image slot="trigger"  :src="require(`../assets/static/img/${getImgDir(sub4)}.png`)" />
+													</sui-popup>
+												</div>
 											</div>
 										</div>
 									</div>
@@ -110,6 +122,23 @@ export default {
 </script>
 
 <style scoped>
+.nowrap {
+	flex-wrap: nowrap;
+	width: auto !important;
+	margin: 1.5em 0;
+}
+.sub-items {
+	padding: 0 1% !important;
+}
+.sub-wrap {
+	flex-wrap: wrap;
+}
+.second-step {
+	padding: 1em 0 !important;
+}
+.item-wrap {
+	width: 5em;
+}
 
 @media screen and (max-width:767px) {
 	

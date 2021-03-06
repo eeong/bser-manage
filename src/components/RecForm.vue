@@ -104,7 +104,7 @@ export default {
       alert(this.user);
       this.$router.push('/search')
     }
-    else if(this.user == null) this.reloadPage()
+    if(this.user == null) this.reloadPage()
     else if(this.user.code == 200) this.currentMmr = await api.searchMmr(this.games[0].userNum,this.games[0].matchingTeamMode);
 },
   

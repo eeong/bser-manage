@@ -15,8 +15,9 @@
       <option :value="v" v-for="(v,i) in optionsW" :key="i">
         {{v}}
       </option>
+      
     </select>
-
+    
   </div>
 </template>
 
@@ -194,7 +195,8 @@ export default {
   watch: {
     'currentChar':function(){
       let charcon=confirm("캐릭터를 변경하면 현재 아이템트리가 삭제됩니다.");
-      if(charcon) { this.modyRec(); 
+      if(charcon) { 
+      this.modyRec(); 
       this.optionsW = this.weaponMatch(this.currentChar[0]); 
       this.rec.weapon = this.optionsW[0]
       this.rec.item = {};

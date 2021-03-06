@@ -17,7 +17,7 @@
 			
 					<sui-list style="height:350px; overflow:auto;" class="item-list" divided relaxed v-show="isActive('무기')" >
 						<sui-list-item class="item-button" v-for="(weapon,i) in weapons" :key="i" @click="onClickItem(weapon)" :class="{selected:isSelected('Weapon',weapon)}">
-							<sui-popup>
+							<sui-popup >
 									<sui-grid-column text-align="center">
 										<h4 is="sui-header">{{weapon.name}}</h4>
 										<p class="item-desc" v-for="(transItem, j) in weapon.transKr" :key="j">{{transItem[0]}}: {{transItem[1]}}</p>
@@ -105,8 +105,8 @@
 						</sui-list-item>
 					</sui-list>
 			</div>
-			<div class="column wide four">
-			<item-craft :itemNow="itemNow" :itemTree="itemTree" :active="active" :rec="rec" :key="temtreeKey" />
+			<div class="column wide four" style="padding-top:4em; background:#efefef">
+				<item-craft :itemNow="itemNow" :itemTree="itemTree" :active="active" :rec="rec" :key="temtreeKey" />
 			</div>
 		</div>
 		</div>
@@ -211,6 +211,9 @@ export default {
 <style scoped>
 .item-list {
 	padding-top: 0.5em;
+}
+.item-list .ui.tiny {
+
 }
 .item-button {
 	cursor: pointer;
