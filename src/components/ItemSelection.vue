@@ -105,8 +105,8 @@
 						</sui-list-item>
 					</sui-list>
 			</div>
-			<div class="column">
-			<item-craft  :itemTree="itemTree" :active="active" :rec="rec" :key="temtreeKey" />
+			<div class="column wide four">
+			<item-craft :itemNow="itemNow" :itemTree="itemTree" :active="active" :rec="rec" :key="temtreeKey" />
 			</div>
 		</div>
 		</div>
@@ -139,6 +139,7 @@ export default {
 			selected:[],
 			armor:[],
 			itemTree:[],
+			itemNow:null,
 			temtreeKey:0
 	}
 	},
@@ -152,7 +153,11 @@ export default {
 			this.itemListKey += 1;
 		},
 		isSelected(ctgr, item){
-			return this.selected[0] == ctgr && this.selected[1] == item.code;
+			if(this.selected[0] == ctgr && this.selected[1] == item.code) {
+				this.itemNow = item;
+				return true
+			} 
+			else return false;
 		},
 		checkItemType(itemCode){
 			let weaponOrArmor = String(itemCode)[0];

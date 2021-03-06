@@ -1,7 +1,6 @@
 <template >
 <div >
-	<div v-if="itemTree" class="ui column four grid centered"  >
-		<div v-if="itemNow" class="row column ">
+		<div class="row column ">
 			<sui-popup class="img-wrap" >
 				<sui-grid-column text-align="center">
 					<h4 is="sui-header">{{itemNow.name}}</h4>
@@ -50,7 +49,6 @@
 				</div> 
 			</div>
 		</div>
-	</div>
 
 </div>
 </template>
@@ -58,27 +56,19 @@
 <script>
 
 export default {
-	name: 'item-craft',
-	components:{
-	},
+	name: 'item-craft-top',
 	props: {
-		itemTree:{type:Array},
-		active:{type:Array},
-		rec:{type:Object},
-		itemNow:{tyep:Object}
+		itemNow:{type:Object},
+		itemTree:{type:Array}
 	},
-	data() {
+	data(){
 		return {
 			itemTypeList:['Weapon','Chest','Head','Arm','Leg','Trinket'],
-			itemIdx :'',
 			items: [['Weapon','무기'], ['Chest','옷'], ['Head','머리'],['Arm','팔'],['Leg' ,'다리'],['Trinket' ,'장식']],
-			materialGrade:{'Common':'01','Uncommon':'02','Rare':'03','Epic':'04','Legend':'05'},
-			mapWide:'four',
-			topItemKey:0,
-		};
+		}
 	},
 	methods: {
-		getItemIdx: function(type) {
+				getItemIdx: function(type) {
 			return this.itemTypeList.indexOf(type);
 		},
 		getImgDir: function(item) {
@@ -89,22 +79,15 @@ export default {
 			else if(item.specialItemType) return `05.특수/${this.materialGrade[item.itemGrade]}/${item.name}`
 			else if(item.miscItemType) return `06.재료/${this.materialGrade[item.itemGrade]}/${item.name}`
 		},
-		getMapWidth: function(tree) {
-			let result='two';
-			for(var i in tree) {
-				if(!tree[i].sub[0].sub[0].sub && !tree[i].sub[1].sub[0].sub) result='four'; 
-			}
-			this.mapWide= result;
-		},
 	},
 	watch: {
 		
 	},
 	computed: {
-	
+		
 	},
 	async mounted() {
-		this.getItemIdx(this.active[0]);
+	
 }
 };
 </script>
