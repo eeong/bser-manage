@@ -1,8 +1,8 @@
 <template>
 	<div >
-		<div class="ui segment">
-		<div class="ui two column stackable left aligned grid">
-			<div class="column wide four" >
+		<div class="ui segment" style="height:460px; overflow:hidden;">
+		<div class="ui two stackable column grid">
+			<div class="column seven wide "  >
 					<sui-menu pointing secondary>
 						<a
 							is="sui-menu-item"
@@ -11,11 +11,12 @@
 							:key="item[1]"
 							:content="item[1]"
 							@click="selectCtgr(item,i)"
+							style="padding:1em 1.5em"
 						/>
 						
 					</sui-menu>
 			
-					<sui-list style="height:350px; overflow:auto;" class="item-list" divided relaxed v-show="isActive('무기')" >
+					<sui-list style="height:370px; overflow:auto;" class="item-list" divided relaxed v-show="isActive('무기')" >
 						<sui-list-item class="item-button" v-for="(weapon,i) in weapons" :key="i" @click="onClickItem(weapon)" :class="{selected:isSelected('Weapon',weapon)}">
 							<sui-popup >
 									<sui-grid-column text-align="center">
@@ -30,7 +31,7 @@
 						</sui-list-item>
 					</sui-list>
 			
-					<sui-list style="height:350px; overflow:auto;" class="item-list" divided relaxed v-show="isActive('옷')" >
+					<sui-list style="height:370px; overflow:auto;" class="item-list" divided relaxed v-show="isActive('옷')" >
 						<sui-list-item class="item-button" v-for="(armor,i) in armors.Chest" :key="i" @click="onClickItem(armor)" :class="{selected:isSelected('Armor',armor)}">
 							<sui-popup>
 									<sui-grid-column text-align="center">
@@ -45,7 +46,7 @@
 						</sui-list-item>
 					</sui-list>
 			
-					<sui-list style="height:350px; overflow:auto;" class="item-list" divided relaxed v-show="isActive('머리')" >
+					<sui-list style="height:370px; overflow:auto;" class="item-list" divided relaxed v-show="isActive('머리')" >
 						<sui-list-item class="item-button" v-for="(armor,i) in armors.Head" :key="i" @click="onClickItem(armor)" :class="{selected:isSelected('Armor',armor)}">
 							<sui-popup>
 									<sui-grid-column text-align="center">
@@ -60,7 +61,7 @@
 						</sui-list-item>
 					</sui-list>
 			
-					<sui-list style="height:350px; overflow:auto;" class="item-list" divided relaxed v-show="isActive('팔')" >
+					<sui-list style="height:370px; overflow:auto;" class="item-list" divided relaxed v-show="isActive('팔')" >
 						<sui-list-item class="item-button" v-for="(armor,i) in armors.Arm" :key="i" @click="onClickItem(armor)" :class="{selected:isSelected('Armor',armor)}">
 							<sui-popup>
 									<sui-grid-column text-align="center">
@@ -75,7 +76,7 @@
 						</sui-list-item>
 					</sui-list>
 			
-					<sui-list style="height:350px; overflow:auto;" class="item-list" divided relaxed v-show="isActive('다리')" >
+					<sui-list style="height:370px; overflow:auto;" class="item-list" divided relaxed v-show="isActive('다리')" >
 						<sui-list-item class="item-button" v-for="(armor,i) in armors.Leg" :key="i" @click="onClickItem(armor)" :class="{selected:isSelected('Armor',armor)}">
 							<sui-popup>
 									<sui-grid-column text-align="center">
@@ -90,7 +91,7 @@
 						</sui-list-item>
 					</sui-list>
 					
-					<sui-list style="height:350px; overflow:auto;" class="item-list" divided relaxed v-show="isActive('장식')" >
+					<sui-list style="height:370px; overflow:auto;" class="item-list" divided relaxed v-show="isActive('장식')" >
 						<sui-list-item class="item-button" v-for="(armor,i) in armors.Trinket" :key="i" @click="onClickItem(armor)" :class="{selected:isSelected('Armor',armor)}">
 							<sui-popup>
 									<sui-grid-column text-align="center">
@@ -105,7 +106,7 @@
 						</sui-list-item>
 					</sui-list>
 			</div>
-			<div class="column wide four" style="padding-top:4em; background:#efefef">
+			<div class="column nine wide" style=" background:#efefef">
 				<item-craft :itemNow="itemNow" :itemTree="itemTree" :active="active" :rec="rec" :key="temtreeKey" />
 			</div>
 		</div>

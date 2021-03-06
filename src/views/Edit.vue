@@ -1,5 +1,5 @@
 <template>
-  <div class="ui text container">
+  <div class="ui container">
       <h1>빌드 수정하기</h1>
       
       <div class="ui inverted segment table" v-if="rec != null">
@@ -19,10 +19,10 @@
         </tr>
       </div>
         
-      <char-selection v-if="rec != null" :rec="rec" :key="charSelectionKey" />
+      <char-selection v-if="rec != null" :rec="rec" :key="charSelectionKey" style="margin:2em 0;" />
         
 
-      <div style="position:relative;">
+      <div style="position:relative; ">
         <item-selection 
           
           class="column" 
@@ -84,11 +84,11 @@ export default {
     
   },
   methods: {
-    /* createOrUpdate: async function(task) {
-      await api.updatetask(task);
-      this.flash('task updated sucessfully!', 'success');
-      this.$router.push(`/tasks/${task._id}`);
-    } */
+    onClickSubmit: async function() {
+      await api.updaterec(this.rec);
+      this.flash('템트리가 성공적으로 등록되었습니다!', 'success');
+      this.$router.push(`/recs/${this.rec._id}`);
+    },
     onClickCancel: function(){
       let alert=confirm("진행사항을 취소하고 돌아갑니다");
       if(alert) { 
@@ -136,8 +136,9 @@ export default {
   top: 50%;
   transform: translateY(-50%);
   right: 0;
-  width: 12em !important;
+  width: 14em !important;
 }
+
 .ui.image.ribbon.w-type {
   width: 40px;
   height: 40px;
@@ -158,7 +159,7 @@ export default {
     left: 2% !important; 
   }
 	td#td-my {
-    width: 12em !important;
+    width: 14em !important;
     display: inline-block !important;
   }
   .ui.inverted.segment {

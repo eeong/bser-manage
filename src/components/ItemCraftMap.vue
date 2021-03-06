@@ -1,58 +1,48 @@
 <template >
-<div >
+<div style="padding-top:4em;">
 	<div v-if="itemTree" class="ui column four grid centered container"  >
 		<div v-if="itemNow" class="row column ">
 			<div :id="itemNow.itemGrade" class="item-wrap ui image rounded">
-				<sui-popup class="img-wrap" >
+				<sui-popup class="img-wrap first" >
 					<sui-grid-column text-align="center">
 						<h4 is="sui-header">{{itemNow.name}}</h4>
 						<p class="item-desc" v-for="(transItem, i) in itemNow.transKr" :key="i">{{transItem[0]}}: {{transItem[1]}}</p>
 					</sui-grid-column>
-					<sui-image slot="trigger" size="tiny" :src="require(`../assets/static/img/${getImgDir(itemNow)}.png`)" />
+					<sui-image slot="trigger" size="small" :src="require(`../assets/static/img/${getImgDir(itemNow)}.png`)" />
 				</sui-popup>
 			</div>
 		</div>
-		<div class="ui grid nowrap">
+		<div class="ui grid nowrap first " :class="nowrap(itemTree)">
 			<div class="column stackable ten wide " v-for="(item,i) in itemTree" :key="i">
 				<div :id="item.itemGrade" class="item-wrap ui image rounded ">
-					<sui-popup class="img-wrap" >
+					<sui-popup class="img-wrap " >
 						<h4 is="sui-header">{{item.name}}</h4>
 						<sui-image slot="trigger" centered size="tiny" :src="require(`../assets/static/img/${getImgDir(item)}.png`)" />
 					</sui-popup>
 				</div>
-				<div class="ui column grid nowrap " v-if="item.sub">
-					<div class="column eight wide second-step " v-for="(sub1,j) in item.sub" :key="j" >
+				<div class="ui column grid nowrap second " v-if="item.sub" >
+					<div class="column ten wide second-step " v-for="(sub1,j) in item.sub" :key="j" >
 						<div :id="sub1.itemGrade" class="item-wrap ui image rounded">
 							<sui-popup class="img-wrap" >
 								<h4 is="sui-header">{{sub1.name}}</h4>
 								<sui-image slot="trigger" :src="require(`../assets/static/img/${getImgDir(sub1)}.png`)" />
 							</sui-popup>
 						</div>
-						<div class="ui column grid nowrap" v-if="sub1.sub">
-							<div class="column eight wide sub-items" v-for="(sub2,k) in sub1.sub" :key="k">
+						<div class="ui column grid nowrap" v-if="sub1.sub" >
+							<div class="column ten wide sub-items sub-last" v-for="(sub2,k) in sub1.sub" :key="k">
 								<div :id="sub2.itemGrade" class="item-wrap ui image rounded">
 									<sui-popup class="img-wrap " >
 										<h4 is="sui-header">{{sub2.name}}</h4>
 										<sui-image slot="trigger" :src="require(`../assets/static/img/${getImgDir(sub2)}.png`)" />
 									</sui-popup>
 								</div>
-								<div class="ui column grid nowrap" v-if="sub2.sub">
-									<div class="column eight wide sub-items" v-for="(sub3,l) in sub2.sub" :key="l">
-										<div :id="sub3.itemGrade" class="item-wrap ui image rounded">
+								<div class="ui column grid nowrap " v-if="sub2.sub">
+									<div class="column ten wide sub-items sub-last" v-for="(sub3,l) in sub2.sub" :key="l">
+										<div :id="sub3.itemGrade" class="item-wrap ui image rounded" >
 											<sui-popup class="img-wrap" >
 												<h4 is="sui-header">{{sub3.name}}</h4>
 												<sui-image slot="trigger" :src="require(`../assets/static/img/${getImgDir(sub3)}.png`)" />
 											</sui-popup>
-										</div>
-										<div class="ui nowrap " v-if="sub3.sub">
-											<div class="column  wide sub-items" v-for="(sub4,p) in sub3.sub" :key="p">
-												<div :id="sub4.itemGrade" class="item-wrap ui image rounded">
-													<sui-popup class="img-wrap" >
-														<h4 is="sui-header">{{sub4.name}}</h4>
-														<sui-image slot="trigger"  :src="require(`../assets/static/img/${getImgDir(sub4)}.png`)" />
-													</sui-popup>
-												</div>
-											</div>
 										</div>
 									</div>
 								</div>
@@ -101,13 +91,14 @@ export default {
 			else if(item.specialItemType) return `05.특수/${this.materialGrade[item.itemGrade]}/${item.name}`
 			else if(item.miscItemType) return `06.재료/${this.materialGrade[item.itemGrade]}/${item.name}`
 		},
-		getMapWidth: function(tree) {
-			let result='two';
-			for(var i in tree) {
-				if(!tree[i].sub[0].sub[0].sub && !tree[i].sub[1].sub[0].sub) result='four'; 
-			}
-			this.mapWide= result;
-		},
+		
+		nowrap: function(val) {
+			let result;
+			if(val.sub && val.sub[1].sub && !val.sub[0].sub) result ='type1';
+			else if(val.sub && val.sub[1].sub[0].sub && !val.sub[0].sub[0].sub) result = 'type2';
+			else result = '';
+			return result;
+		}
 	},
 	watch: {
 		
@@ -124,12 +115,18 @@ export default {
 <style scoped>
 .nowrap {
 	flex-wrap: nowrap;
-	width: auto !important;
+	padding: 0;
 	margin: 1.5em 0;
+	position: relative;
 }
+.nowrap.first {
+	margin-top: 0;
+}
+
 .sub-items {
-	padding: 0 1% !important;
+	padding: 0 1px !important;
 }
+
 .sub-wrap {
 	flex-wrap: wrap;
 }
@@ -137,9 +134,39 @@ export default {
 	padding: 1em 0 !important;
 }
 .item-wrap {
-	width: 5em;
+	width: 4.5em;
+	position: relative;
 }
 
+.nowrap::before {
+	position: absolute;
+	content:"";
+	height: 3em;
+	width: 50%;
+	border: 1px solid #222;
+	border-bottom: none;
+	top: -0.2em;
+	left: 55%;
+	transform: translateX(-50%);
+}
+.nowrap.type1::before {
+	left: 45%;
+}
+.nowrap.type2::before {
+	left: 55%;
+}
+/* .item-wrap::before {
+	position: absolute;
+	content:"";
+	width: 1px;
+	height: 1.1em;
+	background: #222;
+	top: -1.1em;
+} */
+
+.sub-last {
+	margin: 1em 0;
+}
 @media screen and (max-width:767px) {
 	
 	
