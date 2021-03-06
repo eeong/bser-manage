@@ -124,9 +124,9 @@ export default {
 }
 
 .item-blank {
-	font-family: 'SunFlower', sans-serif;
+	font-family: 'Nanum Gothic', sans-serif;
 	font-size: 0.925em;
-	font-weight: 500;
+	font-weight: 600;
 	width: 100%;
 	padding: 1.375em 0;
 	background: rgba(186, 186, 187, 0.3);
