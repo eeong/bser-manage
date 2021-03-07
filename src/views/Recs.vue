@@ -32,7 +32,9 @@
         
       </table>
       <div class="ui secondary menu">
-        <sui-button positive style="margin-top:0">새로만들기</sui-button>
+        <router-link :to="{ name: 'make'}">
+          <sui-button positive style="margin-top:0" @click="makeNewBuild()">새로만들기</sui-button>
+          </router-link>
         <div class="ui pagination menu right">
             <a class="item" v-for="i in paging.end" :key="i" @click="pageClick(i)">{{i}}</a>
         </div>
@@ -80,6 +82,9 @@ export default {
     },
     pageClick(i){
       this.paging.index = i-1;
+    },
+    makeNewBuild(){
+
     }
   },
   watch:{

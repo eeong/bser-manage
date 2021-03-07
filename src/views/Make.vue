@@ -1,25 +1,25 @@
 <template>
   <div class="ui container">
-      <h1>빌드 수정하기</h1>
+      <h1>빌드 만들기</h1>
       
-      <div class="ui inverted segment table" v-if="rec != null">
+      <div class="ui inverted segment table" >
         <tr>
           <td class="ui image" id="td-my" >
-            <img class="ui image small spaced " :src="require(`../assets/static/img/00.캐릭터/${rec.characterSrc}`)" alt="캐릭터">
+            <img class="ui image small spaced " :src="require(`../assets/static/img/00.캐릭터/${rec.characterSrc || 'empty.png'}`)" alt="캐릭터">
             <sui-popup :content="rec.weapon">
-              <img slot="trigger" class="ui image label ribbon circular w-type" :src="require(`../assets/static/img/type/${rec.weapon}.png`)" alt="weapontype">
+              <img slot="trigger" v-if="rec != null" class="ui image label ribbon circular w-type" :src="require(`../assets/static/img/type/${rec.weapon || 'empty'}.png`)" alt="weapontype">
             </sui-popup>
           </td>
-          <td class="ui input" id="td-my">
+          <td class="ui input" id="td-my" v-if="rec != null">
             <input type="text" v-model="rec.titleCustom">
           </td>
-        <td class="ui weapon-td" id="td-my">
-          <item-comp v-if="rec != null" :taken="rec" :key="itemCompKey" />
+        <td class="ui weapon-td" id="td-my" v-if="rec != null">
+          <item-comp :taken="rec" :key="itemCompKey" />
         </td>
         </tr>
       </div>
         
-      <char-selection @changeWeaponCtgr="changeWeaponCtgr" v-if="rec != null" :rec="rec" :key="charSelectionKey" style="margin:1em 0 4em 0;" />
+      <char-selection :rec="rec" :key="charSelectionKey" style="margin:1em 0 4em 0;" />
         
 
       <div style="position:relative; ">
@@ -54,7 +54,7 @@ import CharSelection from '../components/CharSelection';
 import ItemSelection from '../components/ItemSelection';
 
 export default {
-  name: 'edit',
+  name: 'make',
   components: {
     "item-comp": ItemComp,
     "char-selection": CharSelection,
@@ -64,14 +64,20 @@ export default {
     return {
       title:"",
       loader:"active",
-      rec:null,
+      rec:{
+        titleCustom:'제목을 입력해주세요.',
+        charachter: '',
+        charachterSrc: '',
+        weapon: '',
+        item:[]
+      },
       weaponDB:[],
       armorDB:[],
       itemTypeList:['Weapon','Chest','Head','Arm','Leg' ,'Trinket'],
       itemCompKey:0,
       itemSelectionKey:0,
       charSelectionKey:0,
-      armors:{}
+      armors:{},
     };
   },
   watch:{
@@ -86,7 +92,7 @@ export default {
   },
   methods: {
     onClickSubmit: async function() {
-      await api.updaterec(this.rec);
+      await api.createrec(this.rec);
       this.flash('템트리가 성공적으로 등록되었습니다!', 'success');
       this.$router.push(`/recs`);
     },
@@ -113,18 +119,12 @@ export default {
     },
     titleChange: function(title){
       this.rec.titleCustom = title;
-    },
-    changeWeaponCtgr: function(weapon){
-      this.rec.weapon = weapon;
     }
   },
   async mounted() {
-    this.rec = await api.getrec(this.$route.params.id);
-    this.loader = 'disabled';
     this.$refs.itemSelection.getDivofChild();
     this.armorDB = await api.getarmor();
     for(var i in this.itemTypeList){this.getArmorDB(this.itemTypeList[i])}
-    if(!this.rec.titleCustom) this.titleChange(this.rec.title);
   }
 };
 </script>

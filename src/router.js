@@ -4,6 +4,7 @@ import Search from './views/Search.vue';
 import SearchId from './views/SearchId.vue';
 import Recs from './views/Recs.vue';
 import New from './views/New.vue';
+import Make from './views/Make.vue';
 import Show from './views/Show.vue';
 import Edit from './views/Edit.vue';
 import Rank from './views/Rank.vue';
@@ -38,6 +39,11 @@ export default new Router({
       path: '/new',
       name: 'new',
       component: New
+    },
+    {
+      path: '/make',
+      name: 'make',
+      component: Make
     },
     {
       path: '/recs/:id',
