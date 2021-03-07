@@ -19,7 +19,7 @@
         </tr>
       </div>
         
-      <char-selection v-if="rec != null" :rec="rec" :key="charSelectionKey" style="margin:2em 0;" />
+      <char-selection v-if="rec != null" :rec="rec" :key="charSelectionKey" style="margin:1em 0 4em 0;" />
         
 
       <div style="position:relative; ">
@@ -125,7 +125,7 @@ export default {
   background: #413e3e;
   background: linear-gradient(#646262, #3b3a3a) ;
   overflow: hidden;
-  height: 8rem;
+  height: 10rem;
   position: relative;
 }
 .ui.celled.table tr td {

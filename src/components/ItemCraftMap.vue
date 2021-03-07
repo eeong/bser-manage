@@ -12,15 +12,15 @@
 				</sui-popup>
 			</div>
 		</div>
-		<div class="ui grid nowrap first " :class="nowrap(itemTree)">
-			<div class="column stackable ten wide " v-for="(item,i) in itemTree" :key="i">
+		<div class="ui grid nowrap first " :class="nowrapTop">
+			<div class="column stackable ten wide " v-for="(item,i) in itemTree" :key="i" ref="subs">
 				<div :id="item.itemGrade" class="item-wrap ui image rounded ">
 					<sui-popup class="img-wrap " >
 						<h4 is="sui-header">{{item.name}}</h4>
 						<sui-image slot="trigger" centered size="tiny" :src="require(`../assets/static/img/${getImgDir(item)}.png`)" />
 					</sui-popup>
 				</div>
-				<div class="ui column grid nowrap second " v-if="item.sub" >
+				<div class="ui column grid nowrap second " v-if="item.sub" :id="`second${i}`" :class="nowrapSecond">
 					<div class="column ten wide second-step " v-for="(sub1,j) in item.sub" :key="j" >
 						<div :id="sub1.itemGrade" class="item-wrap ui image rounded">
 							<sui-popup class="img-wrap" >
@@ -67,7 +67,8 @@ export default {
 		itemTree:{type:Array},
 		active:{type:Array},
 		rec:{type:Object},
-		itemNow:{tyep:Object}
+		itemNow:{tyep:Object},
+		divDim:{type:Array}
 	},
 	data() {
 		return {
@@ -77,6 +78,9 @@ export default {
 			materialGrade:{'Common':'01','Uncommon':'02','Rare':'03','Epic':'04','Legend':'05'},
 			mapWide:'four',
 			topItemKey:0,
+			nowrapTop:'',
+			nowrapSecond:'',
+		
 		};
 	},
 	methods: {
@@ -92,22 +96,33 @@ export default {
 			else if(item.miscItemType) return `06.재료/${this.materialGrade[item.itemGrade]}/${item.name}`
 		},
 		
-		nowrap: function(val) {
+		nowrap: function(dim) {
 			let result;
-			if(val.sub && val.sub[1].sub && !val.sub[0].sub) result ='type1';
-			else if(val.sub && val.sub[1].sub[0].sub && !val.sub[0].sub[0].sub) result = 'type2';
-			else result = '';
-			return result;
-		}
+			if(dim[0] < dim[1]) result ='type1';
+			else if(dim[0] == dim[1]) result ='type2';
+			if(dim[2] > 300) this.nowrapSecond = 'type3';
+			this.nowrapTop = result;
+		},
+		getDivDim:function(){
+			if(this.itemNow){
+				this.divDim[0] = this.$refs.subs[0].clientWidth;
+				this.divDim[1] = this.$refs.subs[1].clientWidth;
+				this.divDim[2] = this.$refs.subs[0].clientHeight;
+				this.nowrap(this.divDim)
+			}
+		},
 	},
 	watch: {
-		
+		/* 'divWidth':function(){
+			this.nowrap(this.divWidth);
+		} */
 	},
 	computed: {
 	
 	},
 	async mounted() {
 		this.getItemIdx(this.active[0]);
+		this.getDivDim();
 }
 };
 </script>
@@ -153,7 +168,10 @@ export default {
 	left: 45%;
 }
 .nowrap.type2::before {
-	left: 55%;
+	left: 50%;
+}
+#second0.nowrap.type3::before {
+	left: 45%;
 }
 /* .item-wrap::before {
 	position: absolute;

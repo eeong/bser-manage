@@ -11,7 +11,7 @@
 							:key="item[1]"
 							:content="item[1]"
 							@click="selectCtgr(item,i)"
-							style="padding:1em 1.5em"
+							class="item-ctgr"
 						/>
 						
 					</sui-menu>
@@ -107,7 +107,7 @@
 					</sui-list>
 			</div>
 			<div class="column nine wide" style=" background:#efefef">
-				<item-craft :itemNow="itemNow" :itemTree="itemTree" :active="active" :rec="rec" :key="temtreeKey" />
+				<item-craft ref="craft" :divDim="divDim" :itemNow="itemNow" :itemTree="itemTree" :active="active" :rec="rec" :key="temtreeKey" />
 			</div>
 		</div>
 		</div>
@@ -126,7 +126,8 @@ export default {
 	props: {
 		rec:{type:Object},
 		weapons:{type:Array},
-		armors:{type:Object}
+		armors:{type:Object},
+		divs:{type:Array},
 	},
 	components:{
 		'item-craft' : ItemCraftMap
@@ -141,7 +142,8 @@ export default {
 			armor:[],
 			itemTree:[],
 			itemNow:null,
-			temtreeKey:0
+			temtreeKey:0,
+			divDim:[0,0,0],
 	}
 	},
 	methods: {
@@ -185,13 +187,18 @@ export default {
 				this.temtreeKey += 1;
 			}
 			else this.itemTree = [];
+		},
+		getDivofChild:function(){
+			this.$refs.craft.getDivDim();
 		}
 	},
 	
 	watch: {
 		'selected':function(){
 			this.changeItem();
+			this.getDivofChild();
 		},
+		
 	},
 	computed:{
 		selection:function(){
@@ -213,8 +220,8 @@ export default {
 .item-list {
 	padding-top: 0.5em;
 }
-.item-list .ui.tiny {
-
+.item-ctgr {
+	padding: 1em 2em !important;
 }
 .item-button {
 	cursor: pointer;
@@ -225,5 +232,10 @@ export default {
 	border: 1.75px solid #cc431a !important;
 	border-style: groove;
 }
-
+@media screen and (max-width:991px) {
+	.item-ctgr {
+		padding: 1em !important;
+	}
+	
+}
 </style>
