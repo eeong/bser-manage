@@ -11,7 +11,7 @@
             </sui-popup>
           </td>
           <td class="ui transparent inverted input" id="td-my">
-            <input type="text" :placeholder="rec.title" v-model="rec.title">
+            <input type="text" v-model="rec.titleCustom">
           </td>
         <td class="ui weapon-td" id="td-my">
           <item-comp v-if="rec != null" :taken="rec" :key="itemCompKey" />
@@ -31,7 +31,7 @@
           :weapons="weaponDB"
           :armors="armors" 
           @changeItem="changeItem"
-          
+          ref="itemSelection"
           />
 
           <div class="edit-button">
@@ -79,6 +79,7 @@ export default {
       this.getWeaponDB(this.rec.weapon);
       this.forceRender('item-selection');
     },
+    
   },
   computed:{
     
@@ -87,7 +88,7 @@ export default {
     onClickSubmit: async function() {
       await api.updaterec(this.rec);
       this.flash('템트리가 성공적으로 등록되었습니다!', 'success');
-      this.$router.push(`/recs/${this.rec._id}`);
+      this.$router.push(`/recs`);
     },
     onClickCancel: function(){
       let alert=confirm("진행사항을 취소하고 돌아갑니다");
@@ -110,12 +111,17 @@ export default {
     changeItem: function(){
       this.forceRender('item-comp');
     },
+    titleChange: function(title){
+      this.rec.titleCustom = title;
+    }
   },
   async mounted() {
     this.rec = await api.getrec(this.$route.params.id);
     this.loader = 'disabled';
-    this.armorDB = await api.getarmor()
+    this.$refs.itemSelection.getDivofChild();
+    this.armorDB = await api.getarmor();
     for(var i in this.itemTypeList){this.getArmorDB(this.itemTypeList[i])}
+    if(!this.rec.titleCustom) this.titleChange(this.rec.title);
   }
 };
 </script>

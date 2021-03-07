@@ -87,7 +87,7 @@ export default {
     onClickSubmit: async function() {
       await api.updaterec(this.rec);
       this.flash('템트리가 성공적으로 등록되었습니다!', 'success');
-      this.$router.push(`/recs/${this.rec._id}`);
+      this.$router.push(`/recs`);
     },
     onClickCancel: function(){
       let alert=confirm("진행사항을 취소하고 돌아갑니다");

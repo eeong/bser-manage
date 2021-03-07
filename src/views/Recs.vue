@@ -13,12 +13,12 @@
             <img class="ui item tiny circular image" :src="require(`../assets/static/img/00.캐릭터/${rec.characterSrc}`)" >
           </td>
           <td >
-              <router-link class="four column" :to="{ name: 'show', params: { id: rec._id }}">
-                {{ rec.title }} 
+              <router-link class="four column" :to="{ name: 'edit', params: { id: rec._id }}">
+                {{ rec.titleCustom || rec.title }} 
               </router-link>
           </td>
           <td width="200">
-            <item-comp :taken="rec" />
+            <item-comp :taken="rec" :key="itemCompKey" />
           </td>
           <td width="75" class="center aligned">
               <router-link :to="{ name: 'edit', params: { id: rec._id }}">
@@ -59,9 +59,8 @@ export default {
         index:0,
         end:'',
         pageNum:5,
-
       },
-      
+      itemCompKey:0,
     };
   },
   components:{
@@ -73,7 +72,6 @@ export default {
       if (!sure) return;
       await api.deleterec(build._id);
       location.reload();
-      
     },
     getPage(){
       let pages = this.paging.index*this.paging.pageNum;
@@ -87,6 +85,7 @@ export default {
   watch:{
     'paging.index':function(){
       this.getPage();
+      this.itemCompKey += 1;
     }
   },
   async mounted() {
