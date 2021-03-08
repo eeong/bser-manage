@@ -11,7 +11,7 @@
             </sui-popup>
           </td>
           <td class="ui input" id="td-my" v-if="rec != null">
-            <input type="text" v-model="rec.titleCustom">
+            <input type="text" placeholder="제목을 입력해주세요." v-model="rec.titleCustom">
           </td>
         <td class="ui weapon-td" id="td-my" v-if="rec != null">
           <item-comp :taken="rec" :key="itemCompKey" />
@@ -66,7 +66,7 @@ export default {
       title:"",
       loader:"",
       rec:{
-        titleCustom:'제목을 입력해주세요.',
+        titleCustom:'',
         charachter: '',
         charachterSrc: '',
         weapon: '',
