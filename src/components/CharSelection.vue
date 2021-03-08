@@ -179,6 +179,7 @@ export default {
         },
       ],
       optionsW: this.weaponMatch(this.rec.character),
+      
     };
   },
   methods: {
