@@ -1,6 +1,7 @@
 <template >
 <div style="padding-top:4em;">
 	<div v-if="itemTree" class="ui column four grid centered container"  >
+		<h4 v-if="itemNow"><b>{{itemNow.name}}</b>의 제작트리 </h4>
 		<div v-if="itemNow" class="row column ">
 			<div :id="itemNow.itemGrade" class="item-wrap ui image rounded">
 				<sui-popup class="img-wrap first" >
@@ -12,7 +13,7 @@
 				</sui-popup>
 			</div>
 		</div>
-		<div class="ui grid nowrap first " :class="nowrapTop">
+		<div class="ui grid nowrap first " :class="nowrapTop" v-if="itemNow" >
 			<div class="column stackable ten wide " v-for="(item,i) in itemTree" :key="i" ref="subs">
 				<div :id="item.itemGrade" class="item-wrap ui image rounded ">
 					<sui-popup class="img-wrap " >
@@ -68,7 +69,7 @@ export default {
 		active:{type:Array},
 		rec:{type:Object},
 		itemNow:{tyep:Object},
-		divDim:{type:Array}
+		
 	},
 	data() {
 		return {
@@ -80,7 +81,7 @@ export default {
 			topItemKey:0,
 			nowrapTop:'',
 			nowrapSecond:'',
-		
+			divDim:[0,0,0]
 		};
 	},
 	methods: {

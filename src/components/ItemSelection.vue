@@ -1,6 +1,6 @@
 <template>
 	<div >
-		<div class="ui segment" style="height:460px; overflow:hidden;">
+		<div class="ui segment" style="height:460px; overflow:visible;">
 		<div class="ui two stackable column grid">
 			<div class="column seven wide "  >
 					<sui-menu pointing secondary>
@@ -17,8 +17,10 @@
 					</sui-menu>
 			
 					<div class="">
-						<div class="ui loader" :class="loader"></div>
-						<sui-list style="height:370px; overflow:auto;" class="item-list" divided relaxed v-show="isActive('무기')" >
+						<div class="ui inverted dimmer" :class="loader">
+							<div class="ui loader text">아이템을 불러오는 중입니당</div>
+						</div>
+						<sui-list class="item-list" divided relaxed v-show="isActive('무기')" >
 							<sui-list-item class="item-button" v-for="(weapon,i) in weapons" :key="i" @click="onClickItem(weapon)" :class="{selected:isSelected('Weapon',weapon)}">
 								<sui-popup >
 										<sui-grid-column text-align="center">
@@ -33,7 +35,7 @@
 							</sui-list-item>
 						</sui-list>
 				
-						<sui-list style="height:370px; overflow:auto;" class="item-list" divided relaxed v-show="isActive('옷')" >
+						<sui-list class="item-list" divided relaxed v-show="isActive('옷')" >
 							<sui-list-item class="item-button" v-for="(armor,i) in armors.Chest" :key="i" @click="onClickItem(armor)" :class="{selected:isSelected('Armor',armor)}">
 								<sui-popup>
 										<sui-grid-column text-align="center">
@@ -48,7 +50,7 @@
 							</sui-list-item>
 						</sui-list>
 				
-						<sui-list style="height:370px; overflow:auto;" class="item-list" divided relaxed v-show="isActive('머리')" >
+						<sui-list class="item-list" divided relaxed v-show="isActive('머리')" >
 							<sui-list-item class="item-button" v-for="(armor,i) in armors.Head" :key="i" @click="onClickItem(armor)" :class="{selected:isSelected('Armor',armor)}">
 								<sui-popup>
 										<sui-grid-column text-align="center">
@@ -63,7 +65,7 @@
 							</sui-list-item>
 						</sui-list>
 				
-						<sui-list style="height:370px; overflow:auto;" class="item-list" divided relaxed v-show="isActive('팔')" >
+						<sui-list class="item-list" divided relaxed v-show="isActive('팔')" >
 							<sui-list-item class="item-button" v-for="(armor,i) in armors.Arm" :key="i" @click="onClickItem(armor)" :class="{selected:isSelected('Armor',armor)}">
 								<sui-popup>
 										<sui-grid-column text-align="center">
@@ -78,7 +80,7 @@
 							</sui-list-item>
 						</sui-list>
 				
-						<sui-list style="height:370px; overflow:auto;" class="item-list" divided relaxed v-show="isActive('다리')" >
+						<sui-list class="item-list" divided relaxed v-show="isActive('다리')" >
 							<sui-list-item class="item-button" v-for="(armor,i) in armors.Leg" :key="i" @click="onClickItem(armor)" :class="{selected:isSelected('Armor',armor)}">
 								<sui-popup>
 										<sui-grid-column text-align="center">
@@ -93,7 +95,7 @@
 							</sui-list-item>
 						</sui-list>
 						
-						<sui-list style="height:370px; overflow:auto;" class="item-list" divided relaxed v-show="isActive('장식')" >
+						<sui-list class="item-list" divided relaxed v-show="isActive('장식')" >
 							<sui-list-item class="item-button" v-for="(armor,i) in armors.Trinket" :key="i" @click="onClickItem(armor)" :class="{selected:isSelected('Armor',armor)}">
 								<sui-popup>
 										<sui-grid-column text-align="center">
@@ -110,7 +112,7 @@
 					</div>
 			</div>
 			<div class="column nine wide" style=" background:#efefef">
-				<item-craft ref="craft" :divDim="divDim" :itemNow="itemNow" :itemTree="itemTree" :active="active" :rec="rec" :key="temtreeKey" />
+				<item-craft ref="craft" :itemNow="itemNow" :itemTree="itemTree" :active="active" :rec="rec" :key="temtreeKey" />
 			</div>
 		</div>
 		</div>
@@ -131,6 +133,7 @@ export default {
 		weapons:{type:Array},
 		armors:{type:Object},
 		divs:{type:Array},
+		loader:{type:String}
 	},
 	components:{
 		'item-craft' : ItemCraftMap
@@ -146,8 +149,7 @@ export default {
 			itemTree:[],
 			itemNow:null,
 			temtreeKey:0,
-			divDim:[0,0,0],
-			loader:'active',
+			
 	}
 	},
 	methods: {
@@ -213,10 +215,8 @@ export default {
 	async mounted() {
 		if(this.rec !=null && this.rec.item[0] != null) {
 		this.onClickItem(this.rec.item[0], this.rec.item[0].code)
-		this.loader = 'disabled'
-		//this.armor=this.sortArmor(this.armors.Head);
-		
 		}
+		
 	}
 };
 </script>
@@ -224,6 +224,9 @@ export default {
 <style scoped>
 .item-list {
 	padding-top: 0.5em;
+	height:370px; 
+	overflow:auto;
+
 }
 .item-ctgr {
 	padding: 1em 2em !important;
@@ -237,10 +240,14 @@ export default {
 	border: 1.75px solid #cc431a !important;
 	border-style: groove;
 }
+@media screen and (max-width:1199px) {
+	.item-ctgr {
+		padding: 1em 1.5em !important;
+	}
+}
 @media screen and (max-width:991px) {
 	.item-ctgr {
 		padding: 1em !important;
 	}
-	
 }
 </style>

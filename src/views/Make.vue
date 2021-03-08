@@ -29,7 +29,8 @@
           :key="itemSelectionKey"
           :rec="rec" 
           :weapons="weaponDB"
-          :armors="armors" 
+          :armors="armors"
+          :loader="loader"
           @changeItem="changeItem"
           ref="itemSelection"
           />
@@ -63,13 +64,13 @@ export default {
   data: function() {
     return {
       title:"",
-      loader:"active",
+      loader:"",
       rec:{
         titleCustom:'제목을 입력해주세요.',
         charachter: '',
         charachterSrc: '',
         weapon: '',
-        item:[]
+        item:[],
       },
       weaponDB:[],
       armorDB:[],
@@ -85,6 +86,7 @@ export default {
       this.getWeaponDB(this.rec.weapon);
       this.forceRender('item-selection');
     },
+    
     
   },
   computed:{
@@ -103,7 +105,9 @@ export default {
       }
     },
     getWeaponDB: async function(currentW){
+      this.loader="active"
       this.weaponDB = await api.getweapon(currentW);
+      this.loader="disabled"
     },
     getArmorDB: function(active){
 			if(active!='Weapon') {

@@ -60,6 +60,11 @@ const getCraftMap = function(mate1,mate2){
 			for(var j in first[i].sub){
 				if(first[i].sub[j].makeMaterial1){
 					first[i].sub[j].sub = getCraft(first[i].sub[j].makeMaterial1,first[i].sub[j].makeMaterial2)
+					for(var k in first[i].sub[j].sub){
+						if(first[i].sub[j].sub[k].makeMaterial1){
+							first[i].sub[j].sub[k].sub = getCraft(first[i].sub[j].sub[k].makeMaterial1,first[i].sub[j].sub[k].makeMaterial2)
+						}
+					}
 			}}
 		}
 	}

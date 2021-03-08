@@ -200,7 +200,7 @@ export default {
       this.modyRec(); 
       this.optionsW = this.weaponMatch(this.currentChar[0]); 
       this.rec.weapon = this.optionsW[0]
-      this.rec.item = {};
+      this.rec.item = [];
       }
       
     },
