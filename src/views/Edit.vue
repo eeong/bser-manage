@@ -29,7 +29,8 @@
           :key="itemSelectionKey"
           :rec="rec" 
           :weapons="weaponDB"
-          :armors="armors" 
+          :armors="armors"
+          :loader="loader"
           @changeItem="changeItem"
           ref="itemSelection"
           />
@@ -63,7 +64,7 @@ export default {
   data: function() {
     return {
       title:"",
-      loader:"active",
+      loader:"",
       rec:null,
       weaponDB:[],
       armorDB:[],
@@ -87,7 +88,7 @@ export default {
   methods: {
     onClickSubmit: async function() {
       await api.updaterec(this.rec);
-      this.flash('템트리가 성공적으로 등록되었습니다!', 'success');
+      this.flash('템트리가 수정되었습니다!', 'success');
       this.$router.push(`/recs`);
     },
     onClickCancel: function(){
@@ -97,7 +98,9 @@ export default {
       }
     },
     getWeaponDB: async function(currentW){
+      this.loader="active"
       this.weaponDB = await api.getweapon(currentW);
+      this.loader="disabled"
     },
     getArmorDB: function(active){
 			if(active!='Weapon') {
@@ -120,7 +123,6 @@ export default {
   },
   async mounted() {
     this.rec = await api.getrec(this.$route.params.id);
-    this.loader = 'disabled';
     this.$refs.itemSelection.getDivofChild();
     this.armorDB = await api.getarmor();
     for(var i in this.itemTypeList){this.getArmorDB(this.itemTypeList[i])}
