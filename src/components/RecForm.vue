@@ -35,7 +35,7 @@
                     
                 </div>
                 <div class="ui column three item-wrap">
-                  <item-comp :taken='game' />
+                  <item-comp class="item-comp" :taken='game' />
                 </div>
               <div class="plus-button">
                 <sui-popup content="이 템트리를 빌드에 추가합니다" size="mini">
@@ -166,16 +166,21 @@ export default {
 
 @media screen and (max-width:767px) {
   
+  .ui.column.three.item-wrap .item-comp{
+    flex-wrap: nowrap !important;
+  }
   .ui.button.compact {
     position: absolute;
     left: 50%;
-    bottom: 0;
+    transform: translateX(-50%);
+    bottom: 1%;
     display: block;
   }
   .plus-button {
     position: relative !important;
     right: 0;
     text-align: center;
+    margin: 1em 0;
   }
 }
 </style>

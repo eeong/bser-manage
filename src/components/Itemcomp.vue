@@ -2,7 +2,7 @@
 <div v-if="game!=null">
 		<div class="top attached ui three item menu tabular" >
 			<a class="item equip" >
-				<div class="item-blank"> 무기</div>
+				<div class="item-blank" :class="isBlank(game.item[0])"> 무기</div>
 				<div :id="game.item[0].itemGrade" class="item-wrap" v-if="game.item[0] != null">
 					<sui-popup class="img-wrap" >
 						<sui-grid-column text-align="center">
@@ -14,7 +14,7 @@
 				</div>
 			</a>
 			<a class="item equip" >
-				<div class="item-blank" >옷</div>
+				<div class="item-blank" :class="isBlank(game.item[1])" >옷</div>
 				<div :id="game.item[1].itemGrade" class="item-wrap" v-if="game.item[1] != null">
 					<sui-popup class="img-wrap" >
 						<sui-grid-column text-align="center">
@@ -26,7 +26,7 @@
 				</div>
 			</a>
 			<a class="item equip" >
-				<div class="item-blank" >머리</div>
+				<div class="item-blank" :class="isBlank(game.item[2])" >머리</div>
 				<div :id="game.item[2].itemGrade" class="item-wrap" v-if="game.item[2] != null">
 					<sui-popup class="img-wrap" >
 						<sui-grid-column text-align="center">
@@ -40,7 +40,7 @@
 		</div>
 		<div class="attached ui three item menu tabular">
 			<a class="item equip"  >
-				<div class="item-blank" >팔</div>
+				<div class="item-blank" :class="isBlank(game.item[3])" >팔</div>
 				<div :id="game.item[3].itemGrade" class="item-wrap" v-if="game.item[3] != null">
 					<sui-popup class="img-wrap" >
 						<sui-grid-column text-align="center">
@@ -52,7 +52,7 @@
 				</div>
 			</a>
 			<a class="item equip" >
-				<div class="item-blank" >다리</div>
+				<div class="item-blank" :class="isBlank(game.item[4])" >다리</div>
 				<div :id="game.item[4].itemGrade" class="item-wrap" v-if="game.item[4] != null">
 					<sui-popup class="img-wrap" >
 						<sui-grid-column text-align="center">
@@ -64,7 +64,7 @@
 				</div>
 			</a>
 			<a class="item equip" >
-				<div class="item-blank" >장식</div>
+				<div class="item-blank" :class="isBlank(game.item[5])" >장식</div>
 				<div :id="game.item[5].itemGrade" class="item-wrap" v-if="game.item[5] != null">
 					<sui-popup class="img-wrap" >
 						<sui-grid-column text-align="center">
@@ -91,14 +91,11 @@ export default {
 			game:null,
 		};
 	},
-	computed: {
-		
-	},
-	methods: {
-		
-	},
-	watch :{
-		
+	methods:{
+		isBlank:function(item) {
+			if(item) return '';
+			else return 'blanked'
+		}
 	},
 	async mounted() {
 		this.game = this.taken
@@ -129,8 +126,12 @@ export default {
 	font-weight: 600;
 	width: 100%;
 	padding: 1.375em 0;
+	opacity: 0;
 	background: rgba(186, 186, 187, 0.3);
 	z-index: -1;
+}
+.item-blank.blanked {
+	opacity: 1;
 }
 
 .image.circular {
@@ -161,16 +162,12 @@ export default {
 	padding:0;
 }
 @media screen and (max-width:767px) {
-	.item.equip .item-desc {
-		width: 100%;
-		top: 100%;
-		left: 10%;
+	.item-blank {
+		padding: 44% 0;
 	}
-	.item-desc::before {
-		left: .5em;
-		top: -.35em;
-		transform: rotate(135deg);
-	}
-	
+	.attached.ui.menu.tabular {
+		margin-bottom: 0.5em !important;
+	} 
 }
+
 </style>

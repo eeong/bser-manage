@@ -3,7 +3,7 @@
       <h1>빌드 수정하기</h1>
       
       <div class="ui inverted segment table" v-if="rec != null">
-        <tr>
+        <tr class="my-tr">
           <td class="ui image" id="td-my" >
             <img class="ui image small spaced " :src="require(`../assets/static/img/00.캐릭터/${rec.characterSrc}`)" alt="캐릭터">
             <sui-popup :content="rec.weapon">
@@ -175,6 +175,9 @@ export default {
   }
   .ui.inverted.segment {
     height: auto;
+  }
+  .my-tr {
+    text-align: center;
   }
 }
 </style>
