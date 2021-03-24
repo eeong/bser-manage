@@ -11,7 +11,7 @@
                     <h2 class="item header" style="display:inline-block;">#{{game.gameRank}}위</h2> 
                     <h4 class="header" style="display:inline-block; margin:0;">{{gamemode.team[game.matchingTeamMode]}} {{gamemode.mode[game.matchingMode]}}</h4>
                       <img class="ui circular image" :src="require(`../assets/static/img/00.캐릭터/${game.characterSrc}`)" >
-                      <div class="ui orange bottom right attached label" >{{game.nameKr}} / {{game.item[0].transKr[0][1]}}</div>
+                      <div class="ui orange bottom right attached label" >{{game.nameKr}} / <span v-if="game.item[0]">{{game.item[0].transKr[0][1]}}</span> </div>
                 </div>
                 <div class="ui three column">
                   <div class="ui three ">
@@ -78,7 +78,7 @@ export default {
         nickname: x.nickname || null,
         userNum: x.gameId || null,
         mode:this.gamemode.team[x.matchingTeamMode],
-        weapon: x.item[0].transKr[0][1],
+        weapon: x.item[0] ? x.item[0].transKr[0][1] : null,
         character: `${x.nameKr}`,
         characterSrc: x.characterSrc,
         item: x.item

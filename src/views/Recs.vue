@@ -7,7 +7,7 @@
         <tr v-for="(rec, i) in recs" :key="i">
           <td width="75">
             <a class="ui teal ribbon label type-label">
-              <img class="ui mini image inline" :src="require(`../assets/static/img/type/${rec.item[0].weaponType}.png`)" alt="weapontype"> 
+              <img class="ui mini image inline" :src="require(`../assets/static/img/type/${rec.item[0] ? rec.item[0].weaponType : 'empty'}.png`)" alt="weapontype"> 
               {{rec.weapon}} 
             </a>
             <img class="ui item tiny circular image" :src="require(`../assets/static/img/00.캐릭터/${rec.characterSrc}`)" >
