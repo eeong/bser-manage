@@ -23,7 +23,7 @@ exports.read_rank = async (req, res) => {
 };
 
 exports.read_user_num = async (req, res) => {
-    let userQ = qs.escape(req.params.user);
+    let userQ = qs.escape((req.params.user).trim());
     await fetch(`https://open-api.bser.io/v1/user/nickname?query=${userQ}`, {
     headers: fetchHeaders
 }).then(async (response) => {
@@ -35,7 +35,6 @@ exports.read_user_num = async (req, res) => {
     for(var i in data.userGames){
       data.userGames[i].item = [];
       let charNum = data.userGames[i].characterNum-1
-      //console.log(data.userGames[i].characterNum);
       data.userGames[i].characterSrc = charList[charNum].slice(1,-1);
       data.userGames[i].nameKr = (charList[charNum].split('-'))[1].split('.')[0];
       for(var j in data.userGames[i].equipment){

@@ -70,6 +70,7 @@ const getCraftMap = function(mate1,mate2){
 	}
 	return first;
 }
+
 function getCraft(mate1,mate2){
 	let sort1 = checkItemType(mate1);
 	let sort2 = checkItemType(mate2);
