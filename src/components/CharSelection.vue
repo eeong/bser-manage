@@ -70,6 +70,12 @@ export default {
           image: { avatar: true, src: require(`../assets/static/img/00.캐릭터/004.Magnus-매그너스.png`) },
         },
         {
+          key: '26',
+          text: '바바라',
+          value: ['바바라','026. Barbara - 바바라.png'],
+          image: { avatar: true, src: require(`../assets/static/img/00.캐릭터/026. Barbara - 바바라.png`) },
+        },
+        {
           key: '25',
           text: '버니스',
           value: ['버니스','025. Bernice - 버니스.png'],
