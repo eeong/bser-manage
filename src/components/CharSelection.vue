@@ -130,6 +130,13 @@ export default {
           image: { avatar: true, src: require(`../assets/static/img/00.캐릭터/009.Isol-아이솔.png`) },
         },
         {
+          key: '27',
+          text: '알렉스',
+          value: ['알렉스','027. Alex-알렉스.png'],
+          image: { avatar: true, src: require(`../assets/static/img/00.캐릭터/027. Alex-알렉스.png`) },
+        },
+
+        {
           key: '19',
           text: '엠마',
           value: ['엠마','019.Emma-엠마.png'],

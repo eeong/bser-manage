@@ -86,7 +86,6 @@ export default {
         this.$emit('createOrUpdate', game);
       },
     reloadPage(){
-      
       this.$router.go(0);
     }  
   },

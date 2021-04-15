@@ -11,6 +11,7 @@ const consum = (JSON.parse((fs.readFileSync(path.join(__dirname,'../assets/ItemC
 const special = (JSON.parse((fs.readFileSync(path.join(__dirname,'../assets/ItemSpecial.json'), 'utf8')))).data;
 const charList = (fs.readFileSync(path.join(__dirname,'../assets/character'), 'utf8')).split(',');
 const trans = JSON.parse((fs.readFileSync(path.join(__dirname,'../assets/trans.json'), 'utf8'))).data;
+
 /********** Custom function ************/
 
 const transStatus = function(stat) {
