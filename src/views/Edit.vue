@@ -10,8 +10,8 @@
               <img slot="trigger" class="ui image label ribbon circular w-type" :src="require(`../assets/static/img/type/${rec.weapon}.png`)" alt="weapontype">
             </sui-popup>
           </td>
-          <td class="ui input" id="td-my">
-            <input type="text" v-model="rec.titleCustom">
+          <td class="ui input" id="td-my" >
+            <input type="text" v-model="rec.title">
           </td>
         <td class="ui weapon-td" id="td-my">
           <item-comp v-if="rec != null" :taken="rec" :key="itemCompKey" />
@@ -63,7 +63,6 @@ export default {
   },
   data: function() {
     return {
-      title:"",
       loader:"",
       rec:null,
       weaponDB:[],
@@ -79,6 +78,9 @@ export default {
     'rec.weapon':function(){
       this.getWeaponDB(this.rec.weapon);
       this.forceRender('item-selection');
+    },
+    'rec.title':function(){
+      this.rec.titleCustom = this.rec.title;
     },
     
   },
@@ -108,8 +110,8 @@ export default {
 		}
 		},
     forceRender: function(what){
-      if(what == 'item-selection') this.itemSelectionKey += 1;
-      else if (what == 'item-comp') this.itemCompKey += 1;
+      if(what === 'item-selection') this.itemSelectionKey += 1;
+      else if (what === 'item-comp') this.itemCompKey += 1;
     },
     changeItem: function(){
       this.forceRender('item-comp');
@@ -126,7 +128,7 @@ export default {
     this.$refs.itemSelection.getDivofChild();
     this.armorDB = await api.getarmor();
     for(var i in this.itemTypeList){this.getArmorDB(this.itemTypeList[i])}
-    if(!this.rec.titleCustom) this.titleChange(this.rec.title);
+    if(!this.rec.titleCustom) this.rec.titleCustom = this.rec.title;
   }
 };
 </script>
