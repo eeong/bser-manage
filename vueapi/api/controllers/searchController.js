@@ -3,7 +3,7 @@ const qs = require('querystring');
 const { weapon, armor, charList, getItem } = require('../modules/getJson');
 const refreshJson = {"code":429,"type":'refresh'};
 const fetchHeaders = {'accept': 'application/json','x-api-key': `${process.env.X_API_KEY}`}
-const seasonId = 1;
+const seasonId = 3;
 
 const mongoose = require('mongoose');
 const itemA = mongoose.model('itemArmor')
