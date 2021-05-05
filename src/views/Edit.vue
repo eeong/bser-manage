@@ -11,7 +11,7 @@
             </sui-popup>
           </td>
           <td class="ui input" id="td-my" >
-            <input type="text" v-model="rec.title">
+            <input type="text" v-model="rec.titleCustom">
           </td>
         <td class="ui weapon-td" id="td-my">
           <item-comp v-if="rec != null" :taken="rec" :key="itemCompKey" />
@@ -80,8 +80,8 @@ export default {
       this.forceRender('item-selection');
     },
     'rec.title':function(){
-      this.rec.titleCustom = this.rec.title;
-    },
+      if(!this.rec.titleCustom) this.rec.titleCustom = this.rec.title;
+    }, 
     
   },
   computed:{
