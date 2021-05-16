@@ -46,7 +46,7 @@ export default {
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&family=Noto+Serif+KR:wght@300;400;500&family=Sunflower:wght@300;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500&display=swap');
 
 html, body, h1, h2, h3, h4, h5, .item {font-family: 'Noto Sans Kr', sans-serif !important;}
 h1 {font-weight: 500 !important;}
