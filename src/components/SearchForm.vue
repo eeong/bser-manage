@@ -1,7 +1,11 @@
 <template >
 <div>
+	<div class="blind"></div>
 	<div class="search-wrap" style="position:relative; padding: 4.5em 0;">
-		<div class="s-bg" style="position:absolute"></div>
+		<picture class="s-bg">
+			<source type="image/webp" srcset="../assets/static/img/main.webp">
+			<img src="../assets/static/img/main.jpg" alt="mainbg">
+		</picture>
 		<div class="ui text container">
 			<h1>전적검색</h1>
 					<div class="ui action input ">
@@ -66,17 +70,25 @@ export default {
 h1 {
 	color:#e9e9e9;
 }
-.search-wrap .s-bg{
-	top: -8%;
-	width: 100%;
-	height: 100%;
-	background: url('../assets/static/img/main.jpg');
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-position: 0 65%;
-	background-attachment: fixed;
+.search-wrap .s-bg {
+	position: fixed;
+	top: -15%;
+	height: 65%;	
+	transform-origin: left;
+	transform: scale(0.8);
 	opacity:0.9;
 	filter: brightness(0.4);
-	z-index: -1;
+	z-index: -2;
+	
 }
+
+.blind {
+	width: 100%;
+	height: 70%;
+	z-index: -1;
+	top: 35%;	
+	position: absolute;
+	background-color: #fff;
+}
+
 </style>

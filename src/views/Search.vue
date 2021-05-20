@@ -1,6 +1,6 @@
 <template>
   <div >
-    <search-form ></search-form>
+    <search-form></search-form>
     <div class="ui container text rank-wrap">
       <h1>Rank 10 
         <select class="ui selection three item stackable tabs menu " v-model="rankMode"> 
@@ -83,6 +83,7 @@ export default {
 .topRanks {
   background-color: #eeecec;
 }
+
 .topRanks h3,h5 {
   margin: 0;
 }
