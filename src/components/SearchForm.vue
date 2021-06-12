@@ -1,12 +1,12 @@
 <template >
 <div>
-	<div class="blind"></div>
 	<div class="search-wrap" style="position:relative; padding: 4.5em 0;">
 		<picture class="s-bg">
 			<source type="image/webp" srcset="../assets/static/img/main.webp">
 			<img src="../assets/static/img/main.jpg" alt="mainbg">
 		</picture>
 		<div class="ui text container">
+			
 			<h1>전적검색</h1>
 					<div class="ui action input ">
 						<input type="text" v-on:keyup.enter="onSearch(userid)" v-model="userid" class="ui input" style="display:inline-block" placeholder="닉네임을 입력해주세요">
@@ -14,6 +14,7 @@
 						</button>
 					</div>
 				<h1>랭크검색</h1>
+				<div class="blind"></div>
 				<div class="ui action input ">
 					<input type="text" v-on:keyup.enter="onSearchRank(useridRank)" v-model="useridRank" class="ui input" style="display:inline-block" placeholder="닉네임을 입력해주세요">
 					<select class="ui compact selection dropdown" v-model="gameMode" style="padding: 10px;">
@@ -72,10 +73,7 @@ h1 {
 }
 .search-wrap .s-bg {
 	position: fixed;
-	top: -15%;
-	height: 65%;	
-	transform-origin: left;
-	transform: scale(0.8);
+	top: -25%;
 	opacity:0.9;
 	filter: brightness(0.4);
 	z-index: -2;
@@ -83,10 +81,11 @@ h1 {
 }
 
 .blind {
-	width: 100%;
-	height: 70%;
+	width: 200%;
+	height: 200%;
 	z-index: -1;
-	top: 35%;	
+	left: -50%;
+	top: 100%;	
 	position: absolute;
 	background-color: #fff;
 }
