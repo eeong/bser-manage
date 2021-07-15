@@ -39,7 +39,10 @@ export default {
 		}
 	},
 	methods:{
-	
+		
+	},
+	mounted(){
+		
 	}
 };
 	
@@ -49,6 +52,7 @@ export default {
 /* @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500&display=swap'); */
 
 html, body, h1, h2, h3, h4, h5, .item {font-family: 'Noto Sans Kr', sans-serif !important;}
+html, body {overflow-x: hidden;}
 h1 {font-weight: 500 !important;}
 h2 {font-weight: 400 !important;}
 h3, h4 {font-weight: 300 !important;}
@@ -104,4 +108,8 @@ ul,li {
 	background: rgb(142,129,47);
 	background: linear-gradient(180deg, rgb(139, 126, 47) 0%, rgb(226, 183, 63) 100%);
 }
+@media screen and (max-width:767px){
+	html, body {width: 100%;} 
+}
+
 </style>

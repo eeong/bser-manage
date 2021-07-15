@@ -1,10 +1,10 @@
 <template >
 <div>
 	<div class="search-wrap" style="position:relative; padding: 4.5em 0;">
-		<picture class="s-bg">
-			<source type="image/webp" srcset="../assets/static/img/main.webp">
-			<img src="../assets/static/img/main.jpg" alt="mainbg">
-		</picture>
+			<picture class="s-bg">
+				<source type="image/webp" srcset="../assets/static/img/main.webp">
+				<img src="../assets/static/img/main.jpg" alt="mainbg">
+			</picture>
 		<div class="ui text container">
 			
 			<h1>전적검색</h1>
@@ -90,4 +90,11 @@ h1 {
 	background-color: #fff;
 }
 
+@media screen and (max-width:992px){
+	.blind {height: 350%;} 
+}
+@media screen and (max-width:433px){
+	.blind {height: 380%;} 
+	.ui.action.input {width: 90%;}
+}
 </style>
