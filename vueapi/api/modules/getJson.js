@@ -102,11 +102,12 @@ function sortArmor(armors){
 
 // add transKr to Json File
 function addTransKr(){
-	for(var i in armor){
-		armor[i].transKr=(getValidItem(armor[i]));
+	for(var i in weapon){
+		weapon[i].transKr=(getValidItem(weapon[i]));
 	};
-	let json = JSON.stringify(armor)
-	fs.writeFileSync('remakeArmor.json', json  )
+	let json = JSON.stringify(weapon)
+	fs.writeFileSync(path.join(__dirname,'../assets/weapon2.json'), json)
 }
+
 
 module.exports = { weapon,armor,charList,getItem,reverseTrans,sortArmor,getCraftMap }
