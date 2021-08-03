@@ -42,8 +42,8 @@ export default {
         {
           key: '34',
           text: '나타폰',
-          value: ['나타폰','034. Nathapon - 나타폰.png'],
-          image: { avatar: true, src: require(`../assets/static/img/00.캐릭터/034. Nathapon - 나타폰.png`) },
+          value: ['나타폰','034.Nathapon-나타폰.png'],
+          image: { avatar: true, src: require(`../assets/static/img/00.캐릭터/034.Nathapon-나타폰.png`) },
         },
         {
           key: '33',
