@@ -33,7 +33,7 @@
       </table>
       <div class="ui secondary menu">
         <router-link :to="{ name: 'make'}">
-          <sui-button positive style="margin-top:0" @click="makeNewBuild()">새로만들기</sui-button>
+          <sui-button positive style="margin-top:0" >새로만들기</sui-button>
           </router-link>
         <div class="ui pagination menu right" v-if="paging.end">
             <a class="item" @click="pageOverClick('l')" :class="isAble('l')"><i class="icon angle left"></i></a>

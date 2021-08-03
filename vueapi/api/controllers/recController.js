@@ -3,8 +3,7 @@ const rec = mongoose.model('game');
 const itemA = mongoose.model('itemArmor')
 const itemW = mongoose.model('itemWeapon')
 
-const { weapon,armor, reverseTrans,getCraftMap  } = require('../modules/getJson');
-
+const { reverseTrans, getCraftMap  } = require('../modules/getJson');
 
 exports.read_itemArmor = (req, res) => {
   itemA.find({}, (err, armors) => {
