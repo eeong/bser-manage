@@ -67,8 +67,8 @@ export default {
       loader:"",
       rec:{
         titleCustom:'',
-        charachter: '',
-        charachterSrc: '',
+        character: '',
+        characterSrc: '',
         weapon: '',
         item:[],
       },
@@ -86,8 +86,7 @@ export default {
       this.getWeaponDB(this.rec.weapon);
       this.forceRender('item-selection');
     },
-    
-    
+  
   },
   computed:{
     
@@ -108,6 +107,7 @@ export default {
       this.loader="active"
       this.weaponDB = await api.getweapon(currentW);
       this.loader="disabled"
+      
     },
     getArmorDB: function(active){
 			if(active!='Weapon') {

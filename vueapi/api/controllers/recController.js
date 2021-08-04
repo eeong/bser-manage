@@ -22,7 +22,7 @@ exports.read_itemWeapon = (req, res) => {
 
 exports.craft_item = (req, res) => {
   let itemMap = [];
-  itemMap = getCraftMap(req.params.code1,req.params.code2)
+  itemMap = getCraftMap(req.params.code1, req.params.code2)
   res.json(itemMap);
 };
 

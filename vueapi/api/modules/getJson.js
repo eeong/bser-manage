@@ -31,13 +31,6 @@ const getValidItem = function(item) {
   return transStatus(items);
 }
 
-/* const getItem = function(ctgr, itemcode) {
-	return getValidItem(ctgr.filter((v)=>{
-			if(v.code == itemcode) return v;
-			else return '';
-		})[0])
-} */
-
 const getItem = function(ctgr, itemcode) {
 	return ctgr.filter((v)=>{
 			if(v.code == itemcode) return v;
@@ -55,6 +48,7 @@ const reverseTrans = function(itemKr){
 
 const getCraftMap = function(mate1,mate2){
 	let first = getCraft(mate1,mate2)
+	//console.log(first)
 	for(var i in first){
 		if(first[i].makeMaterial1) { 
 			first[i].sub = getCraft(first[i].makeMaterial1,first[i].makeMaterial2)
@@ -72,20 +66,21 @@ const getCraftMap = function(mate1,mate2){
 	return first;
 }
 
-function getCraft(mate1,mate2){
+function getCraft(mate1, mate2){
 	let sort1 = checkItemType(mate1);
 	let sort2 = checkItemType(mate2);
-	return [findCraft(sort1,mate1),findCraft(sort2,mate2)];
-}
-
-function findCraft(sort,code){
-	return (sort.filter((v)=>{return v.code == code}))[0]
+	return [findCraft(sort1, mate1), findCraft(sort2, mate2)];
 }
 
 function checkItemType(code){
-	let sort = {1:weapon,2:armor,3:consum,4:misc,5:special}
-	return sort[code.toString()[0]];
+	let itemType = {1:weapon, 2:armor, 3:consum, 4:misc, 5:special}
+	return itemType[code.toString()[0]];
 }
+
+function findCraft(itemType,code){
+	return (itemType.filter((v)=>{return v.code == code}))[0]
+}
+
 
 function sortArmor(armors){
 	let result = [];
@@ -99,15 +94,15 @@ function sortArmor(armors){
 	return result;
 } 
 
-
 // add transKr to Json File
 function addTransKr(){
 	for(var i in weapon){
 		weapon[i].transKr=(getValidItem(weapon[i]));
 	};
 	let json = JSON.stringify(weapon)
-	fs.writeFileSync(path.join(__dirname,'../assets/weapon2.json'), json)
-}
+	fs.writeFileSync(path.join(__dirname,'../assets/weapon.json'), json)
+} 
+
 
 
 module.exports = { weapon,armor,charList,getItem,reverseTrans,sortArmor,getCraftMap }
