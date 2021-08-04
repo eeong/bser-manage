@@ -13,7 +13,8 @@ mongoose.Promise = global.Promise;
 mongoose.set('useFindAndModify', false);
 mongoose.connect(
   `${process.env.DB}`,
-  { useNewUrlParser: true }
+  { useNewUrlParser: true,
+    useUnifiedTopology: true }
 );
 
 const port = process.env.PORT || 3000;
