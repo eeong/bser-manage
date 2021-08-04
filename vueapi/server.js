@@ -1,7 +1,6 @@
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
 require('dotenv').config();
 
 global.Game = require('./api/models/gameModel');
@@ -21,8 +20,8 @@ const port = process.env.PORT || 3000;
 const app = express();
 
 app.use(cors());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 routes(app);
 app.listen(port);
